@@ -2,6 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, height=device-height">
 <title>Insert title here</title>
 <style>
 div {
@@ -14,10 +15,18 @@ div {
     <div id='topBar'>
       <p>검색 결과</p>
     </div>
+    
     <div id='sortBy'>
-      <div id='min_price'>낮은 가격순</div>
-      <div id='max_price'>높은 가격순</div>
-      <div id='pop'>인기순</div>
+      <div style="border: 1px solid gold; float: left; width: 33%;">
+낮은 가격순
+</div>
+<div style="border: 1px solid red; float: left; width: 33%;">
+높은 가격순
+</div>
+<div style="border: 1px solid blue; float: left; width: 33%;">
+인기순
+</div>
+
     </div>
     <div id='productList'>
       <p>전체검색 : totalCount</p>

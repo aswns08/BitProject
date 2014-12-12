@@ -15,12 +15,19 @@ div {
 }
 
 #menu {
-  width: 10%;
-  height: 10%;
-  margin: 10px 10px 10px 10px;
-  float: left;
+  width: 30px;
+  height: 30px;
+/*  margin: 10px 10px 10px 10px; */ 
+  float: left; 
 }
 
+#topBar {
+  height: 30px;
+}
+
+#search {
+  margin: 10px 10px 10px 10px;
+}
 
 </style>
 </head>
@@ -29,7 +36,7 @@ div {
   <div id='container'>
     <div id='topBar'>
       <img id='menu' src='image/menu.png'>
-      <p style='text-align:center'>검색 결과</p>
+      <p id='search' style='text-align:center'>검색 결과</p>
     </div>
     
     <!--------------------------- 다음 쇼핑 검색 --------------->
@@ -43,9 +50,9 @@ div {
     <div id='sortBy'
       style='border: 0px; margin: auto; width: 80%'>
       <div id='min_price'
-        style="border: 1px solid red; float: left; width: 32%;">낮은 가격순</div>
+        style="border: 1px solid red; float: left; width: 32%;">낮은가격순</div>
       <div id='max_price'
-        style="border: 1px solid red; float: left; width: 32%;">높은 가격순</div>
+        style="border: 1px solid red; float: left; width: 32%;">높은가격순</div>
       <div id='pop'
         style="border: 1px solid red; float: left; width: 32%;">인기순</div>
       &nbsp;

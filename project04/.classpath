@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="output" path="bin"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER" exported="true"/>
+	<classpathentry kind="con" path="org.eclipse.jst.j2ee.internal.web.container" exported="true"/>
+	<classpathentry sourcepath="/Users/SongMJ/.gradle/caches/modules-2/files-2.1/org.mybatis/mybatis/3.2.8/287bc9f8485a85211d7a900fe43c74264ee0561b/mybatis-3.2.8-sources.jar" kind="lib" path="/Users/SongMJ/.gradle/caches/modules-2/files-2.1/org.mybatis/mybatis/3.2.8/7b6bf82cea13570b5290d6ed841283a1fcce170/mybatis-3.2.8.jar" exported="true">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/Users/SongMJ/.gradle/caches/modules-2/files-2.1/mysql/mysql-connector-java/5.1.34/46deba4adbdb4967367b013cbc67b7f7373da60a/mysql-connector-java-5.1.34.jar" exported="true">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+</classpath>

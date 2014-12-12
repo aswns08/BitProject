@@ -1,0 +1,35 @@
+apply plugin: 'java'
+apply plugin: 'eclipse-wtp'
+apply plugin: 'war'
+
+compileJava {
+  sourceCompatibility = 1.8
+  options.encoding = 'UTF-8'
+}
+
+eclipse {
+  wtp {
+    facet {
+      facet name:'jst.web', version:'3.0'
+    }
+  }
+}
+
+
+repositories {
+  mavenCentral()
+}
+
+dependencies {
+  compile 'org.mybatis:mybatis:3.2.8'
+  compile 'mysql:mysql-connector-java:5.1.34'
+}
+
+
+
+
+
+
+
+
+

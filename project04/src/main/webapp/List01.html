@@ -15,18 +15,25 @@ div {
 }
 
 #menu {
-  width: 30px;
-  height: 30px;
+  width: 40px;
+  height: 40px;
 /*  margin: 10px 10px 10px 10px; */ 
   float: left; 
 }
 
 #topBar {
-  height: 30px;
+  height: 40px;
+  background-color: #077187;
 }
 
 #search {
   margin: 10px 10px 10px 10px;
+}
+
+#sortContainer {
+  height: 5%;
+  background-color: #EEE5E5;
+  padding: 0.3%
 }
 
 </style>
@@ -47,15 +54,15 @@ div {
       onclick="javascript:daumShoppingSearch.search()" />
   </div>
      <!-- --------------------------------------------------- -->  
-    <div id='sortBy'
-      style='border: 0px; margin: auto; width: 80%'>
+    <div id='sortContainer'>
+    <div id='sortBy' style='border: 0px; margin: auto; width: 80%'>
       <div id='min_price'
-        style="border: 1px solid red; float: left; width: 32%;">낮은가격순</div>
+        style="border: 1px solid red; float: left; width: 32%;">낮은 가격순</div>
       <div id='max_price'
-        style="border: 1px solid red; float: left; width: 32%;">높은가격순</div>
-      <div id='pop'
-        style="border: 1px solid red; float: left; width: 32%;">인기순</div>
+        style="border: 1px solid red; float: left; width: 32%;">높은 가격순</div>
+      <div id='pop' style="border: 1px solid red; float: left; width: 32%;">인기순</div>
       &nbsp;
+    </div>
     </div>
   </div>
 

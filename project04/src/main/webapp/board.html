@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+  content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, height=device-height">
+<title>Insert title here</title>
+<style>
+/* 폰트 적용 */
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+ 
+div {
+  border: 1px solid black;
+}
+
+#content {
+  border: 0px solid black;
+}
+
+#menu {
+  width: 40px;
+  height: 40px;
+  /*  margin: 10px 10px 10px 10px; */
+  float: left;
+}
+
+#search {
+  margin: 10px;
+  
+}
+
+.topBar {
+  height: 40px;
+  background-color: #077187;
+  font: 20px;
+  font-weight: bold;
+  color: white;
+  font-family: Jejugothic;
+  letter-spacing: 8px;
+  text-align: center;
+  padding: 1px;
+  border: 0px;
+}
+
+
+.selectTap {
+  border: 0px;
+  background-color: #EEE5E5;
+  display: inline-block;
+  margin: 0px;
+  width: 100%;
+}
+
+
+.array {
+  border: 0px solid black;
+  display: inline-block;
+  width: 100%;
+}
+
+.range {
+  border: 0px solid black;
+  display: inline-block;
+  width: 80px;
+  margin: 0px;
+}
+
+.list {
+  /* posituon: relative; */
+  border: 1px solid red;
+  overflow: auto;
+  /* margin: 10px; */
+}
+
+.picture {
+  float: left;
+  height: 100px;
+  width: 100px;
+  border: 1px solid blue;
+  
+}
+
+.block {
+  /* display: inline-block; */
+  margin-left: 100px;
+  border: 1px solid green;
+  
+}
+
+.text {
+  margin-left: 10px;
+  border: 1px solid yellow;
+  
+}
+
+.writer {
+  font-size: 4px;
+  display: inline-block;
+  margin-left: 10px;
+}
+
+</style>
+
+</head>
+
+<body>
+  <div class='container'>
+    <div class='topBar'>
+      <img id='menu' src='image/menu.png'>
+      <p id='search'>커 뮤 니 티</p>
+    </div>
+
+    <!-- --------------------------------------------------- -->
+    <div class='selectTap'>
+        <div id='good' style='display: inline-block; width: 100px; border: 0px;'>좋아요</div>
+        <div id='bad' style='display: inline-block; width: 100px; border: 0px;'>나빠요</div>
+    </div>
+    
+    <div class='array'>
+      <div class='range'>등록일순</div>
+      <div class='range'>추천순</div> 
+      <div class='range'>조회순</div>
+    </div>
+
+    <div class='list'>
+        <img class='picture'
+             src='image/ipad_mini.png'>
+        <div class='block'>
+          <div class='text'>아이패드 좋아요~~~</div>
+          <div class='writer'>송민준 |</div>
+          <div class='writer'>14-12-25 |</div>
+          <div class='writer'>조회:5</div>
+        </div>
+    </div>
+    
+    <div class='list'>
+        <img class='picture'
+             src='image/galaxy_alpha.png'>
+        <div class='block'>
+          <div class='text'>갤럭시 좋아요</div>
+          <div class='writer'>장대혁 |</div>
+          <div class='writer'>14-12-24 |</div>
+          <div class='writer'>조회:8</div>
+         </div>
+    </div>
+    
+    <div class='list'>
+        <img class='picture'
+             src='image/iphone.jpg'>
+        <div class='block'>
+          <div class='text'>아이폰 좋아요</div>
+          <div class='writer'>정해창 |</div>
+          <div class='writer'>14-12-23 |</div>
+          <div class='writer'>조회:3</div>
+         </div>
+    </div>
+
+  </div>
+  <!------------------------div container 끝 ----------------------->
+
+
+	
+	
+  
+  </html>
+

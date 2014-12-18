@@ -1,10 +1,15 @@
 <!DOCTYPE html>
 <html>
 <head>
+   <meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="boardView/styles.css">
+   <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+   <script src="boardView/script.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport"
   content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, height=device-height">
-<title>커뮤니티 리스트</title>
+<title>커뮤니티 상세화면</title>
 <style>
 /* 폰트 적용 */
 @import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
@@ -33,7 +38,7 @@ div {
   
 }
 
-#topBar {
+.topBar {
   height: 40px;
   background-color: #077187;
   font: 20px;
@@ -57,10 +62,9 @@ div {
 
 .good-bad {
   display: inline-block; 
-  width: 30%;
+  width: 100px;
   margin-top: 5px;
-  border: 0px solid red;
-  
+  border: 0px;  
 }
 
 
@@ -75,7 +79,7 @@ div {
 .range {
   border: 0px solid black;
   display: inline-block;
-  width: 30%;
+  width: 80px;
   margin: 0px;
 }
 
@@ -116,86 +120,52 @@ div {
   margin-top: 50px; 
 }
 
+#cssmenu{
+width:100%;
+}
 </style>
 
 </head>
-<script src="js/jquery-1.11.1.js"></script>
 
 <body>
   <div class='container'>
-    <div id='topBar'>
+    <div class='topBar'>
       <img id='menu' src='image/menu.png'>
       <p id='search'>커 뮤 니 티</p>
     </div>
 
     <!-- --------------------------------------------------- -->
-    <div class='selectTap'>
-        <div id='total' class='good-bad'>전체</div>
-        <div id='good' class='good-bad'>좋아요</div>
-        <div id='bad'class='good-bad'>나빠요</div>
-    </div>
-    
-    <div class='array'>
-      <div class='range'>등록일순</div>
-      <div class='range'>추천순</div> 
-      <div class='range'>조회순</div>
+			<div id='cssmenu'>
+				<ul>
+					<li class='active has-sub'><a href='#'><span>분류</span></a>
+						<ul>
+							<li class='has-sub'><a href='#'><span>가전</span></a></li>
+							<li class='has-sub'><a href='#'><span>뷰티</span></a></li>
+							<li class='has-sub'><a href='#'><span>헤어</span></a></li>
+							<li class='has-sub'><a href='#'><span>옷</span></a></li>
+							<li class='has-sub'><a href='#'><span>컴퓨터</span></a></li>
+						</ul></li>
+				</ul>
+			</div>
+
+		<div class='title'>
+      <div class='range'>제목</div>
+      <div class='range'>아이디</div> 
+      <div class='range'>날짜</div>
+      <div class='range'>조회수</div>
     </div>
 
     <div class='list'>
-        <img class='picture'
-             src='image/ipad_mini.png'>
-        <div class='block'>
-          <div class='text'>아이패드 좋아요~~~</div>
-          <div class='writer'>송민준 |</div>
-          <div class='writer'>14-12-25 |</div>
-          <div class='writer'>조회:5</div>
-        </div>
+    <p>아이폰 좋아요</p>
     </div>
     
-    <div class='list'>
-        <img class='picture'
-             src='image/galaxy_alpha.png'>
-        <div class='block'>
-          <div class='text'>갤럭시 좋아요</div>
-          <div class='writer'>장대혁 |</div>
-          <div class='writer'>14-12-24 |</div>
-          <div class='writer'>조회:8</div>
-         </div>
-    </div>
-    
-    <div class='list'>
-        <img class='picture'
-             src='image/iphone.jpg'>
-        <div class='block'>
-          <div class='text'>아이폰 좋아요</div>
-          <div class='writer'>정해창 |</div>
-          <div class='writer'>14-12-23 |</div>
-          <div class='writer'>조회:3</div>
-         </div>
-    </div>
 
   </div>
   <!------------------------div container 끝 ----------------------->
 
-<script>
 
-var status;
-
-$('#good').click(function(event){
-  $('#good').css('background-color', '#aaaaaa');
-});
-
-$('#bad').click(function(event){
-  $('#bad').css('background-color', '#aaaaaa');
-});
-
-$('.block').click(function(evnet){
-  location.href="http://192.168.0.154:8080/project04/boardView.html";
-});
-
-</script>
 	
 	
   
-</html>
+  </html>
 

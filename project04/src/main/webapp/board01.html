@@ -1,6 +1,11 @@
 <!DOCTYPE html>
 <html>
 <head>
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+   <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="stylesheet" href="boardView/styles.css">
+   <script src="http://code.jquery.com/jquery-latest.min.js" type="text/javascript"></script>
+   <script src="boardView/script.js"></script>
 <meta charset="UTF-8">
 <meta name="viewport"
   content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, height=device-height">
@@ -72,12 +77,7 @@ div {
   margin-bottom: 10px;
 }
 
-.range {
-  border: 0px solid black;
-  display: inline-block;
-  width: 30%;
-  margin: 0px;
-}
+
 
 .list {
   /* posituon: relative; */
@@ -116,6 +116,12 @@ div {
   margin-top: 50px; 
 }
 
+#cssmenu{
+  width: 100%;
+}
+
+
+
 </style>
 
 </head>
@@ -135,11 +141,15 @@ div {
         <div id='bad'class='good-bad'>나빠요</div>
     </div>
     
-    <div class='array'>
-      <div class='range'>등록일순</div>
-      <div class='range'>추천순</div> 
-      <div class='range'>조회순</div>
-    </div>
+    <div id='cssmenu'>
+        <ul>
+          <li class='active has-sub'><a href='#'><span>등록일순</span></a>
+            <ul>
+              <li class='has-sub'><a href='#'><span>추천순</span></a></li>
+              <li class='has-sub'><a href='#'><span>조회순</span></a></li>
+            </ul></li>
+        </ul>
+      </div>
 
     <div class='list'>
         <img class='picture'

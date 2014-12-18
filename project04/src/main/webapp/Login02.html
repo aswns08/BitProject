@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, height=device-height">
+<title>회원가입</title>
+<!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+/* 폰트 적용 */
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+/* div {
+	border: 1px solid black;
+} */
+
+#content {
+	border: 0px solid black;
+}
+
+#menu {
+	width: 40px;
+	height: 40px;
+	/*  margin: 10px 10px 10px 10px; */
+	float: left;
+}
+
+#search {
+	margin: 10px;
+}
+
+.topBar {
+	height: 40px;
+	background-color: #077187;
+	font: 20px;
+	font-weight: bold;
+	color: white;
+	font-family: Jejugothic;
+	letter-spacing: 8px;
+	text-align: center;
+	padding: 1px;
+	border: 0px;
+}
+
+.selectTap {
+	border: 0px;
+	background-color: #EEE5E5;
+	display: inline-block;
+	height: 30px;
+	width: 100%;
+}
+
+.good-bad {
+	display: inline-block;
+	width: 100px;
+	margin-top: 5px;
+	border: 0px;
+}
+
+.array {
+	border: 0px solid black;
+	display: inline-block;
+	width: 100%;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.range {
+	border: 0px solid black;
+	display: inline-block;
+	width: 80px;
+	margin: 0px;
+}
+
+.list {
+	/* posituon: relative; */
+	border: 0px solid red;
+	overflow: auto;
+	/* margin: 10px; */
+	border-bottom: 1px solid #aaaaaa;
+}
+
+.picture {
+	float: left;
+	height: 100px;
+	width: 100px;
+	border: 1px solid #aaaaaa;
+}
+
+.block {
+	/* display: inline-block; */
+	margin-left: 100px;
+	border: 0px solid green;
+	margin-top: 10px;
+}
+
+.text {
+	margin-left: 10px;
+	border: 0px solid yellow;
+}
+
+.writer {
+	font-size: 5px;
+	display: inline-block;
+	margin-left: 10px;
+	border: 0px solid black;
+	margin-top: 50px;
+}
+
+#signUpForm {
+	margin: 10px auto;
+	width: 90%;
+}
+
+#loginBtn {
+  width: 100%;
+  background-color: #EEE5E5;    
+}
+
+#findPwdBtn {
+  width: 48%;
+  background-color: #EEE5E5;    
+}
+
+#signUpBtn {
+  width: 48%;
+  background-color: #EEE5E5; 
+  position: relative;
+  left: 3.4%;
+}
+</style>
+
+</head>
+
+  <script src='js/jquery-1.11.1.js'></script>
+  <script src='js/bootstrap.min.js'></script>
+  
+
+<body>
+	<div class='customContainer'>
+		<div class='topBar'>
+			<img id='menu' src='image/menu.png'>
+			<p id='search'>로 그 인</p>
+		</div>
+
+		<!-- --------------------------------------------------- -->
+		<form role="form" id='signUpForm'>
+			<div class="form-group">
+				<label for="exampleInputEmail1">이메일</label> <input type="email"
+					class="form-control" id="email" placeholder="Enter email">
+			</div>
+			<div class="form-group">
+				<label for="exampleInputPassword1">비밀번호</label> <input
+					type="password" class="form-control" id="pwd"
+					placeholder="Password">
+			</div>
+			<button type="submit" id='loginBtn' class="btn btn-default">로그인</button>
+
+			<div class="checkbox">
+				<label> <input type="checkbox"> 자동 로그인
+				</label>
+			</div>
+			
+			<div id=''>
+      <button type="submit" id='findPwdBtn' class="btn btn-default">비밀번호찾기</button>
+      <button type="submit" id='signUpBtn' class="btn btn-default">회원가입</button>
+    </div>
+		</form>		
+	</div>
+	<!------------------------div container 끝 ----------------------->
+
+	<!-- --------------------- 스크립트   ------------ -->
+  
+  
+  <script>
+
+  //window.onload= init;
+  function init() {
+  var button = document.getElementById("findPwdBtn"); // 아이디를 이용하여서 버튼의 정보를 얻고
+  button.click = location.href="http://192.168.0.154:8080/project04/FindPwd01.html"; // 버튼 클릭시에 handleButtonClick을 호출하게 함.
+  }
+  
+
+  
+  </script>
+
+</body>
+</html>
+

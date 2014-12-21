@@ -4,8 +4,21 @@
 <meta charset="UTF-8">
 <meta name="viewport"
 	content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, height=device-height">
-<title>회원가입</title>
-<!-- Bootstrap -->
+<title>비밀번호찾기</title>
+
+<!-- --------------------- 스크립트   ------------ -->
+<script src='js/jquery-1.11.1.js'></script>
+<script src='js/bootstrap.min.js'></script>
+
+<!-- ---------------- jQuery Mobile -------------------------- -->
+<link rel="stylesheet" href="css/jquery.mobile-1.4.5.css">
+<script src="js/jquery.js"></script>
+<script src="js/jquery.mobile-1.4.5.js"></script>
+
+<!-- -------------------- CSS --------------------- -->
+<link href="css/common.css" rel="stylesheet">
+
+<!-------------------- Bootstrap --------------------->
 <link href="css/bootstrap.min.css" rel="stylesheet">
 
 <style>
@@ -35,18 +48,6 @@
 	margin: 10px;
 }
 
-.topBar {
-	height: 40px;
-	background-color: #077187;
-	font: 20px;
-	font-weight: bold;
-	color: white;
-	font-family: Jejugothic;
-	letter-spacing: 8px;
-	text-align: center;
-	padding: 1px;
-	border: 0px;
-}
 
 .selectTap {
 	border: 0px;
@@ -138,11 +139,10 @@
 </head>
 
 <body>
-	<div class='customContainer'>
-		<div class='topBar'>
-			<img id='menu' src='image/menu.png'>
-			<p id='search'>비밀번호 찾기</p>
-		</div>
+	 <div id='topBar' data-role="header">
+    <a href="#" class="ui-btn ui-icon-bars ui-btn-icon-notext ui-corner-all ui-nodisc-icon transparentButton">menu</a>  
+    <h1>비밀번호 찾기</h1>
+  </div>
 
 		<!-- --------------------------------------------------- -->
 		<form role="form" id='signUpForm'>
@@ -165,12 +165,10 @@
 			
 			<button type="submit" id='submitAuth' class="btn btn-default">확인</button>
 		</form>
-	</div>
+	
 	<!------------------------div container 끝 ----------------------->
 
-	<!-- --------------------- 스크립트   ------------ -->
-	<script src='js/jquery-1.11.1.js'></script>
-	<script src='js/bootstrap.min.js'></script>
+	
 
 </body>
 </html>

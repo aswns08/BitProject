@@ -17,111 +17,72 @@
 @import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
 
 @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
- 
+
 div {
-  border: 1px solid black;
+	border: 1px solid gray;
 }
 
 #content {
-  border: 0px solid black;
+	border: 0px solid black;
 }
 
 #menu {
-  width: 40px;
-  height: 40px;
-  /*  margin: 10px 10px 10px 10px; */
-  float: left;
+	width: 40px;
+	height: 40px;
+	/*  margin: 10px 10px 10px 10px; */
+	float: left;
 }
 
 #search {
-  margin: 10px;
-  
+	margin: 10px;
 }
 
 .topBar {
-  height: 40px;
-  background-color: #077187;
-  font: 20px;
-  font-weight: bold;
-  color: white;
-  font-family: Jejugothic;
-  letter-spacing: 8px;
-  text-align: center;
-  padding: 1px;
-  border: 0px;
+	height: 40px;
+	background-color: #4169E1;
+	font: 20px;
+	font-weight: bold;
+	color: white;
+	font-family: Jejugothic;
+	letter-spacing: 8px;
+	text-align: center;
+	padding: 1px;
+	border: 0px;
 }
-
 
 .selectTap {
-  border: 0px;
-  background-color: #EEE5E5;
-  display: inline-block;
-  height: 30px;
-  width: 100%;
-}
-
-.good-bad {
-  display: inline-block; 
-  width: 100px;
-  margin-top: 5px;
-  border: 0px;  
+	border: 0px;
+	background-color: #EEE5E5;
+	display: inline-block;
+	height: 30px;
+	width: 100%;
 }
 
 
-.array {
-  border: 0px solid black;
-  display: inline-block;
-  width: 100%;
-  margin-top: 10px;
-  margin-bottom: 10px;
-}
 
 .range {
-  border: 0px solid black;
-  display: inline-block;
-  width: 80px;
-  margin: 0px;
+	border: 0px solid black;
+	display: inline-block;
+	width: 120px;
+	margin-top: 10px;
+	margin-right: 10px;
+	font-size: 15px;
 }
 
-.list {
-  /* posituon: relative; */
-  border: 0px solid red;
-  overflow: auto;
-  /* margin: 10px; */
-  border-bottom: 1px solid #aaaaaa;
+
+
+.header {
+	width: 100%;
+	border:0px;
+	font-size: 20px;
+	border: 0px solid black;
 }
 
-.picture {
-  float: left;
-  height: 100px;
-  width: 100px;
-  border: 1px solid #aaaaaa;
-  
+#cssmenu {
+	width: 100%;
 }
-
-.block {
-  /* display: inline-block; */
-  margin-left: 100px;
-  border: 0px solid green;
-  margin-top: 10px;  
-}
-
-.text {
-  margin-left: 10px;
-  border: 0px solid yellow;
-  
-}
-
-.writer {
-  font-size: 5px;
-  display: inline-block;
-  margin-left: 10px;
-  border: 0px solid black;
-  margin-top: 50px; 
-}
-
-#cssmenu{
-width:100%;
+#update{
+float:right;
 }
 </style>
 
@@ -149,16 +110,26 @@ width:100%;
 			</div>
 
 		<div class='title'>
-      <div class='range'>제목</div>
-      <div class='range'>아이디</div> 
-      <div class='range'>날짜</div>
-      <div class='range'>조회수</div>
+      <div style='border: 0px solid black;'>
+      <div class='header'>[좋아요] 아이폰 좋아요</div>
+      </div>
+      <div class='range'>아이디: 송민준</div> 
+      <div class='range'>날짜: 14.12.18</div>
+      <div class='range'>조회수: 777</div>
     </div>
 
     <div class='list'>
     <p>아이폰 좋아요</p>
+    <br>1<br>2<br>3<br>4<br>5<br>
     </div>
+    <div class='footer'>
+    <button type="button" style= "background-color:white; width:30%">댓글</button>
     
+    <div id = 'update'>
+    <button type="button" style= "background-color:white">삭제</button>
+    <button type="button" style= "background-color:white">수정</button>
+    </div>
+    </div>
 
   </div>
   <!------------------------div container 끝 ----------------------->

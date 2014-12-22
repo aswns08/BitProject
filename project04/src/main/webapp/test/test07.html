@@ -16,12 +16,12 @@
 	<div data-role="page" id="foo">
 		<div data-role="header" data-position="fixed">
 			<h1>I'm a header</h1>
-			<a href="index.html" data-icon="gear" class="ui-btn-right">Options</a>
+			<a href="index.html" data-icon="bars" class="ui-btn-left"></a>
 			<div data-role="navbar">
 				<ul>
-					<li><a href="#">One</a></li>
-					<li><a href="#">Two</a></li>
-					<li><a href="#">Three</a></li>
+					<li><a href="#">전체</a></li>
+					<li><a href="#">좋아요</a></li>
+					<li><a href="#">나빠요</a></li>
 				</ul>
 			</div>
 			<!--  /navbar -->
@@ -35,6 +35,16 @@
 				<!-- <a href="#bar" data-rel="dialog">Open dialog</a><br>  모달 대화상자로 띄우기-->
 				<a href="#" data-role="buton" data-rel="back">Close</a>
 			</p>
+
+			<ul data-role="listview" data-icon="false" data-split-theme="d">
+				<li><a href="http://www.daum.net"> <img src="../image/iphone.jpg" />
+						<h3>Broken Bels</h3>
+						<p>Broken Bels</p>
+				    </a> 
+				  <!-- <a href="#" data-rel="dialog" data-transition="slideup">Purchasealbum</a> -->
+			 </li>
+			</ul>
+
 		</div>
 		<!-- /content -->
 

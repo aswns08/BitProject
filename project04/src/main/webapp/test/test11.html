@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>게시글 작성</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<script type="text/javascript">
+$(document).bind('mobileinit',function(){
+  $.mobile.selectmenu.prototype.options.nativeMenu = false;
+});
+</script>
+
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<style>
+
+.ui-select{
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.ui-content {
+  margin-top: 0;
+  padding: 0;
+}
+
+
+
+
+
+</style>
+
+</head>
+
+<body>
+
+	<!-- Start of first page -->
+	<div data-role="page" id="foo">
+
+		<div data-role="header">
+			<a href="#" data-icon="carat-l"  class="ui-btn-left" data-iconpos="notext"></a>
+			<h1>게시글 작성</h1>
+			<button
+				class="ui-btn-right ui-btn ui-btn-b ui-btn-inline ui-mini ui-corner-all ui-btn-icon-right ui-icon-check">저장</button>
+		</div>
+		<!-- /header -->
+		
+          <select
+            name="select-native-1" id="select-native-1">
+            <option value="1">좋아요</option>
+            <option value="2">나빠요</option>
+          </select>
+      <!-- /select -->
+
+		<div data-role="content">
+			<form>
+				<input type="text" data-clear-btn="true" name="text-1" id="text-1"
+					value="" placeholder="제목">
+
+				
+				<textarea cols="8" rows="50" name="textarea-1" id="textarea-1"
+					placeholder="내용"></textarea>
+			</form>
+
+		</div>
+		<!-- /content -->
+
+		<div data-role="footer" data-position="fixed">
+
+      <div data-role="navbar">
+    <ul>
+      <li><a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-shop ui-btn-icon-top"
+           data-role="button">보관함</a></li>
+      <li><a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-cloud ui-btn-icon-top"
+           data-role="button">사진</a></li>
+      <li><a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-camera ui-btn-icon-top"
+           data-role="button">카메라</a></li>
+      <li><a href="#" class="ui-btn ui-shadow ui-corner-all ui-icon-action ui-btn-icon-top"
+           data-role="button">공유하기</a></li>
+    </ul>
+  </div>
+
+	</div>
+		<!--  /footer -->
+
+	</div>
+	<!-- /page -->
+
+
+
+
+
+</body>
+ 
+
+</html>

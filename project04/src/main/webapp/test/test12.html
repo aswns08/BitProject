@@ -1,12 +1,29 @@
 <!DOCTYPE html>
 <html>
 <head>
-<title>My Page</title>
+<title>댓글 보기</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<style>
+
+
+.ui-content {
+  padding-top: 0;
+  padding-left: 0px;
+  padding-right: 0px;
   
+}
+
+#title {
+  margin-top: 0;
+  margin-bottom: 0px;
+  
+}
+
+
+</style>
 
 </head>
 
@@ -14,24 +31,28 @@
 
 	<!-- Start of first page -->
 	<div data-role="page" id="foo">
-		<div data-role="header" data-position="fixed">
-			<h1>게 시 글 검 색</h1>
-			<a href="index.html" data-icon="bars"  class="ui-btn-left" data-iconpos="notext"></a>
-			
+
+		<div data-role="header">
+			<a href="#" data-icon="carat-l"  class="ui-btn-left" data-iconpos="notext"></a>
+			<h1>댓글 보기</h1>
 		</div>
 		<!-- /header -->
 
 		<div data-role="content">
-			
-			
-			 
+			<h3 id="title" class="ui-bar ui-bar-a ui-corner-all">Heading</h3>
+      <div class="ui-body">
+          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. </p>
+      </div>
 
 		</div>
 		<!-- /content -->
 
 		<div data-role="footer" data-position="fixed">
-			<h3>Page Footer</h3>
-		</div>
+
+      
+
+
+	</div>
 		<!--  /footer -->
 
 	</div>
@@ -39,10 +60,9 @@
 
 
 
-	
-
-
 
 
 </body>
+ 
+
 </html>

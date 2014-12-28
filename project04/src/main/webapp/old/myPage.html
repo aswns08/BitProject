@@ -4,22 +4,22 @@
 <meta charset="UTF-8">
 <meta name="viewport"
 	content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, height=device-height">
-<title>비밀번호찾기</title>
+<title>마이페이지</title>
 
 <!-- --------------------- 스크립트   ------------ -->
-<script src='js/jquery-1.11.1.js'></script>
-<script src='js/bootstrap.min.js'></script>
+<script src='../js/jquery-1.11.1.js'></script>
+<script src='../js/bootstrap.min.js'></script>
 
 <!-- ---------------- jQuery Mobile -------------------------- -->
-<link rel="stylesheet" href="css/jquery.mobile-1.4.5.css">
-<script src="js/jquery.js"></script>
-<script src="js/jquery.mobile-1.4.5.js"></script>
+<link rel="stylesheet" href="../css/jquery.mobile-1.4.5.css">
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.mobile-1.4.5.js"></script>
 
 <!-- -------------------- CSS --------------------- -->
-<link href="css/common.css" rel="stylesheet">
+<link href="../css/common.css" rel="stylesheet">
 
 <!-------------------- Bootstrap --------------------->
-<link href="css/bootstrap.min.css" rel="stylesheet">
+<link href="../css/bootstrap.min.css" rel="stylesheet">
 
 <style>
 /* 폰트 적용 */
@@ -29,9 +29,9 @@
 
 @import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
 
- /* div {
+/* div {
 	border: 1px solid black;
-}  */
+} */
 
 #content {
 	border: 0px solid black;
@@ -114,25 +114,16 @@
 	margin-top: 50px;
 }
 
-#sendAuthNo {
-  width: 100%;
-  background-color: #EEE5E5;    
-  margin-bottom: 20px;
-}
-
-#submitAuth {
-  width: 100%;
-  background-color: #EEE5E5;    
+#updateBtn {    
+  width: 100%; 
+  margin-top: 30px;
+  background-color: #EEE5E5; 
 }
 
 #signUpForm {
   margin: 10px auto;
-  width: 90%;  
-}
-
-#textContent {
-  border-bottom: 1px solid #aaaaaa;
-  margin-bottom: 20px;
+  width: 90%;
+  
 }
 </style>
 
@@ -141,29 +132,28 @@
 <body>
 	 <div id='topBar' data-role="header">
     <a href="#" class="ui-btn ui-icon-bars ui-btn-icon-notext ui-corner-all ui-nodisc-icon transparentButton">menu</a>  
-    <h1>비밀번호 찾기</h1>
+    <h1>My Page</h1>
   </div>
+
 
 		<!-- --------------------------------------------------- -->
 		<form role="form" id='signUpForm'>
-		  
-		  <div id= 'textContent'>
-		  <h4>이메일 주소로 찾기</h4>
-		  </div>
 			<div class="form-group">
 				<label for="exampleInputEmail1">이메일</label> <input type="email"
 					class="form-control" id="email" placeholder="Enter email">
 			</div>
-			<button type="submit" id='sendAuthNo' class="btn btn-default">
-			 인증번호를 이메일로 발송</button>
-			
 			<div class="form-group">
-				<label for="exampleInputPassword1">인증번호</label> <input
-					type="text" class="form-control" id="authNo"
-					placeholder="인증번호를 입력하세요.">
+				<label for="exampleInputPassword1">비밀번호</label> <input
+					type="password" class="form-control" id="pwd"
+					placeholder="Password">
 			</div>
-			
-			<button type="submit" id='submitAuth' class="btn btn-default">확인</button>
+			<div class="form-group">
+				<label for="<exampleinputpassword1></exampleinputpassword1>">비밀번호
+					확인</label> <input type="password" class="form-control" id="rePwd"
+					placeholder="Password">
+			</div>
+
+			<button type="submit" id='updateBtn' class="btn btn-default">수정저장</button>
 		</form>
 	
 	<!------------------------div container 끝 ----------------------->

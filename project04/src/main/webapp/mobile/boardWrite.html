@@ -25,7 +25,9 @@ $(document).bind('mobileinit',function(){
   padding: 0;
 }
 
-
+#textarea-1 {
+  height: 100px;
+}
 
 
 
@@ -45,21 +47,21 @@ $(document).bind('mobileinit',function(){
 				class="ui-btn-right ui-btn ui-btn-b ui-btn-inline ui-mini ui-corner-all ui-btn-icon-right ui-icon-check">저장</button>
 		</div>
 		<!-- /header -->
-		
-          <select
-            name="select-native-1" id="select-native-1">
-            <option value="1">좋아요</option>
-            <option value="2">나빠요</option>
-          </select>
-      <!-- /select -->
 
 		<div data-role="content">
+
+			<select name="select-native-1" id="select-native-1">
+				<option value="1">좋아요</option>
+				<option value="2">나빠요</option>
+			</select>
+			<!-- /select -->
+
 			<form>
 				<input type="text" data-clear-btn="true" name="text-1" id="text-1"
 					value="" placeholder="제목">
 
-				
-				<textarea cols="8" rows="50" name="textarea-1" id="textarea-1"
+
+				<textarea cols="8" rows="100" name="textarea-1" id="textarea-1"
 					placeholder="내용"></textarea>
 			</form>
 

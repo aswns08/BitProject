@@ -13,32 +13,38 @@
   border: 0px solid blue;
 }
 
+#logo {
+  border: 0px solid red;
+  width: 80%;
+  height: 80px;
+  /* display: block; */
+  /* margin-top: 40px; */
+}
 
+#logoText{
+  margin-bottom: 0;
+  text-align: center;
+}
 
 #barBlock{
   border: 0px solid blue;
   width: 100%;
-  margin-top: 80px;
+  margin-top: 50px;
 }
 
 #barcode {
   border: 0px solid red;
-  width: 80%;
-  height: 100px; 
+  width: 30%;
+  height: 70px; 
 }
-
-/* #search {
-  margin-top: 70px;
-} */
 
 #bText{
   margin-bottom: 0;
   text-align: center;
 }
 
-#pText{
-  margin-top: 10;
-  margin-bottom: 0;
+#search {
+  margin-top: 50px;
 }
 
 </style>
@@ -57,11 +63,17 @@
 		<!-- /header -->
 
 		<div data-role="content">
+
+			<div class='block'>
+			   <p id='logoText'>
+				   <img id='logo' src='../image/bitlogo.gif'>
+				 </p>
+			</div>
 			
 			<div id='barBlock'>
-			 <p id='bText'>바코드로 찾기
-			 <img id='barcode' src='../image/barcode.png'>
-			 </p>
+       <p id='bText'>
+       <img id='barcode' src='../image/barcode.png'>
+       </p>
       </div>
       
       <ul data-role="listview" data-filter="true"
@@ -73,7 +85,10 @@
 
 		<div data-role="footer" data-position="fixed">
 
-		</div>
+      
+
+
+	</div>
 		<!--  /footer -->
 
 	</div>

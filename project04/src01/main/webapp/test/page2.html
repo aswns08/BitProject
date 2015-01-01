@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>페이지</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<style>
+
+
+</style>
+
+</head>
+
+<body>
+
+	<!-- Start of first page -->
+	<div data-role="page" id="foo">
+
+		<div data-role="header">
+			<a href="#" data-icon="carat-l"  class="ui-btn-left" data-iconpos="notext"></a>
+			<h1>페이지2</h1>
+		</div>
+		<!-- /header -->
+
+		<div data-role="content">
+
+				<h2>flow 프로젝트</h2>
+				<div>파일: page2.html</div>
+				<div>페이지: 페이지2</div>
+				
+				<h2>전환</h2>
+				<div><a href="#" data-rel="back">뒤로가기</a></div>
+
+		</div>
+		<!-- /content -->
+
+		<div data-role="footer" data-position="fixed">
+
+	</div>
+		<!--  /footer -->
+
+	</div>
+	<!-- /page -->
+
+  <script>
+  $(document).bind('pageinit', function() {
+    console.log('pageinit page2');
+  });
+  $.mobile.defaultPageTransition = 'slide';
+  </script>
+
+</body>
+ 
+
+</html>

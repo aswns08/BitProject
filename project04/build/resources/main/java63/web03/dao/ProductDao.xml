@@ -1,0 +1,131 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- <sql> 태그 사용하기
+=> 자주 사용되는 SQL문은 별도로 정의해두고 포함한다.
+-->
+
+<mapper namespace="java63.web03.dao.ProductDao">
+
+  <!-- 객체의 컬럼과 프로퍼티를 연결한다. -->
+  <resultMap type="Product" id="productMap">
+    <!-- PK 컬럼은 id 태그를 사용하여 지정한다. -->
+    <id column="PNO" property="no"/>
+    <result column="PNAME" property="name"/>
+    <result column="QTY" property="quantity"/>
+    <result column="MKNO" property="makerNo"/>
+    <result column="MADE_DATE" property="madeDate"/>
+  </resultMap>
+  
+  <resultMap type="ProductListItem" id="productListItemMap">
+    <!-- PK 컬럼은 id 태그를 사용하여 지정한다. -->
+    <id column="PNO" property="no"/>
+    <result column="PNAME" property="name"/>
+    <result column="QTY" property="quantity"/>
+    <result column="MKNO" property="makerNo"/>
+    <result column="MKNAME" property="maker"/>
+  </resultMap>
+  
+  <resultMap type="map" id="productListItem2Map">
+    <id column="PNO" property="no"/>
+    <result column="PNAME" property="name"/>
+    <result column="QTY" property="quantity"/>
+    <result column="MKNO" property="makerNo"/>
+    <result column="MKNAME" property="maker"/>
+  </resultMap>
+  
+  <resultMap type="ProductPhoto" id="productPhotoMap">
+    <id column="PPNO" property="no"/>
+    <result column="PNO" property="productNo"/>
+    <result column="URL" property="url"/>
+  </resultMap>
+  
+  <sql id="productSelect">
+    SELECT PNO, PNAME, QTY, MKNO, MADE_DATE 
+    FROM PRODUCTS
+  </sql>
+  
+  <select id="selectList" parameterType="map" 
+        resultMap="productListItem2Map">
+    SELECT 
+		  T1.PNO, 
+		  T1.PNAME, 
+		  T1.QTY, 
+		  T2.MKNO,
+		  T2.MKNAME
+		FROM PRODUCTS T1 LEFT OUTER JOIN MAKERS T2 
+		USING(MKNO)
+		ORDER BY T1.PNO
+    <if test="pageSize > 0">
+      limit #{startIndex}, #{pageSize}
+    </if>
+  </select>
+  
+  <select id="selectOne" parameterType="int" resultMap="productMap">
+    <include refid="productSelect"/> 
+    WHERE PNO=#{value}
+  </select>
+  
+  <select id="totalSize" resultType="int">
+    SELECT count(PNO) FROM PRODUCTS
+  </select>
+  
+  <insert id="insert" parameterType="Product"
+    useGeneratedKeys="true" keyColumn="PNO" keyProperty="no">
+    INSERT INTO PRODUCTS(PNAME,QTY,MKNO,MADE_DATE) 
+    VALUES (#{name},#{quantity},#{makerNo},#{madeDate})
+  </insert>
+  
+  <update id="update" parameterType="Product">
+    UPDATE PRODUCTS SET 
+      PNAME=#{name},
+      QTY=#{quantity},
+      MKNO=#{makerNo},
+      MADE_DATE=#{madeDate} 
+    WHERE PNO=#{no}
+  </update>
+  
+  <delete id="delete" parameterType="int">
+    DELETE FROM PRODUCTS WHERE PNO=#{value}
+  </delete>
+  
+  <insert id="insertPhoto" parameterType="Product">
+    INSERT INTO PROD_PHOTS(PNO,URL) 
+    VALUES (#{no}, #{photo})
+  </insert>
+  
+  <select id="selectPhoto" parameterType="int" 
+      resultMap="productPhotoMap">
+    SELECT PPNO, PNO, URL
+    FROM PROD_PHOTS
+    <if test="value > 0">
+    WHERE PNO = #{value}
+    </if>
+  </select>
+  
+  <delete id="deletePhoto" parameterType="int">
+    DELETE FROM PROD_PHOTS
+    WHERE PNO=#{value}
+  </delete>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

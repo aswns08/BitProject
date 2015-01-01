@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, height=device-height">
+<title>회원가입</title>
+<!-- Bootstrap -->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+/* 폰트 적용 */
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+/* div {
+	border: 1px solid black;
+}
+ */
+  
+/* #customContainer{
+
+} */
+body{
+overflow:hidden;
+}
+
+#content {
+	border: 0px solid black;
+}
+
+#menu {
+	width: 40px;
+	height: 40px;
+	/*  margin: 10px 10px 10px 10px; */
+	float: left;
+}
+
+#search {
+	margin: 10px;
+}
+
+#topBar {
+	height: 40px;
+	background-color: #077187;
+	font: 20px;
+	font-weight: bold;
+	color: white;
+	font-family: Jejugothic;
+	letter-spacing: 8px;
+	text-align: center;
+	padding: 1px;
+	border: 0px;
+}
+
+#BottomBar {
+	height: 40px;
+	background-color: #077187;
+	text-align: center;
+	position: absolute;
+	bottom: 0;
+	width: 100%;
+}
+
+#replySummary {
+	padding: 10px 0px;
+}
+
+#title {
+	font-weight: bold;
+	padding: 0px 10px;
+	border-bottom: 1px solid #aaaaaa;
+	padding: 0px 10px;
+}
+
+#underTitle {
+	padding: 5px 10px;
+	border-bottom: 1px solid #aaaaaa;
+}
+
+#replyCount {
+	width: 50%;
+	position: relative;
+	left: 0px;
+	float: left;
+}
+
+#sortBy {
+	/*  position: relative;
+  right: 0px; */
+	margin-left: 70%; //
+	border: 2px solid red;
+	width: 30%;
+}
+
+.sortByDetail {
+	display: inline-block;
+	padding: 0px 3px;
+}
+
+#sortNew {
+	/* 	float: right;
+ */
+	
+}
+
+#sortWrite {
+margin-left: -50px;
+	
+}
+
+.replySection {
+	margin-bottom: 5px;
+	padding-bottom: 5px;
+	border-bottom: 1px solid #aaaaaa;
+}
+
+.id {
+	font: 50px;
+	color: #077187;
+	font-weight: bold;
+	padding: 5px 10px;
+	color: #077187;
+}
+
+.date {
+	color: #707070;
+	padding: 0px 10px;
+}
+
+.content {
+	padding: 5px 10px;
+}
+
+.reReply {
+	margin-bottom: 5px;
+	padding-bottom: 5px;
+	border: 1px solid #aaaaaa;
+}
+
+.arrow {
+	width: 25px;
+	height: 25px;
+	float:left;
+}
+
+.reReply {
+	width: 80%;
+}
+
+#replyBtn {
+	width: 95%;
+	background-color: #EEE5E5;
+}
+
+.reReplyContent{
+  margin-left: 15px;
+}
+
+/* #replyContainer{
+overflow:scroll;
+width: 100%;
+height: 100%;
+} */
+
+#replyMain{
+overflow:scroll;
+}
+
+</style>
+
+</head>
+<body scroll="no">
+	<div id='customContainer' >
+		<div id='topBar'>
+		  
+			<img id='menu' src='images/menu.png'>
+			<p id='search'>로 그 인</p>
+		</div>
+
+		<!-- ---------------------------------------------- -->
+		<div id='replyMain'>
+		<div id='replySummary'>
+			<div id='title'>
+				<h4>제목</h4>
+			</div>
+			<div id='underTitle'>
+				<div id='replyCount'>덧글 n</div>
+				<div id='sortBy'>
+					<div id='sortWrite' class='sortByDetail'>등록순</div>
+					<div class='sortByDetail'>|</div>
+					<div id='sortNew' class='sortByDetail'>최신순</div>
+
+					<!-- &nbsp; -->
+				</div>
+			</div>
+		</div>
+		<!-- -----------------------댓글---------------------------- -->
+		<div id='replyContainer'>
+			<div class='replySection'>
+				<div class='id'>홍길동</div>
+				<div class='date'>14.12.18 10:16</div>
+				<div class='content'>감사영</div>
+				<!---------------------- 댓댓글 ---------------------------->
+				<div id='arrow'>
+					<img src='images/arrow-right_blue.png' class='arrow'>
+				</div>
+				<div class='reReplyContent'>
+					<div>
+						<div class='id'>윤봉길</div>
+						<div class='date'>등록일</div>
+						<div class='content'>퍼가요. 좋은 물건 소개해주셔서 감사요!</div>
+					</div>
+				</div>
+			</div>
+			<div class='replySection'>
+				<div class='id'>유관순</div>
+				<div class='date'>등록일</div>
+				<div class='content'>ㄱㅅㄱㅅㄱㅅㄱㅅ</div>
+			</div>
+			<div class='replySection'>
+				<div class='id'>윤봉길</div>
+				<div class='date'>등록일</div>
+				<div class='content'>퍼가요. 좋은 물건 소개해주셔서 감사요!!!!!!!!!!!</div>
+			</div>
+			<div class='replySection'>
+				<div class='id'>아이디</div>
+				<div class='date'>등록일</div>
+				<div class='content'>내용</div>
+			</div>
+			<div class='replySection'>
+        <div class='id'>아이디</div>
+        <div class='date'>등록일</div>
+        <div class='content'>내용</div>
+      </div><div class='replySection'>
+        <div class='id'>아이디</div>
+        <div class='date'>등록일</div>
+        <div class='content'>내용</div>
+      </div><div class='replySection'>
+        <div class='id'>아이디</div>
+        <div class='date'>등록일</div>
+        <div class='content'>내용</div>
+      </div><div class='replySection'>
+        <div class='id'>아이디</div>
+        <div class='date'>등록일</div>
+        <div class='content'>내용</div>
+      </div>
+      <div class='replySection'>
+        <div class='id'>아이디</div>
+        <div class='date'>등록일</div>
+        <div class='content'>내용</div>
+      </div>
+      <div class='replySection'>
+        <div class='id'>아이디</div>
+        <div class='date'>등록일</div>
+        <div class='content'>내용</div>
+      </div>
+      <div class='replySection'>
+        <div class='id'>아이디</div>
+        <div class='date'>등록일</div>
+        <div class='content'>내용</div>
+      </div>
+      <div class='replySection'>
+        <div class='id'>아이디</div>
+        <div class='date'>등록일</div>
+        <div class='content'>내용</div>
+      </div>
+		</div>
+	  </div>
+
+
+		<div id='BottomBar'>
+			<button id='replyBtn' class='writeSelection btn btn-default btn-sm'>댓글쓰기</button>
+		</div>
+	</div>
+	<!------------------------div container 끝 ----------------------->
+
+	<!-- --------------------- 스크립트   ------------ -->
+	<script src='js/jquery-1.11.1.js'></script>
+	<script src='js/bootstrap.min.js'></script>
+
+	<script>
+		
+	</script>
+
+</body>
+</html>
+

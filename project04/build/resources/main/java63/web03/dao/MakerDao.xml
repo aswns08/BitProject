@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="java63.web03.dao.MakerDao">
+
+  <resultMap type="Maker" id="makerMap">
+    <id column="MKNO" property="no"/>
+    <result column="MKNAME" property="name"/>
+    <result column="HOME" property="homepage"/>
+    <result column="TEL" property="tel"/>
+    <result column="FAX" property="fax"/>
+  </resultMap>
+  
+  <select id="selectNameList" resultMap="makerMap">
+    SELECT MKNO,MKNAME
+    FROM MAKERS
+    ORDER BY MKNAME ASC
+  </select>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

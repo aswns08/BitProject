@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+  content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, height=device-height">
+<title>커뮤니티 리스트</title>
+
+
+<!-- --------------------- 스크립트   ------------ -->
+<script src='js/jquery-1.11.1.js'></script>
+<script src='js/bootstrap.min.js'></script>
+
+<!-- ---------------- jQuery Mobile -------------------------- -->
+<link rel="stylesheet" href="css/jquery.mobile-1.4.5.css">
+<script src="js/jquery.js"></script>
+<script src="js/jquery.mobile-1.4.5.js"></script>
+
+<!-- -------------------- CSS --------------------- -->
+<link href="css/common.css" rel="stylesheet">
+
+<!-------------------- Bootstrap --------------------->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
+
+<style>
+/* 폰트 적용 */
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+ 
+div {
+  border: 1px solid black;
+}
+
+#content {
+  border: 0px solid black;
+}
+
+#menu {
+  width: 40px;
+  height: 40px;
+  /*  margin: 10px 10px 10px 10px; */
+  float: left;
+}
+
+#search {
+  margin: 10px;
+  
+}
+
+.selectTap {
+  border: 0px;
+  background-color: #EEE5E5;
+  display: inline-block;
+  height: 30px;
+  width: 100%;
+}
+
+.good-bad {
+  display: inline-block; 
+  width: 30%;
+  margin-top: 5px;
+  border: 0px solid red;
+  
+}
+
+.array {
+  border: 0px solid black;
+  display: inline-block;
+  width: 100%;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.range {
+  border: 0px solid black;
+  display: inline-block;
+  width: 30%;
+  margin: 0px;
+}
+
+.list {
+  /* posituon: relative; */
+  border: 0px solid red;
+  overflow: auto;
+  /* margin: 10px; */
+  border-bottom: 1px solid #aaaaaa;
+}
+
+.picture {
+  float: left;
+  height: 100px;
+  width: 100px;
+  border: 1px solid #aaaaaa;
+  
+}
+
+.block {
+  /* display: inline-block; */
+  margin-left: 100px;
+  border: 0px solid green;
+  margin-top: 10px;  
+}
+
+.text {
+  margin-left: 10px;
+  border: 0px solid yellow;
+  
+}
+
+.writer {
+  font-size: 5px;
+  display: inline-block;
+  margin-left: 10px;
+  border: 0px solid black;
+  margin-top: 50px; 
+}
+
+</style>
+
+</head>
+
+<body>
+    <div id='topBar' data-role="header">
+    <a href="#" class="ui-btn ui-icon-bars ui-btn-icon-notext ui-corner-all ui-nodisc-icon transparentButton">menu</a>  
+    <h1>게 시 판</h1>
+  </div>
+
+    <!-- --------------------------------------------------- -->
+    <div class='selectTap'>
+        <div id='total' class='good-bad'>전체</div>
+        <div id='good' class='good-bad'>좋아요</div>
+        <div id='bad'class='good-bad'>나빠요</div>
+    </div>
+    
+    <div class='array'>
+      <div class='range'>등록일순</div>
+      <div class='range'>추천순</div> 
+      <div class='range'>조회순</div>
+    </div>
+
+    <div class='list'>
+        <img class='picture'
+             src='image/ipad_mini.png'>
+        <div class='block'>
+          <div class='text'>아이패드 좋아요~~~</div>
+          <div class='writer'>송민준 |</div>
+          <div class='writer'>14-12-25 |</div>
+          <div class='writer'>조회:5</div>
+        </div>
+    </div>
+    
+    <div class='list'>
+        <img class='picture'
+             src='image/galaxy_alpha.png'>
+        <div class='block'>
+          <div class='text'>갤럭시 좋아요</div>
+          <div class='writer'>장대혁 |</div>
+          <div class='writer'>14-12-24 |</div>
+          <div class='writer'>조회:8</div>
+         </div>
+    </div>
+    
+    <div class='list'>
+        <img class='picture'
+             src='image/iphone.jpg'>
+        <div class='block'>
+          <div class='text'>아이폰 좋아요</div>
+          <div class='writer'>정해창 |</div>
+          <div class='writer'>14-12-23 |</div>
+          <div class='writer'>조회:3</div>
+         </div>
+    </div>
+
+  <!------------------------div container 끝 ----------------------->
+
+<script>
+
+var status;
+
+$('#good').click(function(event){
+  $('#good').css('background-color', '#aaaaaa');
+});
+
+$('#bad').click(function(event){
+  $('#bad').css('background-color', '#aaaaaa');
+});
+
+$('.block').click(function(evnet){
+  location.href="http://192.168.0.154:8080/project04/boardView.html";
+});
+
+</script>
+	
+	
+  
+</html>
+

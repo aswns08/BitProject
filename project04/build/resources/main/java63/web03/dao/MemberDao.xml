@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="java63.web03.dao.MemberDao">
+
+  <resultMap type="Member" id="memberMap">
+    <id column="UID" property="userId"/>
+    <result column="PWD" property="password"/>
+    <result column="EMAIL" property="email"/>
+    <result column="UNAME" property="userName"/>
+    <result column="TEL" property="tel"/>
+    <result column="FAX" property="fax"/>
+    <result column="POST_NO" property="postNo"/>
+    <result column="BAS_ADDR" property="baseAddress"/>
+    <result column="DET_ADDR" property="detailAddress"/>
+    <result column="PHOT" property="photo"/>
+  </resultMap>
+  
+  <select id="existUser" parameterType="map" resultMap="memberMap">
+    SELECT UID,UNAME,EMAIL,PHOT 
+    FROM MEMBERS
+    WHERE UID=#{userId} AND PWD=#{password}
+  </select>
+  
+  
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

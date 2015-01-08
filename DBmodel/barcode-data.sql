@@ -33,8 +33,6 @@ values(2,1,'오호라~~~~~', '2014-12-31');
 insert into REPLY(BNO,UNO,RCONTENT,RDATE)
 values(2,3,'그냥 그렇네요.....', '2014-12-31');
 
-
-
 select * from REPLY;
 
 
@@ -48,6 +46,6 @@ values(9788968480423, '모던 웹을 위한 JavaScript jQuery입문');
 insert into BARCODE(BARCODENO, PNAME)
 values(8801619046180, 'Vaseline');
 
-
+select * from BARCODE;
 
 

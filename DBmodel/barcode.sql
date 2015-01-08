@@ -109,7 +109,7 @@ ALTER TABLE BOARD
 
 -- 바코드
 CREATE TABLE BARCODE (
-  BARCODENO INTEGER      NOT NULL COMMENT '바코드번호', -- 바코드번호
+  BARCODENO VARCHAR(255) NOT NULL COMMENT '바코드번호', -- 바코드번호
   PNO       VARCHAR(255) NULL     COMMENT '제품번호', -- 제품번호
   PNAME     VARCHAR(255) NULL     COMMENT '제품명' -- 제품명
 )

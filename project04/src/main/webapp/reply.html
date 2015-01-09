@@ -27,12 +27,19 @@ $(document).bind('mobileinit',function(){
 
 <body>
 
+<ul data-role="actionsheet" id="inboxActions" data-open="onOpen" data-popup='{"direction": "left"}'>
+        <li class="km-actionsheet-title">Monday Meeting:</li>
+        <li><a href="#" data-action="reply">Reply</a></li>
+        <li><a href="#" data-action="replyAll">Reply All</a></li>
+        <li><a href="#" data-action="archive">Archive</a></li>
+    </ul>
+
 	<!-- Start of first page -->
 	<div data-role="page" id="reply">
 		<div data-role="header" data-position="fixed">
 			<h1>댓 글</h1>
 			<a href="index.html" data-icon="bars"  class="ui-btn-left" data-iconpos="notext"></a>
-			
+			</div>
 		</div>
 		<!-- /header -->
 
@@ -58,15 +65,13 @@ $(document).bind('mobileinit',function(){
         </em>
       </span>
     </p>
-    <div class="post_ext">
-      
-    </div>
+   
   </div>
 
 			<ul data-role="listview" data-icon="false" data-split-theme="d"
 				id='listView'>
 				
-				<li class>
+				<li>
             <div>
                 <strong>
                     <a href="#">u01</a> <br>
@@ -79,6 +84,23 @@ $(document).bind('mobileinit',function(){
 						        순천지금비옵니다 감기조심하세요~ 
 						        점심은 좋은데알려드릴까요?
 						        </span>
+                </div>
+            </div>
+        </li>
+        
+        <li>
+            <div>
+                <strong>
+                    <a href="#">u01</a> <br>
+                    <span class="bar"></span>
+                    <em>2014.12.31 10:33</em>
+                </strong>
+                
+                <div class="clst_cont">
+                    <span>
+                    순천지금비옵니다 감기조심하세요~ 
+                    점심은 좋은데알려드릴까요?
+                    </span>
                 </div>
             </div>
         </li>
@@ -106,6 +128,12 @@ $(document).bind('mobileinit',function(){
   $(document).bind('pageinit', function() {
   });
   $.mobile.defaultPageTransition = 'slide';
+  
+  function onOpen(e) {
+    this.element.find(".km-actionsheet-title").text(e.target.next().text());
+}
+  
+  
   </script>
 
 </body>

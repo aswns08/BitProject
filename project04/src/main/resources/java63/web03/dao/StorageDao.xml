@@ -16,13 +16,14 @@
     <result column="CATEGORY" property="category"/>
     <result column="SDATE" property="sDate"/>
     <result column="LINK" property="link"/>
+    <result column="UNO" property="uno"/>
     <result column="PRICE" property="price"/>
     <result column="TITLE" property="title"/>
     <result column="IMG_URL" property="imgUrl"/>
   </resultMap>
   
   <sql id="storageSelect">
-    SELECT SNO, CATEGORY, SDATE, LINK, PRICE, TITLE, IMG_URL 
+    SELECT SNO, CATEGORY, SDATE, LINK, UNO, PRICE, TITLE, IMG_URL 
     FROM STORAGE
   </sql>
   
@@ -33,6 +34,7 @@
 		  CATEGORY, 
 		  SDATE, 
 		  LINK,
+		  UNO,
 		  PRICE,
 		  TITLE,
 		  IMG_URL
@@ -51,42 +53,26 @@
     SELECT count(SNO) FROM STORAGE
   </select>
   
-  <insert id="insert" parameterType="Product"
-    useGeneratedKeys="true" keyColumn="PNO" keyProperty="no">
-    INSERT INTO PRODUCTS(PNAME,QTY,MKNO,MADE_DATE) 
-    VALUES (#{name},#{quantity},#{makerNo},#{madeDate})
+  <insert id="insert" parameterType="Storage"
+    useGeneratedKeys="true" keyColumn="SNO" keyProperty="sno">
+    INSERT INTO STORAGE(SNO,CATEGORY,SDATE,LINK,UNO,PRICE,TITLE,IMG_URL) 
+    VALUES (#{sno},#{category},#{sDate},#{link},#{uno},#{price},#{title},#{imgUrl})
   </insert>
   
-  <update id="update" parameterType="Product">
-    UPDATE PRODUCTS SET 
-      PNAME=#{name},
-      QTY=#{quantity},
-      MKNO=#{makerNo},
-      MADE_DATE=#{madeDate} 
-    WHERE PNO=#{no}
+  <update id="update" parameterType="Storage">
+    UPDATE STORAGE SET 
+      CATEGORY=#{category},
+      SDATE=#{sDate},
+      LINK=#{link},
+      UNO=#{uno},
+      PRICE=#{price},
+      TITLE=#{title},
+      IMG_URL=#{imgUrl} 
+    WHERE SNO=#{sno}
   </update>
   
   <delete id="delete" parameterType="int">
-    DELETE FROM PRODUCTS WHERE PNO=#{value}
-  </delete>
-  
-  <insert id="insertPhoto" parameterType="Product">
-    INSERT INTO PROD_PHOTS(PNO,URL) 
-    VALUES (#{no}, #{photo})
-  </insert>
-  
-  <select id="selectPhoto" parameterType="int" 
-      resultMap="productPhotoMap">
-    SELECT PPNO, PNO, URL
-    FROM PROD_PHOTS
-    <if test="value > 0">
-    WHERE PNO = #{value}
-    </if>
-  </select>
-  
-  <delete id="deletePhoto" parameterType="int">
-    DELETE FROM PROD_PHOTS
-    WHERE PNO=#{value}
+    DELETE FROM STORAGE WHERE SNO=#{value}
   </delete>
   
   

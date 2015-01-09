@@ -29,7 +29,7 @@ public class Storage implements Serializable {
   protected int             uno;
   protected int             price;
   protected String          title;
-  protected List<?>         imgUrl;
+  protected String          imgUrl;
   
   
   @Override
@@ -38,6 +38,7 @@ public class Storage implements Serializable {
         + sDate + ", link=" + link + ", uno=" + uno + ", price=" + price
         + ", title=" + title + ", imgUrl=" + imgUrl + "]";
   }
+  
   public int getSno() {
     return sno;
   }
@@ -80,12 +81,15 @@ public class Storage implements Serializable {
   public void setTitle(String title) {
     this.title = title;
   }
-  public List<?> getImgUrl() {
+  public String getImgUrl() {
     return imgUrl;
   }
-  public void setImgUrl(List<?> imgUrl) {
+  public void setImgUrl(String imgUrl) {
     this.imgUrl = imgUrl;
   }
+  
+  
+  
 
   
   

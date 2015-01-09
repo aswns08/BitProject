@@ -1,10 +1,8 @@
 package java63.web03.control.json;
 
-import java.io.File;
 import java.util.HashMap;
 import java63.web03.domain.Storage;
-import java63.web03.service.MakerService;
-import java63.web03.service.ProductService;
+import java63.web03.service.StorageService;
 
 import javax.servlet.ServletContext;
 
@@ -16,31 +14,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
-@Controller("json.productControl")
-@RequestMapping("/json/product")
-public class ProductControl {
-  static Logger log = Logger.getLogger(ProductControl.class);
+@Controller("json.storageControl")
+@RequestMapping("/json/storage")
+public class StorageControl {
+  static Logger log = Logger.getLogger(StorageControl.class);
   static final int PAGE_DEFAULT_SIZE = 5;
   
-  @Autowired MakerService makerService;
-  @Autowired ProductService productService;
+  @Autowired StorageService storageService;
   @Autowired ServletContext servletContext;
 
   @RequestMapping(value="/add", method=RequestMethod.POST)
-  public Object add(Storage product) throws Exception {  
+  public Object add(Storage storage) throws Exception {  
 	  
-	  if (product.getPhotofile() != null
-			  && !product.getPhotofile().isEmpty()) {
-		  String fileuploadRealPath = 
-				  servletContext.getRealPath("/fileupload");
-		  String filename = System.currentTimeMillis() + "_"; 
-		  File file = new File(fileuploadRealPath + "/" + filename);
-
-		  product.getPhotofile().transferTo(file);
-		  product.setPhoto(filename);
-	  }
-	  
-	  productService.add(product);
+    storageService.add(storage);
 
 	  HashMap<String,Object> resultMap = new HashMap<>();
 	  resultMap.put("status", "success");
@@ -49,8 +35,8 @@ public class ProductControl {
   }
 
   @RequestMapping("/delete")
-  public Object delete(int no) throws Exception {
-    productService.delete(no);
+  public Object delete(int sno) throws Exception {
+    storageService.delete(sno);
     
     HashMap<String,Object> resultMap = new HashMap<>();
     resultMap.put("status", "success");
@@ -66,7 +52,7 @@ public class ProductControl {
     if (pageSize <= 0)
       pageSize = PAGE_DEFAULT_SIZE;
     
-    int maxPageNo = productService.getMaxPageNo(pageSize);
+    int maxPageNo = storageService.getMaxPageNo(pageSize);
     
     if (pageNo <= 0) pageNo = 1;
     if (pageNo > maxPageNo) pageNo = maxPageNo;
@@ -75,14 +61,14 @@ public class ProductControl {
     resultMap.put("status", "success");
     resultMap.put("currPageNo", pageNo);
     resultMap.put("maxPageNo", maxPageNo);
-    resultMap.put("products", productService.getList(pageNo, pageSize));
+    resultMap.put("storages", storageService.getList(pageNo, pageSize));
     
     return resultMap;
   }
   
   @RequestMapping("/update")
-  public Object update(Storage product) throws Exception {
-    productService.update(product);
+  public Object update(Storage storage) throws Exception {
+    storageService.update(storage);
     
     HashMap<String,Object> resultMap = new HashMap<>();
     resultMap.put("status", "success");
@@ -91,13 +77,12 @@ public class ProductControl {
   }
   
   @RequestMapping("/view")
-  public Object view(int no, Model model) throws Exception {
-    Storage product = productService.get(no);
+  public Object view(int sno, Model model) throws Exception {
+    Storage storage = storageService.get(sno);
     
     HashMap<String,Object> resultMap = new HashMap<>();
     resultMap.put("status", "success");
-    resultMap.put("product", product);
-    resultMap.put("photos", product.getPhotoList());
+    resultMap.put("storage", storage);
     
     return resultMap;
   }

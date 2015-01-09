@@ -13,15 +13,12 @@ import java63.web03.domain.Storage;
  * => 메서드 이름은 SQL 아이디와 같아야 한다.
  * => 인터페이스 패키지도 SQL 맵퍼 파일의 네임스페이스와 같아야 한다. 
  */
-public interface ProductDao {
-  Storage selectOne(int no);
-  void update(Storage product);
-  void delete(int no);
+public interface StorageDao {
+  Storage selectOne(int sno);
+  void update(Storage storage);
+  void delete(int sno);
   List<?> selectList(Map<String,Object> params);
-  void insert(Storage product);
-  void insertPhoto(Storage product);
-  List<?> selectPhoto(int productNo);
-  void deletePhoto(int productNo);
+  void insert(Storage storage);
   int totalSize();
 }
 

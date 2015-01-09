@@ -6,7 +6,6 @@ var maxPageNo;
 $(function(){
 	$('.header').load('../common/header.html');
 	$('.footer').load('../common/footer.html');
-	$('.form').load('form.html');
 
 	loadProductList(1);
 	
@@ -53,12 +52,12 @@ function setPageNo(currPageNo, maxPageNo) {
 function loadProductList(pageNo) {
   if(pageNo <= 0) pageNo = currPageNo;
   
-	$.getJSON('../json/product/list.do?pageNo=' + pageNo, 
+	$.getJSON('../json/storage/list.do?pageNo=' + pageNo, 
     function(data){
       setPageNo(data.currPageNo, data.maxPageNo);
-      var products = data.products;
+      var storages = data.storages;
       
-     require(['text!templates/product-table.html'], function(html){
+     require(['text!templates/storage-table.html'], function(html){
        var template = Handlebars.compile(html);
        $('#listDiv').html(template(data));
      });

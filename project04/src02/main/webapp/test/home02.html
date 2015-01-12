@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>로그인</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<style>
+
+.block {
+  width: 100%;
+  border: 0px solid blue;
+}
+
+
+
+#barBlock{
+  border: 0px solid blue;
+  width: 100%;
+  margin-top: 80px;
+}
+
+#barcode {
+  border: 0px solid red;
+  width: 80%;
+  height: 100px; 
+}
+
+/* #search {
+  margin-top: 70px;
+} */
+
+#bText{
+  margin-bottom: 0;
+  text-align: center;
+}
+
+#pText{
+  margin-top: 10;
+  margin-bottom: 0;
+}
+
+</style>
+
+</head>
+
+<body>
+
+	<!-- Start of first page -->
+	<div data-role="page" id="login">
+
+		<div data-role="header">
+			<a href="#" data-icon="bars"  class="ui-btn-left" data-iconpos="notext"></a>
+			<h1>홈</h1>
+		</div>
+		<!-- /header -->
+
+		<div data-role="content">
+			
+			<div id='barBlock'>
+			 <p id='bText'>바코드로 찾기
+			 <img id='barcode' src='../image/barcode.png'>
+			 </p>
+      </div>
+      
+      <ul data-role="listview" data-filter="true"
+        data-filter-placeholder="제품번호로 찾기">
+      </ul>
+      
+		</div>
+		<!-- /content -->
+
+		<div data-role="footer" data-position="fixed">
+
+		</div>
+		<!--  /footer -->
+
+	</div>
+	<!-- /page -->
+
+
+
+
+
+</body>
+ 
+
+</html>

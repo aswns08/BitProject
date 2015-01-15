@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>로그인</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<style>
+
+
+</style>
+
+</head>
+
+<body>
+
+	<!-- Start of first page -->
+	<div data-role="page" id="login">
+
+		<div data-role="header">
+			<a href="#" data-icon="bars"  class="ui-btn-left" data-iconpos="notext"></a>
+			<h1>로 그 인</h1>
+		</div>
+		<!-- /header -->
+
+		<div data-role="content">
+
+				<form method="post" action="demoform.asp">
+					<div>
+						<label for="Email">이메일</label> 
+            <input type="text" name="Email" id="Email" placeholder="이메일">
+            
+						<label for="password">비밀번호</label> 
+            <input type="password" name="password" id="password" placeholder="비밀번호">
+					</div>
+					<a href="#home" class="ui-btn">로그인</a>
+          <label for="auto">자동로그인</label>
+          <input type="checkbox" name="favcolor" id="auto" value="자동로그인">
+				</form>
+				
+				<br>
+
+      <input type="submit" data-inline="true" value="회원가입">
+      <input type="submit" data-inline="true" value="비밀번호찾기">
+
+		</div>
+		<!-- /content -->
+
+		<div data-role="footer" data-position="fixed">
+
+      
+
+
+	</div>
+		<!--  /footer -->
+
+	</div>
+	<!-- /page -->
+
+
+
+
+
+</body>
+ 
+
+</html>

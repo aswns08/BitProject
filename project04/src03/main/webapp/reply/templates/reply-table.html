@@ -1,0 +1,25 @@
+<!-- 개별 리스트 -->
+{{#each replies}}
+        <li class="ui-li-static ui-body-inherit" id="replyNo">
+            <div>
+                <strong class="font-set">
+                    <a href="#">{{name}}</a> <br>
+                    <span class="bar"></span>
+                    <em>{{rDate}}</em>
+                </strong>
+                
+                <div class="clst_cont">
+                    <span>
+                    {{rContent}}
+                    </span>
+                </div>
+            </div>
+            <a href="#" data-rno='{{rno}}' class="delete">Delete</a>
+        </li>
+{{/each}}
+<!-- <li class="ui-li-static ui-body-inherit" id="moreReply">더보기</li> -->
+
+
+
+
+      

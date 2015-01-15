@@ -1,3 +1,4 @@
+<ul data-role="listview" data-icon="false" data-split-theme="d">
 <!-- 개별 리스트 -->
 {{#each replies}}
         <li class="ui-li-static ui-body-inherit" id="replyNo">
@@ -13,11 +14,12 @@
                     {{rContent}}
                     </span>
                 </div>
+                <a href="#" data-rno='{{rno}}' class="delete">Delete</a>
             </div>
-            <a href="#" data-rno='{{rno}}' class="delete">Delete</a>
         </li>
 {{/each}}
-
+<!-- <li class="ui-li-static ui-body-inherit" id="moreReply">더보기</li> -->
+</ul>
 
 
 

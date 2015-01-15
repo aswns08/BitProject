@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<meta charset="UTF-8">
+<meta name="viewport"
+  content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, height=device-height">
+<html>
+<head>
+<title>안녕 친구들</title>
+<link rel="stylesheet" href="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.css">
+<script src="//code.jquery.com/jquery-latest.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/jquerymobile/1.4.3/jquery.mobile.min.js"></script>
+</head>
+<body> 
+
+<div id="home" data-role="page">
+        <div data-role="header">
+            <h1>타이틀 : jQuery Mobile Test</h1>
+        </div>
+<!-- /header -->
+        <div data-role="content">
+            <h1>jQueryMobile 시작</h1>
+            <a href="#about" data-role="button">About jQueryMobile</a>
+        </div>
+        <div data-role="footer" data-position="fixed">
+            <h4>꼬리말은 여기에</h4>
+        </div>
+<!-- /footer -->
+    </div>
+    
+    
+    
+	<div data-role="page" id="about">
+		<div data-role="header">
+			<h1>타이틀 : jQuery Mobile Test</h1>
+		</div>
+		<!-- /header -->
+		<div data-role="content">
+				<ul data-role="listview" data-inset="true" data-filter="true">
+					<li><a href="#">Acura</a></li>
+					<li><a href="#">Audi</a></li>
+					<li><a href="#">BMW</a></li>
+					<li><a href="#">Cadillac</a></li>
+					<li><a href="#">Ferrari</a></li>
+				</ul>
+
+				<form>
+					<label for="slider-0">Input slider:</label> <input type="range"
+						name="slider" id="slider-0" value="25" min="0" max="100" />
+				</form>
+
+				<a href="#" data-role="button" data-icon="star">Star button</a>
+
+		</div>
+		
+		<div data-role="footer" data-position="fixed">
+			<h4>꼬리말은 여기에</h4>
+		</div>
+		<!-- /footer -->
+	</div>
+
+</body>
+</html>

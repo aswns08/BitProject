@@ -2,7 +2,6 @@ var product;
 var currPageNo;
 var maxPageNo;
 
-
 //$(document).ready(function(){});
 $(function(){
 
@@ -23,18 +22,32 @@ $(function(){
 	
 });
 
+$('#moreBtn').click(function(event){
+  if (currPageNo < maxPageNo) {
+    loadReplyList(currPageNo + 1);
+  }
+});
+
+/*
+$('#prevBtn').click(function(event){
+  if (currPageNo > 1) {
+    loadReplyList(currPageNo - 1);
+  }
+});
+
+$('#nextBtn').click(function(event){
+  if (currPageNo < maxPageNo) {
+    loadReplyList(currPageNo + 1);
+  }
+});
+*/
+
 
 function setPageNo(currPageNo, maxPageNo) {
   window.currPageNo = currPageNo;
   window.maxPageNo = maxPageNo;
   
   $('#pageNo').html(currPageNo);
-  
-  if (currPageNo <= 1) $('#prevBtn').css('display', 'none');
-  else $('#prevBtn').css('display', '');
-  
-  if (currPageNo >= maxPageNo) $('#nextBtn').css('display', 'none');
-  else $('#nextBtn').css('display', '');
 }
 	
 function loadReplyList(pageNo) {
@@ -49,13 +62,13 @@ function loadReplyList(pageNo) {
       
      require(['text!templates/reply-table.html'], function(html){
        var template = Handlebars.compile(html);
-       $('#listView').html(template(data));
+       $('#listDiv').html(template(data));
+       $('#reply').page('destroy').page();
        
      });
    
   });
 }
-
 
 function deleteReply(replyNo) {
   console.log(replyNo);
@@ -139,5 +152,11 @@ function yyyyMMdd(date) {
   } else {
     return '';
   }
+}
+
+/* url parse */
+function getURLParameter(name) {
+  return decodeURI((RegExp(name + '=' + '(.+?)(&|$)').exec(location.search) || [
+      , null ])[1]);
 }
 

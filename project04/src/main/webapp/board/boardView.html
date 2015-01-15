@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Page</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"
+	charset="UTF-8">
+<link rel="stylesheet"
+	href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<link rel="stylesheet" href="../css/red.css" />
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script
+	src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script type="text/javascript" src='../js/handlebars-v2.0.0.js'></script>
+<script type="text/javascript" src='../js/require.js'></script>
+<script src='boardView.js'></script>
+
+<style>
+.ui-grid-b {
+	font-size: 8pt;
+}
+
+#title {
+	font-size: 14pt;
+	border: 1px solid #bababa;
+}
+
+#id {
+	font-size: 10pt
+}
+
+#ddd {
+	border: 1px solid #bababa;
+}
+</style>
+
+
+
+</head>
+
+<body>
+
+	<!-- Start of first page -->
+	<div data-role="page" id="boardWrite">
+		<div data-role="header" data-position="fixed">
+			<h1 id='ifLikeHeader'></h1>
+			
+			<a href="index.html" data-icon="bars" class="ui-btn-left"
+				data-iconpos="notext"></a>
+		</div>
+		<!-- /header -->
+
+		<div data-role="contetnt" data-position="fixed">
+			<div id='listDiv'></div>
+			<!-- contents -->
+
+			<div data-role="navbar" class="nav-glyphish-example" data-grid="d"
+				data-position="fixed">
+				<ul>
+					<li><a href="#" class="ui-btn ui-shadow ui-corner-all"
+						id="twitter" data-icon="custom">Twitter</a></li>
+					<li><a href="#" class="ui-btn ui-shadow ui-corner-all"
+						id="facebook" data-icon="custom">Facebook</a></li>
+					<li><a href="#" class="ui-btn ui-shadow ui-corner-all"
+						id="kakaotalk" data-icon="custom">Kakao</a></li>
+					<li><a href="#" class="ui-btn ui-shadow ui-corner-all"
+						id="band" data-icon="custom">Band</a></li>
+					<li><a href="#" class="ui-btn ui-shadow ui-corner-all"
+						id="likeBtn" data-icon="custom">좋아요</a></li>
+				</ul>
+			</div>
+			<!-- navbar -->
+
+			<ul data-role="listview">
+				<li data-icon="carat-u"><a href="#" id='prevBoardBtn'>이전글</a></li>
+				<li data-icon="carat-d"><a href="#" id='nextBoardBtn'>다음글</a></li>
+			</ul>
+
+		</div>
+		<!-- /contetnt -->
+
+		<div data-role="footer" data-position="fixed">
+
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#" class="ui-btn ui-shadow ui-corner-all" id='btnReply'
+						data-role="button">reply</a></li>
+					<li><a href="#" id='btnDelete'
+						class="ui-btn ui-shadow ui-corner-all" data-role="button">delete</a></li>
+					<li><a href="#" id='btnUpdate'
+						class="ui-btn ui-shadow ui-corner-all" data-role="button">update</a></li>
+
+
+				</ul>
+			</div>
+			<!--  /navbar -->
+		</div>
+		<!--  /footer -->
+	</div>
+	<!-- /page -->
+
+
+
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

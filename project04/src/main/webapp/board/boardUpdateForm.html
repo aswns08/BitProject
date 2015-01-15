@@ -1,0 +1,109 @@
+<html>
+<head>
+<title>게시글 작성</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"
+	charset="UTF-8">
+<link rel="stylesheet"
+	href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<link rel="stylesheet" href="../css/red.css" />
+
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script
+  src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script type="text/javascript" src='../js/handlebars-v2.0.0.js'></script>
+  <script type="text/javascript" src='../js/require.js'></script>
+  <script src='boardUpdateForm.js'></script>
+
+
+<style>
+.ui-select {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.ui-content {
+	margin-top: 0;
+	padding: 0;
+}
+
+#textarea-1 {
+	height: 100px;
+}
+</style>
+
+</head>
+
+<body>
+
+	<!-- Start of first page -->
+	<div data-role="page" id="boardWrite">
+    <form class='form-horizontal' role='form'>
+			<div data-role="header">
+				<a href="#" data-rel="back" data-icon="carat-l" class="ui-btn-left"
+					data-iconpos="notext"></a>
+				<h1>게시글 작성</h1>
+				<button
+					class="ui-btn-right ui-btn ui-btn-b ui-btn-inline ui-mini ui-corner-all ui-btn-icon-right ui-icon-check"
+					type='button' id='btnAdd' onclick='save()'>저장</button>
+			</div>
+			<!-- /header -->
+
+			<div id='listDiv'></div>
+
+		</form>
+
+
+		<!-- /content -->
+
+		<div data-role="footer" data-position="fixed">
+
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#"
+						class="ui-btn ui-shadow ui-corner-all ui-icon-shop ui-btn-icon-top"
+						data-role="button">보관함</a></li>
+					<li><a href="#"
+						class="ui-btn ui-shadow ui-corner-all ui-icon-cloud ui-btn-icon-top"
+						data-role="button">사진</a></li>
+					<li><a href="#"
+						class="ui-btn ui-shadow ui-corner-all ui-icon-camera ui-btn-icon-top"
+						data-role="button">카메라</a></li>
+					<li><a href="#"
+						class="ui-btn ui-shadow ui-corner-all ui-icon-action ui-btn-icon-top"
+						data-role="button">공유하기</a></li>
+				</ul>
+			</div>
+
+		</div>
+		<!--  /footer -->
+
+	</div>
+	<!-- /page -->
+
+	
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

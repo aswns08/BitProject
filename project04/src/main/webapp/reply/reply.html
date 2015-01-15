@@ -4,6 +4,7 @@
 <title>댓 글</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<link rel="stylesheet" href="../css/red.css" />
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 
 <script type="text/javascript">
@@ -67,8 +68,14 @@ $(document).bind('mobileinit',function(){
     
   </div>
 
-    <ul data-role="listview" data-icon="false" data-split-theme="d"
-        id='listView'></ul>
+    <div id='listDiv'></div>
+    
+    <div id='pagingBar'>
+    <button id='moreBtn' type='button' class='btn btn-default'>더보기</button>
+  <!-- <button id='prevBtn' type='button' class='btn btn-default'>이전</button>
+  <span id='pageNo'>1</span>
+  <button id='nextBtn' type='button' class='btn btn-default'>다음</button> -->
+</div>
 
     </div>
     <!-- /content -->
@@ -88,6 +95,7 @@ $(document).bind('mobileinit',function(){
 
 <script type="text/javascript" src='../js/handlebars-v2.0.0.js'></script>
 <script type="text/javascript" src='../js/require.js'></script>
+<script type="text/javascript" src='../js/url.js'></script>
 <script src='reply.js'></script>
 <script>
 /* 댓글 쓰기 페이지로 이동 */

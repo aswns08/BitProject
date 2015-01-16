@@ -1,0 +1,15 @@
+<table id='productTable' class='table table-hover'>
+<tr>
+  <th>#</th><th>제품</th><th>수량</th><th>제조사</th><th>&nbsp;</th>
+</tr>
+{{#each products}}
+<tr class="data-row">
+  <td>{{no}}</td>
+  <td><a href="#" data-no="{{no}}">{{name}}</a></td>
+  <td>{{quantity}}</td>
+  <td>{{maker}}</td>
+  <td><button data-no='{{no}}' 
+        class='my-delete-btn btn btn-danger'>삭제</button></td>
+</tr>
+{{/each}}
+</table>

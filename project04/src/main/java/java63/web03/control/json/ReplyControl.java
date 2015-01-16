@@ -47,8 +47,9 @@ public class ReplyControl {
   
   @RequestMapping("/list")
   public Object list(
+      int bno,
       @RequestParam(defaultValue="1") int pageNo,
-      @RequestParam(defaultValue="5") int pageSize) throws Exception {
+      @RequestParam(defaultValue="5") int pageSize) throws Exception { 
     
     if (pageSize <= 0)
       pageSize = PAGE_DEFAULT_SIZE;
@@ -62,7 +63,7 @@ public class ReplyControl {
     resultMap.put("status", "success");
     resultMap.put("currPageNo", pageNo);
     resultMap.put("maxPageNo", maxPageNo);
-    resultMap.put("replies", replyService.getList(pageNo, pageSize));
+    resultMap.put("replies", replyService.getList(pageNo, pageSize, bno));
     return resultMap;
   }
   

@@ -1,12 +1,14 @@
-var product;
 var currPageNo;
 var maxPageNo;
+var currentBoard;
 
 //$(document).ready(function(){});
 $(function(){
 
-  loadReplyList(1);
-	
+  currentBoard = getURLParameter('no');
+  console.log("---->",currentBoard);
+  loadReplyList(1, currentBoard);
+
 	// 셀렉터가 두번째 파라미터로 들어오게 되면 
 	// 현재 그리고 앞으로 만들어질 태그에 대해서도 이 함수를 적용해라.
 	$(document).on('click', '.data-row a', function(){
@@ -26,6 +28,11 @@ $('#moreBtn').click(function(event){
   if (currPageNo < maxPageNo) {
     loadReplyList(currPageNo + 1);
   }
+});
+
+/* 댓글 쓰기 페이지로 이동 */
+$('#Reply').click(function(event){
+  location.href = '/project04/reply/writeReply.html?no=' + currentBoard;
 });
 
 /*
@@ -50,11 +57,13 @@ function setPageNo(currPageNo, maxPageNo) {
   $('#pageNo').html(currPageNo);
 }
 	
-function loadReplyList(pageNo) {
+function loadReplyList(pageNo, bno) {
+  
   if(pageNo <= 0) pageNo = currPageNo;
   
-	$.getJSON('../json/reply/list.do?pageNo=' + pageNo, 
+	$.getJSON('../json/reply/list.do?pageNo=' + pageNo + '&bno=' + bno, 
     function(data){
+	    console.log(">>>>>",data);
       setPageNo(data.currPageNo, data.maxPageNo);
       var replies = data.replies;
       console.log(replies);

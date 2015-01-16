@@ -4,6 +4,7 @@
 <title>댓 글</title>
 <meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<link rel="stylesheet" href="../css/red.css" />
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
 
 <script type="text/javascript">
@@ -13,13 +14,12 @@ $(document).bind('mobileinit',function(){
 </script>
 
 <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
-
 </head>
 
 <body>
 
   <!-- Start of first page -->
-  <div data-role="page" id="reply">
+  <div data-role="page" id="writeReply">
     <div data-role="header" data-position="fixed">
       <h1>댓 글 쓰 기</h1>
       <a href="#" data-rel="back" data-icon="carat-l" id="backLink" class="ui-btn-left" data-iconpos="notext"></a>
@@ -33,8 +33,7 @@ $(document).bind('mobileinit',function(){
       <form>
           <div>
           <input type="text" name="uno" id="uno" placeholder="회원번호">
-          <input type="text" name="bno" id="bno" placeholder="게시글 번호">
-            <textarea name="rContent" id="rContent" placeholder="덧글쓰기"></textarea>
+          <textarea name="rContent" id="rContent" placeholder="덧글쓰기"></textarea>
           </div>
       </form>
 
@@ -50,7 +49,6 @@ $(document).bind('mobileinit',function(){
   <!-- /page -->
 
 <script type="text/javascript" src="writeReply.js"></script>
-
 </body>
 </html>
 

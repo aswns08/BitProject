@@ -44,7 +44,7 @@
            T1.RNO
     FROM REPLY T1 LEFT OUTER JOIN USERS T2
     USING(UNO)
-    WHERE BNO=1
+    WHERE BNO=#{bno}
     <!-- WHERE BNO=#{value}  나중에 변경.-->
     ORDER BY T1.RNO
     <if test="pageSize > 0">

@@ -20,10 +20,12 @@ public class ReplyService {
   @Autowired
   ReplyDao replyDao;
   
-  public List<?> getList(int pageNo, int pageSize) {
+  public List<?> getList(int pageNo, int pageSize, int bno) {
     HashMap<String,Object> paramMap = new HashMap<>();
     paramMap.put("startIndex", ((pageNo - 1) * pageSize));
     paramMap.put("pageSize", pageSize);
+    paramMap.put("bno", bno);
+    
     
     return replyDao.selectList(paramMap);
   }

@@ -39,9 +39,13 @@ $(document).bind('mobileinit',function(){
 
   <!-- Start of first page -->
   <div data-role="page" id="reply">
+  
+  <div data-role="panel" id="left-panel"></div>
     <div data-role="header" data-position="fixed">
       <h1>댓 글</h1>
-      <a href="index.html" data-icon="bars"  class="ui-btn-left" data-iconpos="notext"></a>
+      <a href="#left-panel" data-theme="d" data-icon="bars" data-iconpos="notext" 
+      data-shadow="false" data-iconshadow="false" class="ui-icon-nodisc"
+      data-prefetch="true"></a>
       
     </div>
     <!-- /header -->
@@ -97,6 +101,7 @@ $(document).bind('mobileinit',function(){
 <script type="text/javascript" src='../js/require.js'></script>
 <script type="text/javascript" src='../js/url.js'></script>
 <script src='reply.js'></script>
+<script src='../js/common.js'></script>
 
 </body>
 </html>

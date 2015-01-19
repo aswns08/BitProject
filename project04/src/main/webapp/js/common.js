@@ -1,16 +1,10 @@
-$(".ui-icon-nodisc").click(function(){
-	/*$.mobile.lodPage("menu.html",options);*/
-    $("#left-panel").load("menu02.html");
-    $('#login').page('destroy').page();
-  });
-
 /* swiperight */
 $(document).on("pageinit", "#login", function() {
 	var $page = $(this);
 	$page.on("swiperight", function(e) {
 		if ($page.jqmData("panel") !== "open") {
 			if (e.type === "swiperight") {
-				$("#left-panel").load("menu02.html");
+				$("#left-panel").load("menu.html");
 				$page.find("#left-panel").panel("open");
 			}
 		}

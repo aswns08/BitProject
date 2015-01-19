@@ -19,6 +19,12 @@ $(function(){
         }
         , 'json');
   });
+  
+  $("#left-panel").load("menu.html", function(){
+    
+    $( "#login" ).page("destroy").page();
+  });
+  
 });
 
 

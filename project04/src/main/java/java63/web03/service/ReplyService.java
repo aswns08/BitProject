@@ -34,7 +34,9 @@ public class ReplyService {
     
     int totalSize = replyDao.totalSize();
     int maxPageNo = totalSize / pageSize;
+    
     if ((totalSize % pageSize) > 0) maxPageNo++;
+    if ( totalSize == 0) maxPageNo++;
     
     return maxPageNo;
   }

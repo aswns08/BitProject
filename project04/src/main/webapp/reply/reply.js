@@ -7,26 +7,37 @@ $(function(){
 
   currentBoard = getURLParameter('no');
   console.log("---->",currentBoard);
+  
+  loadBoardView(currentBoard);
   loadReplyList(1, currentBoard);
-
-	// 셀렉터가 두번째 파라미터로 들어오게 되면 
-	// 현재 그리고 앞으로 만들어질 태그에 대해서도 이 함수를 적용해라.
-	$(document).on('click', '.data-row a', function(){
-	  loadProduct($(this).attr('data-no')); // 오리지날 태그 말고 가공된 태그
-	});
 	
-	$(document).on('click', '.delete', function(){
-	  alert('정말 삭제 하시겠습니까?');
+  /* 
+	$(document).on('click', '.ui-popUp', function(){
 	  console.log($(this).attr('data-rno'));
 	  deleteReply($(this).attr('data-rno'));
-    //loadProduct(0); 
+    //loadProduct(0);
+    
   });
+	*/ 
 	
+	// 패널 정의!
+$("#left-panel").load("menu.html", function(){
+    
+    $( "#reply" ).page("destroy").page();
+  });
+
+
 });
 
-$('#moreBtn').click(function(event){
+$('.ui-popUp').click(function(event){
+  location.href = "#popupDiv";
+});
+
+
+
+$('#addMoreBtn').click(function(event){
   if (currPageNo < maxPageNo) {
-    loadReplyList(currPageNo + 1);
+    loadReplyList(currPageNo + 1, currentBoard);
   }
 });
 
@@ -35,21 +46,6 @@ $('#Reply').click(function(event){
   location.href = '/project04/reply/writeReply.html?no=' + currentBoard;
 });
 
-/*
-$('#prevBtn').click(function(event){
-  if (currPageNo > 1) {
-    loadReplyList(currPageNo - 1);
-  }
-});
-
-$('#nextBtn').click(function(event){
-  if (currPageNo < maxPageNo) {
-    loadReplyList(currPageNo + 1);
-  }
-});
-*/
-
-
 function setPageNo(currPageNo, maxPageNo) {
   window.currPageNo = currPageNo;
   window.maxPageNo = maxPageNo;
@@ -57,6 +53,22 @@ function setPageNo(currPageNo, maxPageNo) {
   $('#pageNo').html(currPageNo);
 }
 	
+function loadBoardView(no) {
+  $.getJSON('../json/board/view.do?no=' + no, 
+      function(data) {
+    
+    console.log("view:", data);
+    var board = data.board;
+
+    require([ 'text!templates/board-view.html' ], function(html) {
+      var template = Handlebars.compile(html);
+      // handlebars 이용시!
+      // template(출력할 변수)
+      $('#viewDiv').html(template(board));
+    });
+  });
+}
+
 function loadReplyList(pageNo, bno) {
   
   if(pageNo <= 0) pageNo = currPageNo;
@@ -65,15 +77,19 @@ function loadReplyList(pageNo, bno) {
     function(data){
 	    console.log(">>>>>",data);
       setPageNo(data.currPageNo, data.maxPageNo);
+      
       var replies = data.replies;
       console.log(replies);
       yyyyMMddList(replies);
       
      require(['text!templates/reply-table.html'], function(html){
        var template = Handlebars.compile(html);
-       $('#listDiv').html(template(data));
+       if(pageNo==1) {
+         $('#listDiv').html(template(data));
+       } else {
+         $('#listDiv').append(template(data));
+       }
        $('#reply').page('destroy').page();
-       
      });
    
   });
@@ -85,7 +101,7 @@ function deleteReply(replyNo) {
       function(data){
     if(data.status == 'success') {
       console.log(data);
-      loadReplyList(0);
+      loadReplyList(0, currentBoard);
     } else {
       console.log("deleteReply Fail");
     }

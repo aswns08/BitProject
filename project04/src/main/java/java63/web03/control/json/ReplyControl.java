@@ -1,6 +1,5 @@
 package java63.web03.control.json;
 
-import java.util.Date;
 import java.util.HashMap;
 import java63.web03.domain.Reply;
 import java63.web03.service.ReplyService;

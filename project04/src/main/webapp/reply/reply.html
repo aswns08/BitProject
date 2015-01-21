@@ -6,13 +6,6 @@
 <link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
 <link rel="stylesheet" href="../css/red.css" />
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
-
-<script type="text/javascript">
-$(document).bind('mobileinit',function(){
-  $.mobile.selectmenu.prototype.options.nativeMenu = false;
-});
-</script>
-
 <script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 
 <style>
@@ -28,7 +21,41 @@ $(document).bind('mobileinit',function(){
 .clst_cont {
   font-size: 1.1em;
   padding-top: 10px;
-  
+}
+
+#footerNav {
+  height: 45px;
+  background-color: #f4f4f4;
+  border-bottom: 1px solid #bbbbbb;
+  border-top: 1px solid #bbbbbb;
+  margin: 16px -20px 0px -15px;
+  background-color: #f4f4f4;
+}
+
+#addMoreBtn {
+  text-align: center;
+  maring-right: 62px;
+  height: 45px;
+  line-height: 45px;
+}
+
+#gotoTopBtn {
+  border-left: 1px solid #bbbbbb;
+  float: right;
+  width: 61px;
+  color: #444;
+  width: 60px;
+  height: 45px;
+  font-size: 11px;
+  text-align: center;
+  line-height: 13px;
+}
+
+#cbp-spmenu-s4 {
+  width: 100%;
+}
+.mmenuBox {
+  border-bottom: solid 1px white;
 }
 
 </style>  
@@ -40,7 +67,7 @@ $(document).bind('mobileinit',function(){
   <!-- Start of first page -->
   <div data-role="page" id="reply">
   
-  <div data-role="panel" id="left-panel"></div>
+  <div data-role="panel" id="left-panel" data-display="overlay"></div>
     <div data-role="header" data-position="fixed">
       <h1>댓 글</h1>
       <a href="#left-panel" data-theme="d" data-icon="bars" data-iconpos="notext" 
@@ -52,35 +79,36 @@ $(document).bind('mobileinit',function(){
 
     <div data-role="content">
     
-      <div class="post_tit">
-    <h2>순천</h2>
-    <p class="if if_v1">
-      <span class="if_inr">
-        <span class="im">
-          <span class="bar"></span><span class="hc">작성일</span> 2014.12.31 10:31
-        </span>
-        <span class="nowp">
-          <span class="bar">|</span> 조회 68
-        </span>
-        <br>
-        <span class="hc">작성자 </span>
-        <em>
-          <a href="#">u01</a>
-        </em>
-      </span>
-    </p>
+    <!-- 게시글 -->
+    <div class="post_tit" id="viewDiv"></div>
     
-  </div>
-
-    <div id='listDiv'></div>
+    <!-- 댓글 리스트  -->
+    <ul data-role="listview" data-icon="false" data-split-theme="d" id='listDiv'></ul>
     
-    <div id='pagingBar'>
-    <button id='moreBtn' type='button' class='btn btn-default'>더보기</button>
-  <!-- <button id='prevBtn' type='button' class='btn btn-default'>이전</button>
-  <span id='pageNo'>1</span>
-  <button id='nextBtn' type='button' class='btn btn-default'>다음</button> -->
-</div>
+    <!-- 팝업 창 -->
+    <div data-role="popup" id="popupDiv" data-theme="a" class="ui-corner-all">
 
+        <ul>
+          <li>댓 글</li>
+          <li>삭 제</li>
+          <li>취 소</li>
+        </ul>           
+    </div>
+    
+    <div id='footerNav'>
+        <a href='#' onclick="location.href='#top'">
+          <div id='gotoTopBtn' class='footerNavClass'>
+            <img class='goToploc' id='triangleUp'
+              src='../images/triangle-up-16.png'><br> 맨위로
+          </div>
+        </a> <a href='#' style="text-decoration: none">
+          <div id='addMoreBtn' class='footerNavClass'>
+            <span id='addFont'>더보기</span> <img class='goToploc' id='arrowDown'
+              src='../images/arrow-down-32.png'>
+          </div>
+        </a>
+      </div>
+      
     </div>
     <!-- /content -->
 
@@ -101,7 +129,6 @@ $(document).bind('mobileinit',function(){
 <script type="text/javascript" src='../js/require.js'></script>
 <script type="text/javascript" src='../js/url.js'></script>
 <script src='reply.js'></script>
-<script src='../js/common.js'></script>
 
 </body>
 </html>

@@ -46,7 +46,7 @@
     USING(UNO)
     WHERE BNO=#{bno}
     <!-- WHERE BNO=#{value}  나중에 변경.-->
-    ORDER BY T1.RNO
+    ORDER BY T1.RNO DESC
     <if test="pageSize > 0">
       limit #{startIndex}, #{pageSize}
     </if>

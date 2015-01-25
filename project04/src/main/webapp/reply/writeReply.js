@@ -30,7 +30,7 @@ $('#btnSave').click(function(){
     }, function(result) { /* 서버로부터 응답을 받았을 때 호출 될 메서드 */
       if (result.status == "success") {
         alert("등록성공");
-        location.href = '/project04/reply/reply.html?no=' + currentBoard;
+        location.href = 'reply.html?no=' + currentBoard;
         $('#btnCancel').click(); // click 이벤트 발생 시킴.
       } else {
         alert("등록실패");

@@ -1,6 +1,7 @@
 var currPageNo;
 var maxPageNo;
 var currentBoard;
+var data_rno;
 
 //$(document).ready(function(){});
 $(function(){
@@ -11,14 +12,14 @@ $(function(){
   loadBoardView(currentBoard);
   loadReplyList(1, currentBoard);
 	
-  /* 
+  /*
 	$(document).on('click', '.ui-popUp', function(){
 	  console.log($(this).attr('data-rno'));
 	  deleteReply($(this).attr('data-rno'));
     //loadProduct(0);
     
   });
-	*/ 
+	*/
 	
 	// 패널 정의!
 $("#left-panel").load("menu.html", function(){
@@ -26,24 +27,37 @@ $("#left-panel").load("menu.html", function(){
     $( "#reply" ).page("destroy").page();
   });
 
+// 팝업창 정의
+$(document).on('click', '.ui-popUp', function(){
+  console.log($(this).attr('data-rno'));
+  data_rno = $(this).attr('data-rno');
+  $("#popupMenu").popup("open");
+});
+
+
 
 });
 
-$('.ui-popUp').click(function(event){
-  location.href = "#popupDiv";
-});
-
-
-
+// 더보기 버튼
 $('#addMoreBtn').click(function(event){
   if (currPageNo < maxPageNo) {
     loadReplyList(currPageNo + 1, currentBoard);
   }
 });
 
+$('.deleteBtn').click(function(evnet){
+  console.log("삭제버튼", data_rno);
+  deleteReply(data_rno);
+  $("#popupMenu").popup("close");
+});
+
+$('.cancelBtn').click(function(event){
+  $("#popupMenu").popup("close");
+});
+
 /* 댓글 쓰기 페이지로 이동 */
-$('#Reply').click(function(event){
-  location.href = '/project04/reply/writeReply.html?no=' + currentBoard;
+$('.writeReply').click(function(event){
+  location.href = 'writeReply.html?no=' + currentBoard;
 });
 
 function setPageNo(currPageNo, maxPageNo) {

@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, height=device-height">
+<link rel="stylesheet"
+	href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<link rel="stylesheet" href="../css/red.css" />
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script
+	src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script type="text/javascript" src='../js/handlebars-v2.0.0.js'></script>
+<script type="text/javascript" src='../js/require.js'></script>
+<title>list</title>
+</head>
+<style>
+.heart {
+	z-index: 3;
+	position: absolute;
+	bottom: 5px;
+	right: 5px;
+	opacity: 0.2;
+	filter:
+		url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="grayscale"><feColorMatrix type="matrix" values="0.3333" 0.3333="" 0="" 10=""></feColorMatrix></filter></svg>#grayscale');
+	/* Firefox 3.5+, IE10 */
+	filter: gray; /* IE6-9 */
+	-webkit-filter: grayscale(100%); /* Chrome 19+ & Safari 6+ */
+	-webkit-transition: all .6s ease;
+	/* Fade to color for Chrome and Safari */
+	-webkit-backface-visibility: hidden;
+	/* Fix for transition flickering */
+}
+
+.itemImg {
+	margin: 10px 0px 0px 0px;
+}
+
+.itemDetail {
+	margin: -10px 0px 0px -10px;
+}
+
+#title {
+	font-size: 15px;
+	line-height: 16px;
+	color: #1f1f1f;
+	letter-spacing: 0;
+}
+
+#price {
+	padding-top: 1px;
+	font-size: 19px;
+	font-family: Helvetica;
+	color: #31a0ff;
+	font-weight: bold;
+	line-height: 1.5;
+}
+
+#nextPrice {
+	font-size: 18px;
+	color: #31a0ff;
+	margin-left: -3px;
+	margin-top: -7px;
+}
+
+#rowPrice {
+	font-size: 12px;
+	color: #888;
+	font-family: helvetica, sans-serif;
+}
+
+#desc {
+	font-size: 12px;
+	color: #888;
+	font-family: helvetica, sans-serif;
+	line-heigh: 1.8;
+}
+
+#whiteSpace {
+	margin-top: 15px;
+}
+
+#searchResult {
+	color: #6f7279;
+	font-size: 14px;
+	line-height: 1.5;
+	font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
+}
+
+#totalResult {
+	font-size: 15px;
+	font-family: Helvetica;
+	color: #f44343;
+	font-weight: bold;
+}
+
+#result {
+background-color: #F0F0F0;
+border-bottom: 1px solid #d5d5d7;
+margin: -32px -20px 0px -15px;
+ padding: 15px 10px 0px 10px;
+}
+</style>
+<body>
+	<!-- Start of first page -->
+	<div data-role="page" id="board">
+		<div data-role="header">
+			<a href="#" data-rel="back" data-icon="carat-l" class="ui-btn-left"
+				data-iconpos="notext"></a>
+			<h1>검색 결과</h1>
+		</div>
+		<div data-role="navbar" id="">
+			<ul>
+				<li><a href="#"
+					class="ui-btn ui-shadow ui-corner-all ui-btn-active"
+					data-role="button">가격 검색 결과</a></li>
+				<li><a href="#" class="ui-btn ui-shadow ui-corner-all"
+					data-role="button">좋아요</a></li>
+				<li><a href="#" class="ui-btn ui-shadow ui-corner-all"
+					data-role="button">나빠요</a></li>
+			</ul>
+		</div>
+
+		<div data-role="navbar">
+			<ul>
+				<li><a href="#" id='min_price' class="ui-btn ui-btn-active"
+					data-role="button">낮은가격순</a></li>
+				<li><a href="#" id='max_price' class="ui-btn"
+					data-role="button">높은가격순</a></li>
+				<li><a href="#" id='pop' class="ui-btn" data-role="button">인기순</a></li>
+			</ul>
+		</div>
+		<!-- /header -->
+
+		<div data-role="content" id="content">
+			<!--------------------- 검색 결과 출력 ------------------->
+			<div id='result'>
+				<p><span id='searchResult'>검색결과</span> <span id='totalResult'></span>
+				</p>
+			</div>
+			<div id="listDiv"></div>
+
+			<br>
+			<button type="button" id='addMoreBtn' class="btn btn-default">더보기</button>
+			<br> <br> <a href="#top"><div id='gotoTop'>맨위로</div></a>
+		</div>
+		<!-- /content -->
+
+
+	</div>
+	<!-- /page -->
+
+
+	<script src="list-jquery.js"></script>
+
+
+</body>
+</html>

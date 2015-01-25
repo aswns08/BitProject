@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>내정보 수정</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<style>
+
+#Email {
+    background-color: #C0C0C0;
+}
+
+</style>
+
+</head>
+
+<body>
+
+  <!-- Start of first page -->
+  <div data-role="page" id="foo">
+
+    <div data-role="header">
+      <a href="#" data-icon="carat-l"  class="ui-btn-left" data-iconpos="notext"></a>
+      <h1>내정보 수정</h1>
+    </div>
+    <!-- /header -->
+
+    <div data-role="content">
+
+        <form method="post" action="demoform.asp">
+          <div>
+            <label for="Email">이메일</label> 
+            <input readonly type="text" name="Email" id="Email" value="test@test.com">
+            
+            <label for="uid">아이디</label> 
+            <input type="text" name="uid" id="uid" value="홍길동" placeholder="아이디">
+            <br>
+          
+            <input type="password" name="password" id="password" placeholder="비밀번호">
+            <br>
+            
+            <input type="password" name="newPwd" id="newPwd" placeholder="새 비밀번호">
+            
+            <input type="password" name="newPwd" id="newPwd" placeholder="새 비밀번호 다시 입력">
+          </div>
+          <br>
+          <a href="#" class="ui-btn">변 경</a>
+        </form>
+
+    </div>
+    <!-- /content -->
+
+    <div data-role="footer" data-position="fixed">
+
+  </div>
+    <!--  /footer -->
+
+  </div>
+  <!-- /page -->
+
+</body>
+
+</html>

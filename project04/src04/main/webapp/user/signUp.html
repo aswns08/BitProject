@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>회원가입</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<link rel="stylesheet" href="../css/red.css" />
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script src="http://jqueryvalidation.org/files/dist/jquery.validate.min.js"></script>
+<script src="http://jqueryvalidation.org/files/dist/additional-methods.min.js"></script>
+</head>
+<body>
+<!-- Start of first page -->
+  <div data-role="page" id="signUp">
+
+    <div data-role="header">
+      <a href="#login" data-icon="carat-l"  class="ui-btn-left" data-iconpos="notext"></a>
+      <h1>회 원 가 입</h1>
+    </div>
+    <!-- /header -->
+
+    <div data-role="content">
+
+        <form name="myform" method="post" action="add.do">
+          <div>
+            <label for="email">이메일</label> 
+            <input class="left" type="text" name="email" id="email" placeholder="이메일">
+             <div id="checkEmail">&nbsp;</div>
+            
+           <label for="name">닉네임</label> 
+            <input type="text" name="name" id="name" placeholder="닉네임">
+            <div id="checkName">&nbsp;</div>
+            
+            <label for="pwd">비밀번호</label> 
+            <input type="password" name="pwd" id="pwd" placeholder="비밀번호"
+            onkeyup="checkPwd()">
+            <div id="checkPwd">&nbsp;</div>
+            
+            <label for="rePwd">비밀번호 확인</label> 
+            <input type="password" name="rePwd" id="rePwd" placeholder="비밀번호 확인"
+            onkeyup="checkPwd()">
+          </div>
+          <br>
+          <button id='btnAdd' type="button" class='ui-btn'>회원가입</button>
+          <button id='btnCancel' type="reset" class='ui-btn'>취소</button>
+        </form>
+
+    </div>
+    <!-- /content -->
+
+    <div data-role="footer" data-position="fixed">
+  </div>
+    <!--  /footer -->
+  </div>
+  <!-- /page -->
+    
+<script src="signUp.js"></script> 
+</body>
+</html>

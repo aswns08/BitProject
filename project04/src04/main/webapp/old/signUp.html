@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, height=device-height">
+<title>회원가입</title>
+
+<!-- --------------------- 스크립트   ------------ -->
+<script src='../js/jquery-1.11.1.js'></script>
+<script src='../js/bootstrap.min.js'></script>
+
+<!-- ---------------- jQuery Mobile -------------------------- -->
+<link rel="stylesheet" href="../css/jquery.mobile-1.4.5.css">
+<script src="../js/jquery.js"></script>
+<script src="../js/jquery.mobile-1.4.5.js"></script>
+
+<!-- -------------------- CSS --------------------- -->
+<link href="../css/common.css" rel="stylesheet">
+
+<!-------------------- Bootstrap --------------------->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+#menu {
+	width: 40px;
+	height: 40px;
+	/*  margin: 10px 10px 10px 10px; */
+	float: left;
+}
+
+#completeSignUpBtn {
+	width: 100%;
+	margin-top: 30px;
+	background-color: #EEE5E5;
+}
+
+#signUpForm {
+	margin: 10px auto;
+	width: 90%;
+}
+
+</style>
+
+</head>
+
+<body>
+	<div id='topBar' data-role="header">
+		<a href="#" class="ui-btn ui-icon-bars ui-btn-icon-notext ui-corner-all ui-nodisc-icon transparentButton">menu</a>	
+		<h1>회 원 가 입</h1>
+	</div>
+
+	<div class='customContainer'>
+
+		<!-- --------------------------------------------------- -->
+		<form role="form" id='signUpForm'>
+			<div class="form-group">
+				<label for="exampleInputEmail1">이메일</label> <input type="email"
+					class="form-control" id="email" placeholder="Enter email">
+			</div>
+			<div class="form-group">
+				<label for="exampleInputPassword1">비밀번호</label> <input
+					type="password" class="form-control" id="pwd"
+					placeholder="Password">
+			</div>
+			<div class="form-group">
+				<label for="<exampleinputpassword1></exampleinputpassword1>">비밀번호
+					확인</label> <input type="password" class="form-control" id="rePwd"
+					placeholder="Password">
+			</div>
+
+			<button type="submit" id='completeSignUpBtn' class="btn btn-default">회원가입</button>
+		</form>
+	</div>
+	<!------------------------div container 끝 ----------------------->
+
+	<script>
+		$("#completeSignUpBtn").click(function() {
+			$.post('/signUp', {
+				email : $('#email').val(),
+				pwd : $('#pwd').val(),
+				rePwd : $('#rePwd').val()
+			}, function(data) {
+				console.log(data);
+			}, 'json');
+		});
+	</script>
+</body>
+</html>
+

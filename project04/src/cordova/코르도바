@@ -1,0 +1,93 @@
+이클립스 에서 ADT 플러그인을 설치한다.
+http://developer.android.com/sdk/installing/installing-adt.html
+
+Download the ADT Plugin
+To add the ADT plugin to Eclipse:
+Start Eclipse, then select Help > Install New Software.
+Click Add, in the top-right corner.
+In the Add Repository dialog that appears, enter "ADT Plugin" for the Name and the following URL for the Location:
+https://dl-ssl.google.com/android/eclipse/
+Note: The Android Developer Tools update site requires a secure connection. Make sure the update site URL you enter starts with HTTPS.
+Click OK.
+In the Available Software dialog, select the checkbox next to Developer Tools and click Next.
+In the next window, you'll see a list of the tools to be downloaded. Click Next.
+Read and accept the license agreements, then click Finish.
+If you get a security warning saying that the authenticity or validity of the software can't be established, click OK.
+When the installation completes, restart Eclipse
+
+
+
+
+SDK manager를 설치한후
+API-19를 설치
+
+ps. 간혹 이클립스에서 SDK manager가 실행되지 않는다.
+그럴 경우 sdk tool을 설치하여 다운받는다.
+
+http://developer.android.com/sdk/index.html#Other
+Linux android-sdk_r24.0.2-linux.tgz
+설치 후 /home에 압축파일을 푼다.
+
+그런 다음 SDK를 환경변수를 설정해준다. 
+$ gedit ~/.bash_profile
+
+export ANDROID_SDK_HOME=~/android-sdk-linux
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$ANDROID_SDK_HOME/tools/lib
+export PATH=$PATH:$ANDROID_SDK_HOME/tools:$ANDROID_SDK_HOME/platform-tools
+
+$ source ~/.bash_profile
+
+$ android
+
+
+코르도바 설치
+https://github.com/apache/cordova-docs/blob/master/docs/ko/3.1.0/guide/cli/index.md
+
+npm 명령어를 사용하기 위해 node.js 가 설치 되어 있어야 한다.
+$ sudo npm install -g cordova
+
+응용 프로그램 만들기
+    $ cordova create hello com.example.hello HelloWorld
+    $ cd hello
+    $ cordova platform add android
+
+응용프로그램 빌드
+    $ cordova build
+
+ps. ant 가 없어서 빌드가 안될 때는 ant를 설치해주어야 한다.
+    $ sudo apt-get install ant
+
+에뮬레이터 실행
+    $ cordova emulate android
+이클립스에서의 실행
+ps. 다음과 같은 에러 창이 뜰 때
+
+ERROR: 32-bit Linux Android emulator binaries are DEPRECATED, to use
+  them
+
+         you will have to do at least one of the following:
+
+         - Use the '-force-32bit' option when invoking 'emulator'.
+
+         - Set ANDROID_EMULATOR_FORCE_32BIT to 'true' in your environment.
+
+         Either one will allow you to use the 32-bit binaries, but please be
+         aware that these will disappear in a future Android SDK release.
+ 
+         Consider moving to a 64-bit Linux system before that happens.  
+
+해결책
+http://column8 0.com/api.v2.php?a=askubuntu&q=534044
+
+1. 
+$ gedit ~/.bash_profile
+export ANDROID_EMULATOR_FORCE_32BIT=true
+$ source ~/.bash_profile
+
+
+2. 
+
+1. Run > Run Configurations
+ 2. target 탭을 누른 후 하단으로 스크롤하여
+option창에 다음을 입력한다
+-force-32bit

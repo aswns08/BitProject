@@ -97,7 +97,7 @@ function checkPwd() { //비밀번호 유효성검사
 	} else if(pwd == rePwd){
 		document.getElementById('checkPwd').style.color = "blue";
 		document.getElementById('checkPwd').innerHTML = "비밀번호가 확인되었습니다.";
-		return true;;
+		return true;
 	}
 }
 
@@ -123,6 +123,10 @@ $(function() {
 			$.get("http://192.168.0.15:3000/namecheck", {
 				name : $('#name').val()
 			}, function(data) {
+				console.log('data',data);
+				console.log("data.result", data.result);
+				//console.log("aaaa"+ data.result.0.NAME);
+				
 				$('#checkName').html(data.result);
 				signUpCheck(data);
 			});

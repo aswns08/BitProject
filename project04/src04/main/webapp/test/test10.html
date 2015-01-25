@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>게시글 검색</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+<script type="text/javascript">
+$(document).bind('mobileinit',function(){
+  $.mobile.selectmenu.prototype.options.nativeMenu = false;
+});
+</script>
+
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<style>
+
+.ui-select{
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.ui-content {
+  margin-top: 0;
+  padding: 0;
+}
+</style>
+
+</head>
+
+<body>
+
+	<!-- Start of first page -->
+	<div data-role="page" id="foo">
+		<div data-role="header" data-position="fixed">
+			<h1>게시글 검색</h1>
+			<a href="index.html" data-icon="bars"  class="ui-btn-left" data-iconpos="notext"></a>
+    </div>		
+		<!-- /header -->
+
+		<div data-role="content">
+
+			<select name="select-native-1" id="select-native-1">
+				<option value="1">전체</option>
+				<option value="2">좋아요</option>
+				<option value="3">나빠요</option>
+			</select>
+
+			<div data-role="tabs" id="tabs">
+				<div data-role="navbar">
+					<ul>
+						<li><a href="#one" data-ajax="false">제목+내용</a></li>
+						<li><a href="#two" data-ajax="false">제목</a></li>
+						<li><a href="#three" data-ajax="false">작성자</a></li>
+					</ul>
+				</div>
+
+				<div id="one">
+					<ul data-role="listview" data-filter="true"
+						data-filter-placeholder="Search">
+					</ul>
+				</div>
+				<div id="two">
+					<ul data-role="listview" data-filter="true"
+						data-filter-placeholder="Search">
+					</ul>
+				</div>
+				<div id="three">
+					<ul data-role="listview" data-filter="true"
+						data-filter-placeholder="Search">
+					</ul>
+				</div>
+			</div>
+
+
+
+		</div>
+		<!-- /content -->
+		
+
+		<div data-role="footer" data-position="fixed">
+			<h3>Page Footer</h3>
+		</div>
+		<!--  /footer -->
+
+	</div>
+	<!-- /page -->
+
+
+
+
+
+</body>
+
+ 
+
+</html>

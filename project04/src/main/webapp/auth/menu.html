@@ -1,100 +1,97 @@
-<!--  
-		<div data-role="header" data-position="fixed">
-			
+
+<div data-role="content"
+	style="padding-top: 0px; padding-left: 0px; padding-right: 0px; background-color: #F1F1F1;">
+	<div class="sc_psn" style="background-color: #fa5a44; height: 50px">
+		<div class="sc_psn_stt">
+			<a href="/" id='loginBtn' style="margin-left: 10px; text-decoration: none;"> <strong
+				style="color: #ffffff; line-height: 50px;"><span id="signIn">로그인 하세요</span>
+				<span id="signOut"></span></strong>
+			</a>
+			<button
+				class="ui-btn-right ui-btn ui-btn-inline ui-corner-all ui-icon-delete
+            ui-btn-icon-notext ui-corner-all ui-nodisc-icon transparentButton"
+				style="margin: 0px; padding: 6px;">닫기</button>
+			<a href="#left-panel"
+				class="ui-btn-right ui-btn ui-btn-inline ui-corner-all ui-icon-delete
+            ui-btn-icon-notext ui-corner-all ui-nodisc-icon transparentButton"
+				style="margin: 0px; padding: 6px;" data-rel="close">닫기</a>
 		</div>
-		
--->		
-		<div data-role="content" style="padding-top: 0px; padding-left: 0px; padding-right: 0px;">
-		
-		<div class="sc_psn" style="background-color: red;">
-        <div class="sc_psn_stt">
-          <a href="/"> <img
-            src="http://static.naver.net/www/m/2013/noimage.png" width="40"
-            height="40"> <strong>로그인하세요</strong>
-          </a>
+	</div>
 
-          <button
-            class="ui-btn-right ui-btn ui-btn-inline ui-corner-all"
-                    style="margin:0px; padding: 6px;">닫기</button>
-        </div>
-      </div>
-		
-			<div class="ui-grid-b">
-				<div class="ui-block-a">
-					<a href="/" data-role="button" style="font-size: 10px"> <img
-						src="../images/menu/home-black.png" alt="home" class="ui-li-icon2">Home
-					</a>
-				</div>
-				<div class="ui-block-b">
-					<a href="/" data-role="button" style="font-size: 10px"> <img
-						src="../images/menu/eye-black.png" alt="view" class="ui-li-icon2">View
-					</a>
-				</div>
-				<div class="ui-block-c" id="barcodeBtn">
-					<a href="/" data-role="button" style="font-size: 10px"> <img
-						src="../images/menu/heart-black.png" alt="barcode"
-						class="ui-li-icon2">Barcode
-					</a>
-				</div>
+	<!-- ------------------------------------------------- -->
+	<div style="background-color: #E3E3E3;">
+		<div class="ui-grid-b" style="padding: 10px">
+			<div class="ui-block-a">
+				<a href="/" data-role="button" id="homeBtn"
+					style="font-size: 10px width: 50px; height: 50px; margin: 0px 6px">
+					<img style='margin-top: 10px;' src="../images/menu/home-black.png"
+					alt="home" class="ui-li-icon2">
+					<p style='font-family: monospace; margin-top: 2px;'>Home</p>
+				</a>
 			</div>
-
-			<!-- <div data-role="controlgroup" data-type="horizontal" id="mainBar">
-		   <a href="#" data-role="button" data-icon="home" data-iconpos="top">home</a>
-		   <a href="#" data-role="button" data-icon="star" data-iconpos="top">최근본상품</a>
-		   </div> -->
-
-
-			<div data-role="fieldcontaion">
-				<label for="name">Text Search</label> <input type="search"
-					id="query" name="query" value="" placeholder="Search">
-
+			<div class="ui-block-b">
+				<a href="/" data-role="button"
+					style="font-size: 10px width: 50px; height: 50px; margin: 0px 6px; padding: 11px 0px">
+					<img style='margin-top: 10px;' src="../images/menu/eye-black.png"
+					alt="view" class="ui-li-icon2">
+					<p
+						style='font-family: monospace; margin-top: 2px; text-align: center;'>최근
+						검색</p>
+				</a>
 			</div>
-			&nbsp;
-
-
-			<ul data-role="listview" data-icon="false" style="padding-left: 10px;">
-				<li><a href="/"> <img
-						src="../images/customIcons/ic_action_document.png" alt="Mypage"
-						class="ui-li-icon"> 마이페이지
-				</a></li>
-				<li><a href="/"> <img
-						src="../images/customIcons/ic_action_business.png" alt="storage"
-						class="ui-li-icon"> 보관함
-				</a></li>
-				<li><a href="/"> <img
-						src="../images/customIcons/ic_action_users.png" alt="community"
-						class="ui-li-icon"> 커뮤니티
-				</a></li>
-				<li><a href="/"> <img
-						src="../images/customIcons/ic_action_emo_basic.png" alt="good"
-						class="ui-li-icon"> 좋아요
-				</a></li>
-				<li><a href="/"> <img
-						src="../images/customIcons/ic_action_emo_cry.png" alt="bad"
-						class="ui-li-icon"> 나빠요
-				</a></li>
-			</ul>
-
+			<div class="ui-block-c" id="barcodeBtn">
+				<a href="/" data-role="button"
+					style="font-size: 10px; width: 50px; height: 50px; margin: 0px 6px; padding: 11px 10px">
+					<img style='margin-top: 10px;' src="../images/menu/heart-black.png"
+					alt="barcode" class="ui-li-icon2">
+					<p
+						style='font-family: monospace; font-size: 1px; margin-top: 2px; text-align: center;'>Barcode</p>
+				</a>
+			</div>
 		</div>
-		<!-- content -->
+		<div data-role="fieldcontaion"
+			style="height: 50px; padding: 0px 15px; margin: -5px 0px 0px 0px">
+			<input type="search" id="query" name="query" value=""
+				placeholder="Search">
+		</div>
+	</div>
+	<div style="margin-top: 20px; background-color: #F1F1F1; height: 30">
+		<ul data-role="listview" data-icon="false" style="padding-left: 10px;">
+			<li id="mypage"><a href="/" style="background-color: #F1F1F1;">
+					<img src="../images/customIcons/ic_action_document.png"
+					alt="Mypage" class="ui-li-icon"
+					style="padding-left: 10px; font-size: 14px;"> <strong
+					style="letter-spacing: 2px;"> 마이페이지 </strong>
+			</a></li>
+			<li id="storage"><a href="/" style="background-color: #F1F1F1;">
+					<img src="../images/customIcons/ic_action_business.png"
+					alt="storage" class="ui-li-icon" style="padding-left: 10px">
+					<strong style="letter-spacing: 2px;"> 보관함 </strong>
 
+			</a></li>
+			<li id="community"><a href="/"
+				style="background-color: #F1F1F1;"> <img
+					src="../images/customIcons/ic_action_users.png" alt="community"
+					class="ui-li-icon" style="padding-left: 10px"> <strong
+					style="letter-spacing: 2px;"> 커뮤니티 </strong>
 
-	<script>
-		   
-		   $(function () {
-		        $("#query").keydown(function (key) {
-		           if (key.keyCode == 13) { 
-		        	var keyWord = $('#query').val();
-		          var url ="list.jsp?searchKey=" + keyWord;
-		          $(location).attr('href',url);   
-		           }  
-		       });
-		   });
-		  
-		
-		  $( "#barcodeBtn" ).click(function() {
-		        alert( "웹 페이지에서는 실행되지 않습니다." );
-		  });
-		  
-		  </script>
+			</a></li>
+			<li id="good"><a href="/" style="background-color: #F1F1F1;">
+					<img src="../images/customIcons/ic_action_emo_basic.png" alt="good"
+					class="ui-li-icon" style="padding-left: 10px"> <strong
+					style="letter-spacing: 2px;"> 좋아요 </strong>
 
+			</a></li>
+			<li id="bad"><a href="/" style="background-color: #F1F1F1;">
+					<img src="../images/customIcons/ic_action_emo_cry.png" alt="bad"
+					class="ui-li-icon" style="padding-left: 10px"> <strong
+					style="letter-spacing: 2px;"> 나빠요 </strong>
+
+			</a></li>
+		</ul>
+	</div>
+	<h1 id='logoutBtn' align="center" style="display:none">로그아웃</h1>	
+</div>
+<!-- content -->
+
+<script src="../auth/menu.js"></script>

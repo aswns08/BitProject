@@ -1,0 +1,21 @@
+<ul data-role="listview" data-icon="false" data-split-theme="d"
+	id='listView' >
+	<!--------------개별 리스트------------------------>
+	{{#each channel.item}}
+	<li><a href="{{link}}" data-no="{{docid}}
+		class="ui-btn"> <img id='itemImg' src="{{image_url}}">
+		<div class='itemDetail'>
+			<p><span id='title'>{{title}}</span><br>
+			<span id='price'>{{price_min}}</span>
+			<span id='nextPrice'> 원</span>		
+			<span id='rowPrice'> 최저가 </span><br> 				
+			<span id='desc'>{{publish_date}} | 
+			 {{shopingmall}}</span> 
+			</p>
+			</div>
+	</a>
+ <img class='heart'src="../image/heart-32.png">  
+ 	 </li> {{/each}}
+</ul>
+
+ 

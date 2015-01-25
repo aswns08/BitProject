@@ -1,0 +1,18 @@
+<table id='storageTable' class='table table-hover'>
+<tr>
+  <th>#</th><th>카테고리</th><th>등록일</th><th>판매처</th><th>회원번호</th><th>가격</th><th>회원번호</th><th>제품명</th><th>&nbsp;</th>
+</tr>
+{{#each storages}}
+<tr class="data-row">
+<td>{{sno}}</td>
+<td>{{category}}</td>
+<td>{{sDate}}</td>
+<td><a href="#" data-no="{{sno}}">{{link}}</a></td>
+<td>{{uno}}</td>
+<td>{{price}}</td>
+<td>{{title}}</td>
+<td>{{imgUrl}}</td>
+
+</tr>
+{{/each}}
+</table>

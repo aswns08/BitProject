@@ -1,0 +1,106 @@
+
+<div data-role="content"
+	style="padding-top: 0px; padding-left: 0px; padding-right: 0px; background-color: #F1F1F1;
+	">
+	<div class="sc_psn" style="background-color: #fa5a44; height: 50px">
+		<div class="sc_psn_stt">
+			<a href="/" style="margin-left: 10px; text-decoration: none;"> <strong
+				style="color: #ffffff; line-height: 50px;"> 로그인 하세요</strong>
+			</a>
+			<button
+				class="ui-btn-right ui-btn ui-btn-inline ui-corner-all ui-icon-delete
+            ui-btn-icon-notext ui-corner-all ui-nodisc-icon transparentButton"
+				style="margin: 0px; padding: 6px;">닫기</button>
+		</div>
+	</div>
+
+	<!-- ------------------------------------------------- -->
+	<div style="background-color: #E3E3E3;">
+		<div class="ui-grid-b" style="padding: 10px">
+			<div class="ui-block-a">
+				<a href="/" data-role="button"
+					style="font-size: 10px width: 50px; height: 50px; margin: 0px 6px">
+					<img style='margin-top: 10px;' src="../images/menu/home-black.png"
+					alt="home" class="ui-li-icon2">
+					<p style='font-family: monospace; margin-top: 2px;'>Home</p>
+				</a>
+			</div>
+			<div class="ui-block-b">
+				<a href="/" data-role="button"
+					style="font-size: 10px width: 50px; height: 50px; margin: 0px 6px; padding: 11px 0px">
+					<img style='margin-top: 10px;' src="../images/menu/eye-black.png"
+					alt="view" class="ui-li-icon2">
+					<p
+						style='font-family: monospace; margin-top: 2px; text-align: center;'>최근
+						검색</p>
+				</a>
+			</div>
+			<div class="ui-block-c" id="barcodeBtn">
+				<a href="/" data-role="button"
+					style="font-size: 10px; width: 50px; height: 50px; margin: 0px 6px; padding: 11px 10px">
+					<img style='margin-top: 10px;' src="../images/menu/heart-black.png"
+					alt="barcode" class="ui-li-icon2">
+					<p
+						style='font-family: monospace; font-size: 1px; margin-top: 2px; text-align: center;'>Barcode</p>
+				</a>
+			</div>
+		</div>
+		<div data-role="fieldcontaion"
+			style="height: 50px; padding: 0px 15px; margin: -5px 0px 0px 0px">
+			<input type="search" id="query" name="query" value=""
+				placeholder="Search">
+		</div>
+	</div>
+	<div style="margin-top: 20px; background-color: #F1F1F1; height: 30">
+		<ul data-role="listview" data-icon="false" style="padding-left: 10px;">
+			<li><a href="/" style="background-color: #F1F1F1;"> <img
+					src="../images/customIcons/ic_action_document.png" alt="Mypage"
+					class="ui-li-icon" style="padding-left: 10px; font-size: 14px;">
+					<strong style="letter-spacing: 2px;"> 마이페이지 </strong>
+			</a></li>
+			<li><a href="/" style="background-color: #F1F1F1;"> <img
+					src="../images/customIcons/ic_action_business.png" alt="storage"
+					class="ui-li-icon" style="padding-left: 10px"> 
+					<strong style="letter-spacing: 2px;"> 보관함 </strong>
+					
+			</a></li>
+			<li><a href="/" style="background-color: #F1F1F1;"> <img
+					src="../images/customIcons/ic_action_users.png" alt="community"
+					class="ui-li-icon" style="padding-left: 10px"> 
+					<strong style="letter-spacing: 2px;"> 커뮤니티 </strong>
+					
+			</a></li>
+			<li><a href="/" style="background-color: #F1F1F1;"> <img
+					src="../images/customIcons/ic_action_emo_basic.png" alt="good"
+					class="ui-li-icon" style="padding-left: 10px"> 
+					<strong style="letter-spacing: 2px;"> 좋아요 </strong>
+					
+			</a></li>
+			<li><a href="/" style="background-color: #F1F1F1;"> <img
+					src="../images/customIcons/ic_action_emo_cry.png" alt="bad"
+					class="ui-li-icon" style="padding-left: 10px"> 					
+					<strong style="letter-spacing: 2px;"> 나빠요 </strong>
+					
+			</a></li>
+		</ul>		
+	</div>
+</div>
+<!-- content -->
+
+
+<script>
+	$(function() {
+		$("#query").keydown(function(key) {
+			if (key.keyCode == 13) {
+				var keyWord = $('#query').val();
+				var url = "list.jsp?searchKey=" + keyWord;
+				$(location).attr('href', url);
+			}
+		});
+	});
+
+	$("#barcodeBtn").click(function() {
+		alert("웹 페이지에서는 실행되지 않습니다.");
+	});
+</script>
+

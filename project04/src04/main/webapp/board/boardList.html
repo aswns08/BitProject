@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>게 시 판</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"
+	charset="UTF-8">
+<link rel="stylesheet"
+	href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<link rel="stylesheet" href="../css/red.css" />
+
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script
+	src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script type="text/javascript" src='../js/handlebars-v2.0.0.js'></script>
+<script type="text/javascript" src='../js/require.js'></script>
+<script type="text/javascript" src='../js/url.js'></script>
+
+<script src='boardList.js'></script>
+
+<style>
+.ui-select {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.ui-content {
+	margin-top: 0;
+	padding: 0;
+}
+
+#listView {
+	margin-top: 0;
+}
+
+#lisrView li a {
+	display: block;
+	overflow: hidden;
+	padding: .55em .7em;
+}
+
+.blist {
+	float: left;
+	width: 50px;
+	height: 50px;
+	position: relative;
+	margin-top: .2em;
+	margin-right: 10px;
+	vertical-align: middle;
+}
+
+.btitle {
+	font-size: 16px;
+	line-height: 1.4em;
+	color: #090909;
+	font-weight: normal;
+}
+
+.info {
+	padding-top: 2px;
+	display: inline-block;
+	position: relative;
+	font-size: .8em;
+	line-height: 1.4em;
+	color: #888;
+}
+
+.ty {
+	display: inline-block;
+}
+
+.tcr {
+	display: inline-block;
+}
+
+.renum {
+	display: inline-block;
+	overflow: hidden;
+	position: absolute;
+	top: 11px;
+	right: .8em;
+	background-position: 0 -496px;
+	width: 37px;
+	height: 26px;
+	padding: 8px 0 0 0 !important;
+	font-size: .8em;
+	line-height: 1em;
+	color: #0ba000;
+	text-align: center;
+}
+
+.countRect {
+  right: 20px;
+}
+</style>
+
+</head>
+
+<body>
+
+	<!-- Start of first page -->
+	<div data-role="page" id="board">
+		<!-- 패널 -->
+		<div data-role="panel" id="mypanel" data-position="left"
+			data-display="push">
+			<div id='menuPanel'></div>
+		</div>
+		<!-- /패널 -->
+
+		<!-- header -->
+		<div data-role="header" data-position="fixed">
+			<h1>게 시 판</h1>
+			<a href="#mypanel" data-icon="bars"
+				class="ui-btn-left transparentButton" data-iconpos="notext"></a>
+		</div>
+		<!-- /header -->
+
+		<div data-role="content">
+			<select name="select-native-1" id="select-native-1">
+				<option value="">전체</option>
+				<option value="true">좋아요</option>
+				<option value="false">나빠요</option>
+			</select>
+			<!-- /selects -->
+
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#" id='newOrder' class="ui-btn-active">최신순</a></li>
+					<li><a href="#" id='viewOrder'>조회순</a></li>
+					<li><a href="#" id='recomOrder'>추천순</a></li>
+				</ul>
+			</div>
+			<!--  /navbar -->
+
+			<div id='listDiv'></div>
+
+			<div id='pagingBar'>
+				<button id='prevBtn' type='button' class='btn btn-default'>이전</button>
+				<span id='pageNo'>1</span>
+				<button id='nextBtn' type='button' class='btn btn-default'>다음</button>
+			</div>
+		</div>
+
+
+		<!-- /content -->
+
+		<div data-role="footer" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#" onclick='location.href="boardSearch.html"'
+						class="ui-btn ui-shadow ui-corner-all ui-icon-search ui-btn-icon-top"
+						data-role="button">검색</a></li>
+					<li><a href='#' onclick='location.href="boardForm.html"'
+						class="ui-btn ui-shadow ui-corner-all ui-icon-edit ui-btn-icon-top"
+						data-role="button">글쓰기</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<!--  /footer -->
+
+	</div>
+	<!-- /page -->
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,22 @@
+<!-- 개별 리스트 -->
+{{#each barcodes}}
+        <li class="ui-li-static ui-body-inherit">
+            <div>
+                <strong class="font-set">
+                    <a href="#" class="barNo" data-barcodeNo='{{barcodeNo}}'>{{barcodeNo}}</a> <br>
+                    <span class="bar"></span>
+                    <em>{{pno}}</em>
+                </strong>
+                
+                <div class="clst_cont">
+                    <span>
+                    {{pname}}
+                    </span>
+                </div>
+            </div>
+        </li>
+{{/each}}
+
+
+
+      

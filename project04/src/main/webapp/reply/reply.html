@@ -86,15 +86,15 @@
     <ul data-role="listview" data-icon="false" data-split-theme="d" id='listDiv'></ul>
     
     <!-- 팝업 창 -->
-    <div data-role="popup" id="popupDiv" data-theme="a" class="ui-corner-all">
-
-        <ul>
-          <li>댓 글</li>
-          <li>삭 제</li>
-          <li>취 소</li>
-        </ul>           
-    </div>
+    <div data-role="popup" id="popupMenu" data-theme="a">
+  <ul data-role="listview" data-inset="true" style="min-width:210px;" data-theme="b">
+    <li class="writeReply">댓 글</li>
+    <li class="deleteBtn">삭 제</li>
+    <li class="cancelBtn">취 소</li>
+  </ul>
+</div>
     
+    <!-- 맨위로 버튼 / 더보기 버튼 -->
     <div id='footerNav'>
         <a href='#' onclick="location.href='#top'">
           <div id='gotoTopBtn' class='footerNavClass'>
@@ -112,10 +112,11 @@
     </div>
     <!-- /content -->
 
+    <!-- 댓글 쓰기 부분 -->
     <div data-role="footer" data-position="fixed">
       <form method="post" action="demoform.asp">
           <div>
-            <input type="text" name="Reply" id="Reply" placeholder="덧글쓰기">
+            <input type="text" name="Reply" class="writeReply" placeholder="덧글쓰기">
           </div>
       </form>
       </div>

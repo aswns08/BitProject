@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, height=device-height">
+<link rel="stylesheet"
+	href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<link rel="stylesheet" href="../css/red.css" />
+<link rel="stylesheet" href="../css/red.min.css" />
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script
+	src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<title>list</title>
+<style>
+#topBar {
+	/* height: 40px;
+  font: 20px; */
+	font-weight: bold;
+	/* color: white; */
+	font-family: Jejugothic;
+	letter-spacing: 8px;
+	text-align: center;
+	/* padding: 1px; */
+}
+
+/************ 개별 아이템 ***********************/
+li {
+	list-style: none; /* li 점 없애기 */
+	/*  border: 2px solid red;
+ */
+	border-bottom: 1px solid #aaaaaa;
+	margin: 0px 0px 0px -40px;
+	padding: 10px
+}
+
+li>div {
+	/*    border: 2px solid blue;
+ */
+	margin: -20px 0px 0px 0px;
+}
+
+#gotoTop {
+	/* background-color: #077187;
+ color:white; */
+	padding: 5px;
+	/*   border: 1px solid black;
+ */
+	width: 50px;
+	font-size: 13px;
+	font-family: Jejugothic;
+	float: right;
+	margin: 10px;
+	border-radius: 5px;
+	text-align: center;
+}
+
+#footer {
+	background-color: white;
+}
+</style>
+<style>
+/************************ 보관함 ***************************/
+div>img {
+	filter:
+		url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="grayscale"><feColorMatrix type="matrix" values="0.3333" 0.3333="" 0="" 10=""></feColorMatrix></filter></svg>#grayscale');
+	/* Firefox 3.5+, IE10 */
+	filter: gray; /* IE6-9 */
+	-webkit-filter: grayscale(100%); /* Chrome 19+ & Safari 6+ */
+	-webkit-transition: all .6s ease;
+	/* Fade to color for Chrome and Safari */
+	-webkit-backface-visibility: hidden;
+	/* Fix for transition flickering */
+}
+
+/* 클릭시 컬러로 */
+.colorHeart {
+	filter: none;
+	-webkit-filter: grayscale(0%);
+}
+
+/* asdasdasdasdasdadasd */
+#titleBar {
+	background-color: white;
+}
+
+#daumShopping {
+	border: 1px solid #bbbbbb;
+}
+
+#footer {
+	background-color: white;
+}
+</style>
+</head>
+<body>
+	<!-- Start of first page -->
+	<div data-role="page" id="list">
+
+		<div data-role="header">
+			<div id='topBar'>
+				<a href="#"> <img
+					src="http://img.echosting.cafe24.com/mobileWeb/common/btn_category.png">
+				</a>
+				<p>검색결과</p>
+			</div>
+
+			<!--------------------------- 다음 쇼핑 검색 --------------->
+			<!-- <div id="daumShoppingForm">
+				<input id="daumShoppingSearch" type="text" value="다음"
+					onkeydown="javascript:if(event.keyCode == 13) daumShoppingSearch.search();" />
+				<input id="daumShoppingSubmit" type="submit" value="검색"
+					onclick="javascript:daumShoppingSearch.search()" />
+			</div> -->
+			<!--다음 쇼핑 검색 끝  -->
+			<div data-role="navbar" id="titleBar">
+				<ul>
+					<li><a href="#" class="ui-btn ui-shadow ui-corner-all ui-btn-active"
+						data-role="button">가격 검색 결과</a></li>
+					<li><a href="#" class="ui-btn ui-shadow ui-corner-all"
+						data-role="button">좋아요</a></li>
+					<li><a href="#" class="ui-btn ui-shadow ui-corner-all"
+						data-role="button">나빠요</a></li>
+				</ul>
+			</div>
+
+			<div data-role="navbar" id="titleBar">
+				<ul>
+					<li><a href="#" id='min_price' class="ui-btn ui-shadow ui-corner-all ui-btn-active"
+						data-role="button">낮은가격순</a></li>
+					<li><a href="#" id='max_price' class="ui-btn ui-shadow ui-corner-all"
+						data-role="button">높은가격순</a></li>
+					<li><a href="#" id='pop' class="ui-btn ui-shadow ui-corner-all"
+						data-role="button">인기순</a></li>
+				</ul>
+			</div>
+
+		</div>
+		<!-- /header -->
+
+		<div data-role="content" id="content">
+			<!--------------------- 검색 결과 출력 ------------------->
+			<div id="daumShopping"></div>
+			<div id="daumShoppingScript"></div>	
+
+
+			<a href="#top"><div id='gotoTop'>맨위로</div></a>
+		</div>
+		<!-- /content -->
+
+		<div data-role="footer" data-position="fixed" id="footer"></div>
+		<!--  /footer -->
+
+	</div>
+	<!-- /page -->
+
+
+	<script src="list03.js"></script>
+
+
+</body>
+</html>

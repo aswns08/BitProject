@@ -1,0 +1,19 @@
+코르도바 플러그인
+http://plugins.cordova.io/#/ 에서 검색
+
+코르도바 바코드
+http://plugins.cordova.io/#/package/com.phonegap.plugins.barcodescanner
+을 사용한다
+
+
+$ cordova plugin add com.phonegap.plugins.barcodescanner
+
+빌드 후
+$ cordova build
+
+스마트폰을 연결한 후 실행
+$ cordova run android
+
+
+
+14.12.26 바코드 이미지 클릭시 zxing 실행..

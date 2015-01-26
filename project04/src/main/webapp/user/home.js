@@ -24,34 +24,4 @@ $(document).on("pageinit", "#home", function() {
 	});
 });
 
-$('#logoutBtn').click(function(event) {
-	$.getJSON('../json/auth/logout.do', function(data) {
-		location.href = '../auth/login.html';
-	});
-});
 
-$('#loginBtn').click(function(event) {
-	location.href = '../auth/login.html';
-});
-
-$(function() {
-	$.getJSON('../json/auth/loginUser.do', function(data) {
-		if (data.status == 'fail') {
-			// $('#loginBtn').css('display', '');
-			// console.log("login fail");
-
-		} else {
-			$('#loginBtn').css('display', 'none');
-			$('#logoutBtn').css('display', '').css('margin', '0px');
-			// console.log("login seccess");
-
-			console.log(data.loginUser);
-			$('#userName').html(data.loginUser.name);
-			/*
-			 * $('#userName').click(function(){ alert('사용자 정보 조회 창으로 보낼 예정');
-			 * });
-			 */
-		}
-	});
-
-});

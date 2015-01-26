@@ -13,6 +13,7 @@ $("#backLink").click(function(event) {
 });
   
 $('#btnSave').click(function(){
+  console.log("=========>",loginUser.no);
     console.log("저장");
     if(!validateForm()) return;
     
@@ -23,7 +24,7 @@ $('#btnSave').click(function(){
     */
   $.post('../json/reply/add.do' /* URL */
     , { /* 서버에 보낼 데이터를 객체에 담아 넘긴다. */
-      uno : $('#uno').val(),
+      uno : loginUser.no,
       bno : currentBoard,
       rContent : $('#rContent').val()
       

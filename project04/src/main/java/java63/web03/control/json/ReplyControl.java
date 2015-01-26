@@ -25,6 +25,8 @@ public class ReplyControl {
 
   @RequestMapping(value="/add", method=RequestMethod.POST)
   public Object add(Reply reply) throws Exception {  
+    
+    System.out.println("---------------------------" + reply);
 	  
     replyService.add(reply);
 

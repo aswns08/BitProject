@@ -70,7 +70,7 @@ function loadBoardView(no) {
   $.getJSON('../json/board/view.do?no=' + no, 
       function(data) {
     
-    console.log("view:", data);
+    //console.log("view:", data);
     var board = data.board;
 
     require([ 'text!templates/board-view.html' ], function(html) {

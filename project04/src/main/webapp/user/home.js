@@ -35,7 +35,7 @@ $('#loginBtn').click(function(event) {
 });
 
 $(function() {
-	$.getJSON('../json/auth/loginUser', function(data) {
+	$.getJSON('../json/auth/loginUser.do', function(data) {
 		if (data.status == 'fail') {
 			// $('#loginBtn').css('display', '');
 			// console.log("login fail");
@@ -54,14 +54,4 @@ $(function() {
 		}
 	});
 
-	/*
-	 * $("#left-panel").load("menu.html", function(){ $( "#home"
-	 * ).page("destroy").page(); });
-	 * 
-	 * $(document).on("pageinit", "#home", function() { var $page = $(this);
-	 * $page.on("swiperight", function(e) { if ($page.jqmData("panel") !==
-	 * "open") { if (e.type === "swiperight") {
-	 * $("#left-panel").load("menu.html");
-	 * $page.find("#left-panel").panel("open"); } } }); });
-	 */
 });

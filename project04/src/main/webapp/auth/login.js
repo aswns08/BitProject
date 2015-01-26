@@ -3,7 +3,7 @@ $(function(){
   
   $('#btnLogin').click(function(event){
 	  /*console.log($('#email').val());*/
-    $.post('../json/auth/login'
+    $.post('../json/auth/login.do'
         , {
           email : $('#email').val(),
           pwd : $('#pwd').val(),

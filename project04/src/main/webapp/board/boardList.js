@@ -12,7 +12,9 @@ $(function() {
 	// url 파싱
 	// console.log("URL : " + url());
 
-	$('#menuPanel').load('../common/panel.html');
+  $("#left-panel").load("../auth/menu.html", function() {
+    $( "#board" ).page("destroy").page();
+  });
 
 	if (url('?orderBy') != "null") {
 		ifLike = url('?orderBy');

@@ -22,8 +22,7 @@ $(function(){
 	*/
 	
 	// 패널 정의!
-$("#left-panel").load("menu.html", function(){
-    
+$("#left-panel").load("../auth/menu.html", function() {
     $( "#reply" ).page("destroy").page();
   });
 

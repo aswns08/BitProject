@@ -25,63 +25,65 @@ public class User implements Serializable {
   protected String          email;
   protected String          name;
   protected String          pwd;
-  protected String          newPwd;
+  protected String          newPwd; //비밀번호 변경
+  protected String          vcode; //이메일 인증코드
 
   @Override
   public String toString() {
     return "User [no=" + no + ", email=" + email + ", name=" + name + ", pwd="
-        + pwd + ", newPwd=" + newPwd + "]";
+        + pwd + ", newPwd=" + newPwd + ", vcode=" + vcode + "]";
   }
-
 
   public int getNo() {
     return no;
   }
 
-
   public void setNo(int no) {
     this.no = no;
   }
-
 
   public String getEmail() {
     return email;
   }
 
-
   public void setEmail(String email) {
     this.email = email;
   }
-
 
   public String getName() {
     return name;
   }
 
-
   public void setName(String name) {
     this.name = name;
   }
-
 
   public String getPwd() {
     return pwd;
   }
 
-
   public void setPwd(String pwd) {
     this.pwd = pwd;
   }
-
 
   public String getNewPwd() {
     return newPwd;
   }
 
-
   public void setNewPwd(String newPwd) {
     this.newPwd = newPwd;
   }
+
+  public String getVcode() {
+    return vcode;
+  }
+
+  public void setVcode(String vcode) {
+    this.vcode = vcode;
+  }
+
+
+  
 }
 
 

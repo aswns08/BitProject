@@ -8,10 +8,10 @@ select * from USERS;
 
 /* 게시판정보 입력 */
 
-insert into BOARD(UNO,IFLIKE,TITLE,CONTENT,DATE)
+insert into BOARD(UNO,IFLIKE,TITLE,CONTENT,BDATE)
 values(1,true,'java책 추천','이 책 좋아요!!!!','2014-12-25');
 
-insert into BOARD(UNO,IFLIKE,TITLE,CONTENT,DATE)
+insert into BOARD(UNO,IFLIKE,TITLE,CONTENT,BDATE)
 values(2,false,'java책 비추','이 책 진짜 별로~~!','2014-12-27');
 
 
@@ -35,13 +35,13 @@ where DOCID='a12';
 
 
 /* 댓글 */
-insert into REPLY(GNO,UNO,RCONTENT,DATE)
+insert into REPLY(BNO,UNO,RCONTENT,RDATE)
 values(1,1,'좋아요!!', '2014-12-29');
 
-insert into REPLY(GNO,UNO,RCONTENT,DATE)
+insert into REPLY(BNO,UNO,RCONTENT,RDATE)
 values(2,2,'별로네..', '2014-12-30');
 
-insert into REPLY(GNO,UNO,RCONTENT,DATE)
+insert into REPLY(BNO,UNO,RCONTENT,RDATE)
 values(3,3,'좋아요.....', '2014-12-31');
 
 select * from REPLY;

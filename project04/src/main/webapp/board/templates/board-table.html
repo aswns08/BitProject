@@ -5,8 +5,10 @@
   <li class='data-row'><a href='#' data-no="{{no}}"
     data-transition="flow">
       <div class="blist">
-        <img src="../images/iphone.jpg" width="50" height="50"> <span
+       {{#if url}}
+        <img src="../fileupload/{{url}}" width="50" height="50"> <span
           class='mask'></span>
+       {{/if}}
       </div>
       <p>
         <strong class="btitle"> {{title}}</strong> <br> <span

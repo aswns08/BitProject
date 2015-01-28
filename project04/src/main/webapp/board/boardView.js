@@ -55,7 +55,6 @@ function loadBoardView(no) {
 		console.log(data);
 		// console.log('loadBoardView :' + no);
 		// console.log(board);
-		console.log(data.photos[0].url);
 
 		loadIfLikeHeader(board.ifLike);
 

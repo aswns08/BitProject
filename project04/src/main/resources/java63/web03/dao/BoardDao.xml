@@ -20,6 +20,8 @@
 		<result column="BDATE" property="date" />
 		<result column="RECO" property="recommend" />
 		<result column="RCOUNT" property="rcount" />
+		<result column="URL" property="url" />
+
 	</resultMap>
 
 	<resultMap type="map" id="boardListItem2Map">
@@ -34,6 +36,8 @@
 		<result column="COUNT" property="count" />
 		<result column="RECO" property="recommend" />
 		<result column="RCOUNT" property="rcount" />
+		<result column="URL" property="url" />
+
 	</resultMap>
 
 	<resultMap type="BoardPhoto" id="boardPhotoMap">
@@ -48,10 +52,14 @@
 		B.IFLIKE AS IFLIKE, B.TITLE AS TITLE,
 		B.CONTENT AS CONTENT,
 		B.BDATE AS BDATE,
-		B.COUNT AS COUNT, B.RECO AS RECO, B.IMG AS IMG,
+		B.COUNT AS COUNT, B.RECO AS RECO, BP.URL AS URL,
 		IFNULL(R.RCOUNT, 0) AS
 		RCOUNT
 		FROM BOARD B
+		LEFT JOIN
+		BOARD_PHOTS BP
+		USING
+		(BNO)
 		LEFT JOIN
 		(SELECT BNO, COUNT(*)
 		AS RCOUNT
@@ -68,20 +76,22 @@
 		<include refid="boardSelect" />
 		<choose>
 			<when test="content == true">
-				WHERE
-				<choose>
-					<when test="ifLike == true">
-						B.IFLIKE = true
-					</when>
-					<when test="ifLike == false">
-						B.IFLIKE = false
-					</when>
-					<otherwise>
-					</otherwise>
-				</choose>
-				AND BNO IN (SELECT BO.BNO FROM BOARD BO WHERE
-				BO.TITLE LIKE '%하%' OR
-				BO.CONTENT LIKE '%하%')
+				<where>
+					<choose>
+						<when test="ifLike == true">
+							B.IFLIKE = true
+						</when>
+						<when test="ifLike == false">
+							B.IFLIKE = false
+						</when>
+						<otherwise>
+						</otherwise>
+					</choose>
+					AND BNO IN (SELECT BO.BNO FROM BOARD BO WHERE
+					BO.TITLE LIKE
+					'%${search}%' OR
+					BO.CONTENT LIKE '%${search}%')
+				</where>
 			</when>
 			<otherwise>
 				<where>
@@ -171,7 +181,8 @@
 		keyColumn="BNO" keyProperty="no">
 		INSERT INTO BOARD(UNO, PNO, IFLIKE, TITLE,
 		COUNT, RECO, CONTENT, BDATE)
-		VALUES (#{userNo}, #{productNo}, #{ifLike}, #{title},
+		VALUES (#{userNo}, #{productNo},
+		#{ifLike}, #{title},
 		0, 0, #{content}, SYSDATE())
 	</insert>
 

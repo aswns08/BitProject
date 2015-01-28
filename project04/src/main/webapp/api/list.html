@@ -104,14 +104,14 @@
 	padding: 15px 10px 8px 10px;
 }
 
-.ui-select {
+#result > .ui-select{
 	width: 120px;
 	position: absolute;
 	right: -35px;
 	top: 92px;
 }
 
-.ui-select>.ui-btn {
+#result > .ui-select>.ui-btn {
 	font-size: 10px;
 	line-height: 1.5;
 	color: #333;
@@ -121,11 +121,12 @@
 	background-color: #FAFAFA
 }
 
-.ui-select .ui-btn select {
+#result > .ui-select .ui-btn select {
 	font-size: 15px;
 	line-height: 1.5;
 }
 
+/* footer Nav */
 #footerNav {
 	height: 45px;
 	background-color: #f4f4f4;
@@ -182,10 +183,66 @@
 	-webkit-transition: all .6s ease;
 	width: 13px;
 }
+
+/* 커뮤니티 css */
+.blist {
+	float: left;
+	width: 50px;
+	height: 50px;
+	position: relative;
+	margin-top: .2em;
+	margin-right: 10px;
+	vertical-align: middle;
+}
+
+.btitle {
+	font-size: 16px;
+	line-height: 1.4em;
+	color: #090909;
+	font-weight: normal;
+}
+
+.info {
+	padding-top: 2px;
+	display: inline-block;
+	position: relative;
+	font-size: .8em;
+	line-height: 1.4em;
+	color: #888;
+}
+
+.ty {
+	display: inline-block;
+}
+
+.tcr {
+	display: inline-block;
+}
+
+.renum {
+	display: inline-block;
+	overflow: hidden;
+	position: absolute;
+	top: 11px;
+	right: .8em;
+	background-position: 0 -496px;
+	width: 37px;
+	height: 26px;
+	padding: 8px 0 0 0 !important;
+	font-size: .8em;
+	line-height: 1em;
+	color: #0ba000;
+	text-align: center;
+}
+
+.countRect {
+	right: 25px;
+	z-index: 2;
+}
 </style>
 <body>
 	<!-- Start of first page -->
-	<div data-role="page" id="board">
+	<div data-role="page" id="myPage">
 		<div data-role="panel" id="left-panel" data-display="overlay"></div>
 
 		<div data-role="header">
@@ -195,10 +252,13 @@
 		</div>
 		<div data-role="navbar" id="">
 			<ul>
-				<li><a href="#" class="ui-btn navBorder ui-btn-active"
-					data-role="button">가격 검색 결과</a></li>
-				<li><a href="#" class="ui-btn navBorder" data-role="button">좋아요</a></li>
-				<li><a href="#" class="ui-btn navBorder" data-role="button">나빠요</a></li>
+				<li><a href="#" id="searchPrice"
+					class="ui-btn navBorder ui-btn-active" data-role="button">가격 검색
+						결과</a></li>
+				<li><a href="#" id="good" class="ui-btn navBorder"
+					data-role="button">좋아요</a></li>
+				<li><a href="#" id="bad" class="ui-btn navBorder"
+					data-role="button">나빠요</a></li>
 			</ul>
 		</div>
 		<!-- /header -->
@@ -206,7 +266,7 @@
 		<div data-role="content" id="content">
 
 			<!--------------------- 검색 결과 출력 ------------------->
-			<div id='result'>
+			<!-- <div id='result'>
 				<div id='resultChar'>
 					<p>
 						<span id='searchResult'>검색결과</span> <span id='totalResult'></span>
@@ -218,7 +278,7 @@
 					<option value='max_price'>높은가격순</option>
 					<option value='pop'>인기순</option>
 				</select>
-			</div>
+			</div> -->
 
 			<div id="listDiv"></div>
 
@@ -229,14 +289,14 @@
 						<img class='<go></go>Toploc' id='triangleUp'
 							src='../images/triangle-up-16.png'><br> 맨위로
 					</div>
-				</a> <a href='#' style="text-decoration: none">
+				</a> <a href='#' id="addMoreA" style="text-decoration: none">
 					<div id='addMoreBtn' class='footerNavClass'>
 						<span id='addFont'>더보기</span> <img class='goToploc' id='arrowDown'
 							src='../images/arrow-down-32.png'>
 					</div>
 				</a>
-
 			</div>
+			
 		</div>
 		<!-- /content -->
 
@@ -246,6 +306,7 @@
 	</div>
 	<!-- /page -->
 
+	<script type="text/javascript" src='../js/url.js'></script>
 	<script src="list.js"></script>
 
 

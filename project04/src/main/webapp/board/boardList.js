@@ -11,21 +11,19 @@ $(function() {
 	$("#left-panel").load("../auth/menu.html", function() {
 		$("#board").page("destroy").page();
 	});
-	
+
 	// url 파싱
 	// console.log("URL : " + url());
 
 	if (url('?orderBy') != "null") {
 		ifLike = url('?orderBy');
-	}	
-		
-	/* 동적으로 셀렉트 옵션 지정 */	
-	$('#select-native-1 option')
-    .removeAttr('selected')
-    .filter('[value="' + url('?ifLike') +'"]')
-        .attr('selected', true)
-	$('#select-native-1').selectmenu('refresh');        
-        
+	}
+
+	/* 동적으로 셀렉트 옵션 지정 */
+	$('#select-native-1 option').removeAttr('selected').filter(
+			'[value="' + url('?ifLike') + '"]').attr('selected', true)
+	$('#select-native-1').selectmenu('refresh');
+
 	loadBoardList(1, url('?orderBy'), url('?ifLike'), url('?title'),
 			url('?content'), url('?writer'), url('?search'));
 
@@ -44,7 +42,8 @@ $(function() {
 			function(event) {
 				if (currPageNo > 1) {
 					loadBoardList(currPageNo - 1, saveOrderBy, $(
-							"#select-native-1").val());
+							"#select-native-1").val(), url('?title'),
+							url('?content'), url('?writer'), url('?search'));
 				}
 			});
 
@@ -52,14 +51,15 @@ $(function() {
 			function(event) {
 				if (currPageNo < maxPageNo) {
 					loadBoardList(currPageNo + 1, saveOrderBy, $(
-							"#select-native-1").val());
+							"#select-native-1").val(), url('?title'),
+							url('?content'), url('?writer'), url('?search'));
 				}
 			});
 
 	$('#select-native-1').on(
 			'change',
 			function() {
-				//console.log($(this).val());
+				// console.log($(this).val());
 
 				ifLike = $("#select-native-1").val();
 				loadBoardList(1, url('?orderBy'), $(this).val(), url('?title'),
@@ -166,10 +166,15 @@ function loadBoardList(pageNo, orderBy, ifLike, title, content, writer, search) 
 
 			require([ 'text!templates/board-table.html' ], function(html) {
 				var template = Handlebars.compile(html);
-				$('#listDiv').html(template(data));
+				if (currPageNo == 1) {
+					$('#listDiv').html(template(data));
+				} else {
+					$('#listDiv').append(template(data));
+				}
 				$('#board').page('destroy').page();
 			});
 		}
+		loadAddMoreBtn();
 	});
 }
 
@@ -187,11 +192,11 @@ function yyyyMMddList(boards) {
 
 			str = "";
 			if (!compareDate(currentDate, dbDate)) {
-				str = dbDate.getFullYear() + '/';
+				str = dbDate.getFullYear() + '.';
 
 				if (dbDate.getMonth() < 9)
 					str += '0';
-				str += (dbDate.getMonth() + 1) + '/';
+				str += (dbDate.getMonth() + 1) + '.';
 
 				if (dbDate.getDate() < 10)
 					str += '0';
@@ -239,3 +244,28 @@ function yyyyMMdd(date) {
 		return '';
 	}
 }
+
+function loadAddMoreBtn() {
+	if (url('?search')) {
+		if ((currPageNo + 1) < maxPageNo) {
+			$('#addMoreA').css('display', '');
+		} else {
+			$('#addMoreA').css('display', 'none');
+		}
+	} else {
+		if (currPageNo < maxPageNo) {
+			$('#addMoreA').css('display', '');
+		} else {
+			$('#addMoreA').css('display', 'none');
+		}
+	}	
+}
+
+$(document).on(
+		"click",
+		"#addMoreBtn",
+		function() {
+			loadBoardList(currPageNo + 1, saveOrderBy, ifLike, url('?title'),
+					url('?content'), url('?writer'), url('?search'));
+
+		});

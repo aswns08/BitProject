@@ -21,6 +21,17 @@ public class Board implements Serializable {
   protected int recommend;
   protected String photo;
   protected List<?> photoList;
+  protected String url;
+
+  
+
+  public String getUrl() {
+    return url;
+  }
+
+  public void setUrl(String url) {
+    this.url = url;
+  }
 
   protected int rcount;
 

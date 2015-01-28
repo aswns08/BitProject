@@ -2,8 +2,8 @@
 <html>
 <head>
 <title>My Page</title>
-<meta name="viewport" content="width=device-width, initial-scale=1"
-	charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
 <link rel="stylesheet"
 	href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
 <link rel="stylesheet" href="../css/red.css" />
@@ -12,7 +12,9 @@
 	src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 <script type="text/javascript" src='../js/handlebars-v2.0.0.js'></script>
 <script type="text/javascript" src='../js/require.js'></script>
-<script src='boardView.js'></script>
+<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+
+
 
 <style>
 #titleSection {
@@ -111,6 +113,22 @@ a#nextBoardBtn {
 .replyCount {
 	color: #f44343;
 }
+
+#facebookFont {
+margin : 0px;
+}
+
+#twitterFont {
+margin : 0px;
+}
+
+#kakaoFont {
+margin : 0px;
+}
+
+#bandFont {
+margin : 0px;
+} 
 </style>
 </head>
 
@@ -119,9 +137,12 @@ a#nextBoardBtn {
 	<!-- Start of first page -->
 	<div data-role="page" id="boardWrite">
 		<div data-role="header" data-position="fixed">
+		
 			<h1 id='ifLikeHeader'></h1>
+			
 			<a href="#" data-rel="back"
-				class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-corner-all ui-nodisc-icon transparentButton">before</a>
+        class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-corner-all ui-nodisc-icon transparentButton">before</a>
+			
 		</div>
 		<!-- /header -->
 
@@ -129,20 +150,32 @@ a#nextBoardBtn {
 			<div id='listDiv'></div>
 			<!-- contents -->
 
-			<div data-role="navbar" class="nav-glyphish-example" data-grid="d"
-				data-position="fixed">
+			<div data-role="navbar" class="nav-glyphish-example" data-grid="d">	
 				<ul>
-					<li><a href="#" class="ui-btn ui-shadow ui-corner-all"
-						id="twitter" data-icon="custom">Twitter</a></li>
-					<li><a href="#" class="ui-btn ui-shadow ui-corner-all"
-						id="facebook" data-icon="custom">Facebook</a></li>
-					<li><a href="#" class="ui-btn ui-shadow ui-corner-all"
-						id="kakaotalk" data-icon="custom">Kakao</a></li>
-					<li><a href="#" class="ui-btn ui-shadow ui-corner-all"
-						id="band" data-icon="custom">Band</a></li>
-					<li><a href="#" class="ui-btn ui-shadow ui-corner-all"
-						id="likeBtn" data-icon="custom">좋아요</a></li>
-				</ul>
+
+          <li><a class="ui-btn ui-shadow ui-corner-all" id="twitter">
+          <img src="../images/twitter.png" width="20" height="20"><p id="twitterFont">Twitter</p></a></li>
+            
+          <li><a class="ui-btn ui-shadow ui-corner-all" id="facebook">
+          <img src="../images/facebook.jpg" width="20" height="20"><p id="facebookFont">FaceBook</p></a></li>
+            
+           <li><a id="kakao-link-btn" href="javascript:;" class="ui-btn ui-shadow ui-corner-all"
+            id="kakaotalk"><img src="http://dn.api1.kage.kakao.co.kr/14/dn/btqa9B90G1b/GESkkYjKCwJdYOkLvIBKZ0/o.jpg" width="20" height="20"/>
+            <p id="kakaoFont">Kakao</p></a></li>
+
+          
+          <li><a  class="ui-btn ui-shadow ui-corner-all"
+            id="band">
+            <span>
+              <script type="text/javascript" src="//developers.band.us/js/share/band-button.js?v=20150126" width="20" height="20"></script>
+              <script type="text/javascript">
+                new ShareBand.makeButton({"lang":"ko","type":"b"}  );
+                </script>
+              </span><p id="bandFont">Band</p></a></li>
+            
+          <li><a href="#" class="ui-btn ui-shadow ui-corner-all"
+            id="likeBtn" data-icon="custom">좋아요</a></li>
+        </ul>
 			</div>
 			<!-- navbar -->
 
@@ -185,7 +218,7 @@ a#nextBoardBtn {
 
 
 
-
+<script src='boardView.js'></script>
 </body>
 </html>
 

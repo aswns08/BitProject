@@ -1,51 +1,60 @@
 var saveList = null;
+var community = false;
+var searchKey = null;
+
+/** ********** 검색 결과 ***************** */
+var currPageNo;
+var maxPageNo;
+var saveOrderBy = "";
+var ifLike = "";
 
 $(function() {
 	$("#left-panel").load("../auth/menu.html", function() {
-		$("#board").page("destroy").page();
+		$("#myPage").page("destroy").page();
 	});
-	
+
+	searchKey = decodeURI(url('?searchKey'));
+	console.log(searchKey);
+
 	/* 최초 검색 결과 */
 	daumShoppingSearch.init();
 	daumShoppingSearch.search();
-	
-	$('#min_price').click(function(event) {
-		daumShopping.sort = 'min_price';
-		daumShoppingSearch.search();
-	});
-
-	$('#max_price').click(function(event) {
-		daumShopping.sort = 'max_price';
-		daumShoppingSearch.search();
-	});
-
-	$('#pop').click(function(event) {
-		daumShopping.sort = 'pop';
-		daumShoppingSearch.search();
-	});
+	loadAddMoreBtn();
 
 	$('#searchPrice').click(function(event) {
-		alert('가격검색결과');
+		// alert('가격검색결과');
+		/* 최초 검색 결과 */
+		community = false;
+		console.log(community);
+
+		daumShoppingSearch.init();
+		daumShoppingSearch.search();
+		loadAddMoreBtn();
 	});
 
 	$('#good').click(function(event) {
-		alert('좋아요');
+		// alert('좋아요');
+		community = true;
+		ifLike = true;
+		loadGoodboard(1, searchKey);
 	});
 
 	$('#bad').click(function(event) {
-		alert('나빠요');
+		// alert('나빠요');
+		community = true;
+		ifLike = false;
+		loadBadboard(1, searchKey);
 	});
 });
 
-$('#select-choice').on('change', function() {
-	// alert($("#select-choice").val());
-	daumShopping.sort = $("#select-choice").val();
-	daumShoppingSearch.search();
-
+$(document).on('click', '.data-row a', function() {
+	// console.log($(this).attr('data-no'));
+	plusCount($(this).attr('data-no'));
 });
 
-$(document).on("click", "#minPrice", function() {
-	daumShopping.sort = 'min_price';
+$(document).on("click", "#select-choice", function() {
+	// alert($("#select-choice").val());
+	daumShopping.sort = $("#select-choice").val();
 	daumShoppingSearch.search();
 });
 
@@ -62,11 +71,18 @@ $(document).on("click", ".heart", function() {
 	console.log("하트 선택 : " + saveList[index].title);
 });
 
-$(document).on("click", "#addMoreBtn", function() {
-	daumShopping.pgno += 1;
-
-	daumShopping.pingSearch(daumShopping.pgno);
-});
+$(document).on(
+		"click",
+		"#addMoreBtn",
+		function() {
+			if (community) {
+				loadBoardList(currPageNo + 1, 'new', ifLike, true, false,
+						false, searchKey);
+			} else {
+				daumShopping.pgno += 1;
+				daumShopping.pingSearch(daumShopping.pgno);
+			}
+		});
 
 var daumShoppingSearch = {
 	/** 초기화. * */
@@ -75,7 +91,7 @@ var daumShoppingSearch = {
 
 		this.apikey = "e38e5c77dea80a89e0e857cf0ee268dd4879734c";
 
-		this.q = getURLParameter('searchKey');
+		this.q = "'" + searchKey + "'";
 		console.log("검색 키워드 : " + this.q);
 
 		// 검색 객체들 초기화.
@@ -86,8 +102,7 @@ var daumShoppingSearch = {
 		console.log('daumShoppingSearch search()');
 
 		this.query = '?apikey=' + this.apikey + '&output=json&q='
-				+ encodeURI(this.q);
-
+				+ this.q;
 		console.log(this.query);
 
 		// 검색어에 맞게 각각 첫페이지를 띄움.
@@ -105,12 +120,13 @@ var daumShoppingSearch = {
 			success : function(responseData, textStatus, errorThrown) {
 				if (saveList == null) {
 					saveList = responseData.channel.item;
-					resultNav(responseData);
-				} else {
+					/*
+					 * resultNav(responseData);
+					 */} else {
 					$.merge(saveList, responseData.channel.item);
 				}
 
-				var transfromData = yyyyMMdd(responseData);
+				var transfromData = yyyyMMddpriceResultFormat(responseData);
 				transfromData = priceFormat(transfromData);
 
 				daumShoppingSearch.pongSearch(transfromData);
@@ -132,12 +148,10 @@ var daumShoppingSearch = {
 
 		require([ 'text!templates/api-table.html' ], function(html) {
 			var template = Handlebars.compile(html);
-			if (daumShopping.pgno == 1) {
-				$('#listDiv').html(template(data));
-			} else {
-				$("#listDiv").append(template(data));
-			}
-			$('#board').page('destroy').page();
+
+			$("#listDiv").append(template(data));
+
+			$('#myPage').page('destroy').page();
 		});
 	}
 };
@@ -164,13 +178,13 @@ var daumShopping = {
 	}
 };
 
-function yyyyMMdd(data) {
+function yyyyMMddpriceResultFormat(data) {
 	var str;
 	var date;
 
 	for ( var i in data.channel.item) {
 		date = data.channel.item[i].publish_date;
-		str = date.substr(0, 4) + "-" + date.substr(4, 2) + "-"
+		str = date.substr(0, 4) + "." + date.substr(4, 2) + "."
 				+ date.substr(6, 2);
 		data.channel.item[i].publish_date = str;
 	}
@@ -189,12 +203,171 @@ function priceFormat(data) {
 	return data
 }
 
-/* url parse */
-function getURLParameter(name) {
-	return decodeURI((RegExp(name + '=' + '(.+?)(&|$)').exec(location.search) || [
-			, null ])[1]);
+/** ********** 검색 결과 ***************** */
+function loadGoodboard(pageNo, data) {
+	loadBoardList(pageNo, 'new', ifLike, true, true, false, data);
 }
 
-function resultNav(data) {
-	$(totalResult).html(data.channel.totalCount);
+function loadBadboard(pageNo, data) {
+	loadBoardList(pageNo, 'new', ifLike, true, true, false, data);
+}
+
+function setPageNo(pageNo, maxPageNo) {
+	window.currPageNo = pageNo;
+	window.maxPageNo = maxPageNo;
+}
+
+function plusCount(bno) {
+	console.log('조회수증가 ' + bno);
+	$.post('../json/board/plusCount.do' /* URL */
+	, { /* 서버에 보낼 데이터를 객체에 담아 넘긴다 */
+		no : bno
+	}, function(result) { /* 서버로부터 응답을 받았을 때 호출될 메서드 */
+		if (result.status == "success") {
+			$('#btnCancel').click(); // click 이벤트 발생시킴.
+			location.href = '../board/boardView.html?no=' + bno;
+		} else {
+			alert("등록 실패!");
+		}
+	}, 'json' /* 서버가 보낸 데이터를 JSON 형식으로 처리 */)
+	/* 서버 요청이 실패했을 때 호출될 함수 등록 */
+	.fail(function(jqXHR, textStatus, errorThrown) {
+		alert(textStatus + ":" + errorThrown);
+	});
+}
+
+function loadBoardList(pageNo, orderBy, ifLike, title, content, writer, search) {
+	// console.log($("#select-native-1").val());
+	saveOrderBy = orderBy;
+
+	if (pageNo <= 0)
+		pageNo = currPageNo;
+
+	if (orderBy == null)
+		orderBy = "";
+	if (ifLike == null)
+		ifLike = "";
+	if (title == null)
+		title = "";
+	if (content == null)
+		content = "";
+	if (writer == null)
+		writer = "";
+	if (search == null)
+		search = "";
+
+	$.getJSON('../json/board/list.do?pageNo=' + pageNo + '&orderBy=' + orderBy
+			+ '&ifLike=' + ifLike + '&title=' + title + '&writer=' + writer
+			+ '&content=' + content + '&search=' + search, function(data) {
+		var boards = data.boards;
+
+		console.log("불러온 데이터 수: " + boards.length);
+		// console.log(boards);
+		if (boards.length == 0) {
+			var msg = '검색된 결과가 없습니다.';
+			$('#listDiv').html(msg);
+			setPageNo(null, null);
+
+		} else {
+			yyyyMMddList(boards);
+
+			require([ 'text!../board/templates/board-table.html' ], function(
+					html) {
+				var template = Handlebars.compile(html);
+
+				if (currPageNo == 1) {
+					$('#listDiv').html(template(data));
+				} else {
+					$('#listDiv').append(template(data));
+				}
+
+				$('#myPage').page('destroy').page();
+			});
+			setPageNo(data.currPageNo, data.maxPageNo);
+		}
+		loadAddMoreBtn();
+	});
+}
+
+/* 날짜 포맷 */
+function yyyyMMddList(boards) {
+	if (boards) {
+		// 현재날짜
+		var currentDate = new Date();
+		// console.log("현재날짜 :" + currentDate);
+
+		var str;
+		for ( var board in boards) {
+			// 데이터베이스 날짜
+			var dbDate = new Date(boards[board].date);
+
+			str = "";
+			if (!compareDate(currentDate, dbDate)) {
+				str = dbDate.getFullYear() + '.';
+
+				if (dbDate.getMonth() < 9)
+					str += '0';
+				str += (dbDate.getMonth() + 1) + '.';
+
+				if (dbDate.getDate() < 10)
+					str += '0';
+				str += dbDate.getDate();
+			} else {
+				if (dbDate.getHours() < 10)
+					str += '0';
+				str += dbDate.getHours() + ":";
+
+				if (dbDate.getMinutes() < 10)
+					str += '0';
+				str += dbDate.getMinutes();
+			}
+
+			boards[board].date = str;
+		}
+	} else {
+		return '';
+	}
+}
+
+function compareDate(currentDate, dbDate) {
+	if (yyyyMMdd(currentDate) == yyyyMMdd(dbDate))
+		return true;
+	else
+		false;
+}
+
+function yyyyMMdd(date) {
+	if (date) {
+		var date = new Date(date);
+		var str = date.getFullYear();
+
+		if (date.getMonth() < 9)
+			str += '0';
+		str += (date.getMonth() + 1);
+
+		if (date.getDate() < 10)
+			str += '0';
+		str += date.getDate();
+
+		return str;
+
+	} else {
+		return '';
+	}
+}
+
+function loadAddMoreBtn() {
+	if (community) {
+		/*
+		 * console.log("currPageNo : " + currPageNo + "\nmaxPageNo : " +
+		 * maxPageNo);
+		 */
+		if ((currPageNo + 1) < maxPageNo) {
+			$('#addMoreA').css('display', '');
+		} else {
+			$('#addMoreA').css('display', 'none');
+		}
+	} else {
+		$('#addMoreA').css('display', '');
+	}
 }

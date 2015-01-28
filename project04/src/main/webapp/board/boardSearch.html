@@ -35,8 +35,8 @@
 	<div data-role="page" id="boardSearch">
 		<div data-role="header" data-position="fixed">
 			<h1>게시글 검색</h1>
-			<a href="index.html" data-icon="bars" class="ui-btn-left"
-				data-iconpos="notext"></a>
+			<a href="#" data-rel="back"
+				class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-corner-all ui-nodisc-icon transparentButton">before</a>
 		</div>
 		<!-- /header -->
 
@@ -53,17 +53,18 @@
  -->
 			<div data-role="navbar">
 				<ul>
-					<li><a href="#" data-role="button" onClick = "selectAll()"
+					<li><a href="#" data-role="button" id=selectAll
 						data-ajax="false" class="ui-btn-active">제목+내용</a></li>
-					<li><a href="#" data-role="button" onClick = "selectTitle()"
+					<li><a href="#" data-role="button" id=selectTitle
 						data-ajax="false">제목</a></li>
-					<li><a href="#" data-role="button" onClick = "selectWriter()"
+					<li><a href="#" data-role="button" id=selectWriter
 						data-ajax="false">작성자</a></li>
 				</ul>
 			</div>
 
 			<div>
-				<input id="inputSearch" type="search" name="search" id="search-basic" value="" />
+				<input id="inputSearch" type="search" name="search"
+					id="search-basic" value="" />
 			</div>
 			&nbsp;
 			<!-- 			</div>

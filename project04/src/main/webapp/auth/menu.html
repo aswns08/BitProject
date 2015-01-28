@@ -1,13 +1,19 @@
 <script src="../common/common.js"></script>
 
 <div data-role="content"
-	style="padding-top: 0px; padding-left: 0px; padding-right: 0px; background-color: #F1F1F1;">
+	style="padding: 0px; background-color: #F1F1F1;">
 	<div class="sc_psn" style="background-color: #fa5a44; height: 50px">
 		<div class="sc_psn_stt">
 			<a href="/" id='loginBtn' style="margin-left: 10px; text-decoration: none;"> <strong
 				style="color: #ffffff; line-height: 50px;"><span id="signIn">로그인 하세요</span>
-				<span id="signOut"></span></strong>
+				</strong>
 			</a>
+			
+			<a href="/" class='logoutBtn' style="margin-left: 10px; text-decoration: none;"> <strong
+        style="color: #ffffff; line-height: 50px;"><span id='userName'></span>
+        </strong>
+      </a>
+			
 			<button
 				class="ui-btn-right ui-btn ui-btn-inline ui-corner-all ui-icon-delete
             ui-btn-icon-notext ui-corner-all ui-nodisc-icon transparentButton"
@@ -87,11 +93,17 @@
 					<img src="../images/customIcons/ic_action_emo_cry.png" alt="bad"
 					class="ui-li-icon" style="padding-left: 10px"> <strong
 					style="letter-spacing: 2px;"> 나빠요 </strong>
-
+      
 			</a></li>
+			&nbsp;
+			<!-- <li class='logoutBtn' style="background-color: #F1F1F1; 
+			 display:none;">로그아웃</li> -->
+			 
+			<!-- <li id='null_list' style="background-color: #F1F1F1"></li> --> 
 		</ul>
+	    <h3 class='logoutBtn' align="center" style="display:none">로그아웃</h3>
 	</div>
-	<h1 id='logoutBtn' align="center" style="display:none">로그아웃</h1>	
+		
 </div>
 <!-- content -->
 

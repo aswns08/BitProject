@@ -1,5 +1,6 @@
 $(document).bind('pageinit', function() {
 });
+// $.mobile.defaultPageTransition = 'slide';
 
 var currPageNo;
 var maxPageNo;
@@ -8,31 +9,21 @@ var ifLike = "";
 
 // $(document).ready(function(){});
 $(function() {
-	$("#left-panel").load("../auth/menu.html", function() {
-		$("#board").page("destroy").page();
-	});
-	
 	// url 파싱
 	// console.log("URL : " + url());
 
 	if (url('?orderBy') != "null") {
 		ifLike = url('?orderBy');
-	}	
-		
-	/* 동적으로 셀렉트 옵션 지정 */	
-	$('#select-native-1 option')
-    .removeAttr('selected')
-    .filter('[value="' + url('?ifLike') +'"]')
-        .attr('selected', true)
-	$('#select-native-1').selectmenu('refresh');        
-        
+	}
+
 	loadBoardList(1, url('?orderBy'), url('?ifLike'), url('?title'),
 			url('?content'), url('?writer'), url('?search'));
 
-	$(document).on('click', '.data-row a', function() {
+	/*$(document).on('click', '.data-row a', function() {
+		alert('23423');
 		// console.log($(this).attr('data-no'));
 		plusCount($(this).attr('data-no'));
-	});
+	});*/
 
 	// 미사용?
 	/*
@@ -59,7 +50,7 @@ $(function() {
 	$('#select-native-1').on(
 			'change',
 			function() {
-				//console.log($(this).val());
+				// console.log($(this).val());
 
 				ifLike = $("#select-native-1").val();
 				loadBoardList(1, url('?orderBy'), $(this).val(), url('?title'),
@@ -89,7 +80,7 @@ $(function() {
 });
 
 function plusCount(bno) {
-	console.log('조회수증가 ' + bno);
+	 console.log('조회수증가 ' + bno);
 	$.post('../json/board/plusCount.do' /* URL */
 	, { /* 서버에 보낼 데이터를 객체에 담아 넘긴다 */
 		no : bno
@@ -135,6 +126,12 @@ function loadBoardList(pageNo, orderBy, ifLike, title, content, writer, search) 
 	if (pageNo <= 0)
 		pageNo = currPageNo;
 
+	/*
+	 * console.log("pageNo : " + pageNo + "\norderBy : " + orderBy + "\nifLike : " +
+	 * ifLike + "\ntitle : " + title + "\ncontent : " + content + "\nwriter : " +
+	 * writer + "\nsearch : " + search);
+	 */
+
 	if (orderBy == null)
 		orderBy = "";
 	if (ifLike == null)
@@ -148,13 +145,20 @@ function loadBoardList(pageNo, orderBy, ifLike, title, content, writer, search) 
 	if (search == null)
 		search = "";
 
+	/*
+	 * console.log("---------------------------"); console.log("pageNo : " +
+	 * pageNo + "\norderBy : " + orderBy + "\nifLike : " + ifLike + "\ntitle : " +
+	 * title + "\ncontent : " + content + "\nwriter : " + writer + "\nsearch : " +
+	 * search);
+	 */
+
 	$.getJSON('../json/board/list.do?pageNo=' + pageNo + '&orderBy=' + orderBy
 			+ '&ifLike=' + ifLike + '&title=' + title + '&writer=' + writer
 			+ '&content=' + content + '&search=' + search, function(data) {
 		var boards = data.boards;
 
 		// console.log("불러온 데이터 수: " + boards.length);
-		// console.log(boards);
+		console.log(boards);
 		if (boards.length == 0) {
 			var msg = '검색된 결과가 없습니다.';
 			$('#listDiv').html(msg);
@@ -206,7 +210,11 @@ function yyyyMMddList(boards) {
 				str += dbDate.getMinutes();
 			}
 
+			// console.log("이전 : " + boards[board].date);
+			// console.log(str);
 			boards[board].date = str;
+			// console.log("이전 : 이후" +boards[board].date);
+
 		}
 	} else {
 		return '';

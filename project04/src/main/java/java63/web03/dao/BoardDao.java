@@ -14,16 +14,19 @@ public interface BoardDao {
   
   List<?> selectList(Map<String,Object> params);  
  
-  Integer prevBoard(Board board);
-  Integer nextBoard(Board board);
+  Integer  prevBoard(Board board);
+  Integer  nextBoard(Board board);
   
   void insert(Board board);
-  /*void insertPhoto(Board board);
+  
+  void insertPhoto(Board board);
   List<?> selectPhoto(int boardNo);
-  void deletePhoto(int boardNo);*/
+  void deletePhoto(int boardNo);
+  
   int totalSize();
   int goodSize();
   int badSize();
+  //void insertImg(Board board);
 
 }
 

@@ -14,7 +14,7 @@ $('#loginBtn').click(function() {
 	location.href = '../auth/login.html';
 });
 
-$('#logoutBtn').click(function(event) {
+$('.logoutBtn').click(function(event) {
 	$.getJSON('../json/auth/logout.do', function(data) {
 		location.href = '../auth/login.html';
 	});

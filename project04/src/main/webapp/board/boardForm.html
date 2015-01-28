@@ -6,7 +6,11 @@
 <link rel="stylesheet"
 	href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
 <link rel="stylesheet" href="../css/red.css" />
+<link rel="stylesheet" href="../css/jquery-te-1.4.0.css" />
 <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script
+	src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script type="text/javascript" src='../js/jquery.form.js'></script>
 
 <script type="text/javascript">
 	$(document).bind('mobileinit', function() {
@@ -14,8 +18,6 @@
 	});
 </script>
 
-<script
-	src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 <style>
 .ui-select {
 	margin-top: 0;
@@ -38,15 +40,17 @@
 
 	<!-- Start of first page -->
 	<div data-role="page" id="boardWrite">
-		<form class='form-horizontal' role='form'>
-		
+		<form id='myFormId' class='form-horizontal' role='form'
+			action="../json/board/add.do" enctype="multipart/form-data"
+			method="post">
+
 			<div data-role="header">
-				<a href="#" data-rel="back" data-icon="carat-l" class="ui-btn-left"
-					data-iconpos="notext"></a>
+				<a href="#" data-rel="back"
+					class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-corner-all ui-nodisc-icon transparentButton">before</a>
 				<h1>게시글 작성</h1>
 				<button
 					class="ui-btn-right ui-btn ui-btn-b ui-btn-inline ui-mini ui-corner-all ui-btn-icon-right ui-icon-check"
-					type='button' id='btnAdd'>저장</button>
+					type='submit' id='btnAdd'>저장</button>
 			</div>
 			<!-- /header -->
 
@@ -75,7 +79,14 @@
 					<input type='text' class='form-control' id='productNo'
 						name='productNo' placeholder='제품번호'>
 				</div>
+
+				<label for='productNo' class='col-sm-2 control-label'>사진</label>
+				<div class='col-sm-10'>
+					<input type='file' class='form-control' id='photoFile' name='photoFile'>
+				</div>
 			</div>
+
+
 
 		</form>
 
@@ -108,6 +119,8 @@
 
 	<script type="text/javascript" src='../js/handlebars-v2.0.0.js'></script>
 	<script type="text/javascript" src='../js/require.js'></script>
+	<!-- 	<script type="text/javascript" src='../js/jquery-te-1.4.0.js'></script>
+ -->
 	<script src='boardForm.js'></script>
 
 

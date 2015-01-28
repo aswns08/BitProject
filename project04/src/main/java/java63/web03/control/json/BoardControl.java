@@ -1,5 +1,6 @@
 package java63.web03.control.json;
 
+import java.io.File;
 import java.util.HashMap;
 import java63.web03.domain.Board;
 import java63.web03.service.BoardService;
@@ -13,6 +14,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.multipart.MultipartFile;
 
 @Controller("json.boardControl")
 @RequestMapping("/json/board")
@@ -26,17 +28,24 @@ public class BoardControl {
   ServletContext servletContext;
 
   @RequestMapping(value = "/add", method = RequestMethod.POST)
-  public Object add(Board board) throws Exception {
+  public Object add(Board board, MultipartFile photoFile) throws Exception {
 
-    /*
-     * if (board.getPhotofile() != null && !board.getPhotofile().isEmpty()) {
-     * 
-     * String fileuploadRealPath = servletContext.getRealPath("/fileupload");
-     * String filename = System.currentTimeMillis() + "_"; File file = new
-     * File(fileuploadRealPath + "/" + filename);
-     * 
-     * board.getPhotofile().transferTo(file); board.setPhoto(filename); }
-     */
+    // 이미지 업로드
+    System.out.println(">>제목 : " + board.getTitle());
+    
+    if (photoFile != null && !photoFile.isEmpty()) {
+      String fileuploadRealPath = servletContext.getRealPath("/fileupload");
+      
+      System.out.println(">>이미지 : " + fileuploadRealPath);
+
+      String filename = System.currentTimeMillis() + "_";
+      File file = new File(fileuploadRealPath + "/" + filename);
+
+      System.out.println(">>이미지경로 : " + file);
+
+      photoFile.transferTo(file);
+      board.setPhoto(filename);
+    }
 
     boardService.add(board);
 
@@ -66,17 +75,11 @@ public class BoardControl {
       @RequestParam(required = false) Boolean writer,
       @RequestParam(required = false) String search,
       @RequestParam(required = false) Boolean ifLike,
-      @RequestParam(defaultValue = "new") String orderBy      
-      ) throws Exception {
-    
-    System.out.println(">> control 쿼리입력값" 
-    + " | " + title 
-    + " | " + content
-    + " | "+ writer
-    + " | "+ search
-    + " | "+ ifLike
-    + " | "+ orderBy);
-    
+      @RequestParam(defaultValue = "new") String orderBy) throws Exception {
+
+    System.out.println(">> control 쿼리입력값" + " | " + title + " | " + content
+        + " | " + writer + " | " + search + " | " + ifLike + " | " + orderBy);
+
     if (pageSize <= 0)
       pageSize = PAGE_DEFAULT_SIZE;
 
@@ -92,9 +95,8 @@ public class BoardControl {
     resultMap.put("currPageNo", pageNo);
     resultMap.put("maxPageNo", maxPageNo);
 
-    // 수정
-    resultMap.put("boards", boardService.getList(pageNo, pageSize, 
-        title, content, writer, search, ifLike, orderBy));
+    resultMap.put("boards", boardService.getList(pageNo, pageSize, title,
+        content, writer, search, ifLike, orderBy));
 
     return resultMap;
   }
@@ -118,14 +120,14 @@ public class BoardControl {
     resultMap.put("status", "success");
     return resultMap;
   }
-  
+
   @RequestMapping("/plusReco")
   public Object plusReco(int no) throws Exception {
     Board board = boardService.get(no);
 
     int reco = boardService.plusReco(board);
     System.out.println("추천수 : " + reco);
-    
+
     HashMap<String, Object> resultMap = new HashMap<>();
     resultMap.put("status", "success");
     resultMap.put("reco", reco);
@@ -146,10 +148,13 @@ public class BoardControl {
   @RequestMapping("/view")
   public Object view(int no, Model model) throws Exception {
     Board board = boardService.get(no);
-
+   
     HashMap<String, Object> resultMap = new HashMap<>();
+    
     resultMap.put("status", "success");
     resultMap.put("board", board);
+    resultMap.put("photos", board.getPhotoList());
+
     return resultMap;
   }
 
@@ -157,13 +162,24 @@ public class BoardControl {
   public Object moveBoard(@RequestParam(required = false) int no)
       throws Exception {
     Board board = boardService.get(no);
+
     int prev = boardService.getBoardNo(board, "prev");
     int next = boardService.getBoardNo(board, "next");
 
     HashMap<String, Object> resultMap = new HashMap<>();
     resultMap.put("status", "success");
-    resultMap.put("prevBoard", prev);
-    resultMap.put("nextBoard", next);
+
+    if (prev > 0) {
+      resultMap.put("prevBoard", boardService.get(prev));
+    } else {
+      resultMap.put("prevBoard", "");
+    }
+
+    if (next > 0) {
+      resultMap.put("nextBoard", boardService.get(next));
+    } else {
+      resultMap.put("nextBoard", "");
+    }
 
     return resultMap;
   }

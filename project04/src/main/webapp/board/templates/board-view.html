@@ -1,34 +1,23 @@
-<div id="title" class="ui-bar ui-bar-d">
-	<p>{{title}}</p>
-</div>
-<div id="ddd">
-	<div id="id" class="ui-bar ui-bar-d">
-		<p>{{userName}}</p>
+<div id="titleSection">
+	<div>
+		<h3 id='title'>{{board.title}}</h3>
 	</div>
-
-	<div class="ui-grid-b">
-		<div class="ui-block-a">
-			<div class="ui-bar ui-bar-d">
-				<p>날짜: <span id='dateFormat'></span></p>
-			</div>
-		</div>
-
-		<div class="ui-block-b">
-			<div class="ui-bar ui-bar-d">
-				<p>조회수 : {{count}}</p>
-			</div>
-		</div>
-
-		<div class="ui-block-c">
-			<div class="ui-bar ui-bar-d">
-				<p>추천수 : <span id='originReco'>{{recommend}}</span>
-				<span id='updateReco'></span>
-				</p>
-			</div>
-		</div>
+	<div id="detailSection">
+		<p>
+			{{board.userName}} | 날짜: <span id='dateFormat'></span> | 조회수 : {{board.count}} |
+			추천수 : <span id='originReco'>{{board.recommend}}</span> <span
+				id='updateReco'></span>
+		</p>
+		<a href="#" data-rel="back" class="listBtn"><span>목록</span></a> <a
+			href="#" class="listBtn" id="anotherReplyBtn"><span>댓글</span><span
+			id='rcountStyle'> {{board.rcount}}</span></a>
 	</div>
 </div>
-
-<div id='contents'>
-	<p>{{content}}</p>
+</div>
+</div>
+<div id="article">
+	{{#each photos}}	
+	<img src = "../fileupload/{{url}}">
+	{{/each}}
+	<p>{{board.content}}</p>
 </div>

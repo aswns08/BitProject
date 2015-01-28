@@ -2,6 +2,9 @@ package java63.web03.domain;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
+
+import org.springframework.web.multipart.MultipartFile;
 
 public class Board implements Serializable {
   private static final long serialVersionUID = 1L;
@@ -16,11 +19,11 @@ public class Board implements Serializable {
   protected Date date;
   protected int count;
   protected int recommend;
-  protected String imgUrl;
+  protected String photo;
+  protected List<?> photoList;
+
   protected int rcount;
-  
-  
-  
+
   public int getRcount() {
     return rcount;
   }
@@ -83,9 +86,8 @@ public class Board implements Serializable {
 
   public void setContent(String content) {
     this.content = content;
-  } 
-  
- 
+  }
+
   public Date getDate() {
     return date;
   }
@@ -109,17 +111,25 @@ public class Board implements Serializable {
   public void setRecommend(int recommend) {
     this.recommend = recommend;
   }
-
-  public String getImgUrl() {
-    return imgUrl;
+  
+  public List<?> getPhotoList() {
+    return photoList;
   }
 
-  public void setImgUrl(String imgUrl) {
-    this.imgUrl = imgUrl;
+  public void setPhotoList(List<?> photoList) {
+    this.photoList = photoList;
   }
 
   public static long getSerialversionuid() {
     return serialVersionUID;
+  }
+
+  public String getPhoto() {
+    return photo;
+  }
+
+  public void setPhoto(String photo) {
+    this.photo = photo;
   }
 
   @Override
@@ -127,11 +137,8 @@ public class Board implements Serializable {
     return "Board [no=" + no + ", userNo=" + userNo + ", userName=" + userName
         + ", productNo=" + productNo + ", ifLike=" + ifLike + ", title="
         + title + ", content=" + content + ", date=" + date + ", count="
-        + count + ", recommend=" + recommend + ", imgUrl=" + imgUrl
-        + ", rcount=" + rcount + "]";
-  }
+        + count + ", recommend=" + recommend + ", photo=" + photo
+        + ", photoList=" + photoList + ", rcount=" + rcount + "]";
+  }  
 
- 
-
- 
 }

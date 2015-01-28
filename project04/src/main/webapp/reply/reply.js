@@ -7,7 +7,7 @@ var data_rno;
 $(function(){
 
   currentBoard = getURLParameter('no');
-  console.log("---->",currentBoard);
+  console.log("현재게시글번호---->",currentBoard);
   
   loadBoardView(currentBoard);
   loadReplyList(1, currentBoard);
@@ -56,7 +56,10 @@ $('.cancelBtn').click(function(event){
 
 /* 댓글 쓰기 페이지로 이동 */
 $('.writeReply').click(function(event){
-  location.href = 'writeReply.html?no=' + currentBoard;
+  if(loginUser == null) {
+    alert("로그인 후 이용이 가능합니다.");
+  } else 
+    location.href = 'writeReply.html?no=' + currentBoard;
 });
 
 function setPageNo(currPageNo, maxPageNo) {
@@ -103,7 +106,9 @@ function loadReplyList(pageNo, bno) {
          $('#listDiv').append(template(data));
        }
        $('#reply').page('destroy').page();
+       console.log("회원정보 ?!!", loginUser.no);
      });
+     loadAddMoreBtn();
    
   });
 }
@@ -197,4 +202,13 @@ function getURLParameter(name) {
   return decodeURI((RegExp(name + '=' + '(.+?)(&|$)').exec(location.search) || [
       , null ])[1]);
 }
+
+function loadAddMoreBtn() {
+  if (currPageNo < maxPageNo) {
+    $('#addMoreA').css('display', '');
+  } else {
+    $('#addMoreA').css('display', 'none');
+  }
+}
+
 

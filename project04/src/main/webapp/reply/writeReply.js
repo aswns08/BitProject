@@ -3,14 +3,9 @@ var currentBoard;
 
 $(function(){
     currentBoard = getURLParameter('no');
-    console.log("---->",currentBoard);
+    console.log("현재게시글번호---->",currentBoard);
 });  
   
-
-$("#backLink").click(function(event) {
-    event.preventDefault();
-    history.back(1);
-});
   
 $('#btnSave').click(function(){
   console.log("=========>",loginUser.no);
@@ -30,7 +25,7 @@ $('#btnSave').click(function(){
       
     }, function(result) { /* 서버로부터 응답을 받았을 때 호출 될 메서드 */
       if (result.status == "success") {
-        alert("등록성공");
+        //alert("등록성공");
         location.href = 'reply.html?no=' + currentBoard;
         $('#btnCancel').click(); // click 이벤트 발생 시킴.
       } else {
@@ -45,11 +40,6 @@ $('#btnSave').click(function(){
   });
   
   function validateForm() {
-    if ( $('#uno').val() == 0) {
-      alert('회원번호는 필수 입력 항목입니다.');
-      return false;
-    }
-    
     if ( $('#rContent').val().length == 0) {
       alert('내용을 입력하세요.');
       return false;

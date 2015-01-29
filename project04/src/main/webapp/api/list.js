@@ -214,7 +214,7 @@ var daumShoppingSearch = {
 	},
 	/** 결과를 뿌려줌. * */
 	pongSearch : function(data) {
-	  console.log(data);
+	  console.log("결과 데이터------------>",data);
 		if (daumShopping.pgno == 1) {
 			require([ 'text!templates/api-top.html' ], function(html) {
 				var template = Handlebars.compile(html);

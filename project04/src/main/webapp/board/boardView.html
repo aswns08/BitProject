@@ -129,6 +129,10 @@ margin : 0px;
 #bandFont {
 margin : 0px;
 } 
+
+#likeFont{
+margin : 0px;
+}
 </style>
 </head>
 
@@ -137,12 +141,9 @@ margin : 0px;
 	<!-- Start of first page -->
 	<div data-role="page" id="boardWrite">
 		<div data-role="header" data-position="fixed">
-		
 			<h1 id='ifLikeHeader'></h1>
-			
 			<a href="#" data-rel="back"
-        class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-corner-all ui-nodisc-icon transparentButton">before</a>
-			
+				class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-corner-all ui-nodisc-icon transparentButton">before</a>
 		</div>
 		<!-- /header -->
 
@@ -150,7 +151,7 @@ margin : 0px;
 			<div id='listDiv'></div>
 			<!-- contents -->
 
-			<div data-role="navbar" class="nav-glyphish-example" data-grid="d">	
+			<div data-role="navbar" class="nav-glyphish-example" data-grid="d" data-position="fixed">	
 				<ul>
 
           <li><a class="ui-btn ui-shadow ui-corner-all" id="twitter">
@@ -164,7 +165,7 @@ margin : 0px;
             <p id="kakaoFont">Kakao</p></a></li>
 
           
-          <li><a  class="ui-btn ui-shadow ui-corner-all"
+          <li><a class="ui-btn ui-shadow ui-corner-all"
             id="band">
             <span>
               <script type="text/javascript" src="//developers.band.us/js/share/band-button.js?v=20150126" width="20" height="20"></script>
@@ -173,8 +174,8 @@ margin : 0px;
                 </script>
               </span><p id="bandFont">Band</p></a></li>
             
-          <li><a href="#" class="ui-btn ui-shadow ui-corner-all"
-            id="likeBtn" data-icon="custom">좋아요</a></li>
+          <li><a href="#" class="ui-btn ui-shadow ui-corner-all" id="likeBtn" >
+          <img src="../images/good.png" width="20" height="20"><p id="likeFont">좋아요</p></a></li>
         </ul>
 			</div>
 			<!-- navbar -->

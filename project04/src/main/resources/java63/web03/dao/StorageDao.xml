@@ -14,65 +14,75 @@
     <!-- PK 컬럼은 id 태그를 사용하여 지정한다. -->
     <id column="SNO" property="sno"/>
     <result column="CATEGORY" property="category"/>
-    <result column="SDATE" property="sDate"/>
+    <result column="SDATE" property="sdate"/>
     <result column="LINK" property="link"/>
     <result column="UNO" property="uno"/>
     <result column="PRICE" property="price"/>
     <result column="TITLE" property="title"/>
-    <result column="IMG_URL" property="imgUrl"/>
+    <result column="IMG_URL" property="img_url"/>
+    <result column="DOCID" property="docid"/>
   </resultMap>
   
-  <sql id="storageSelect">
-    SELECT SNO, CATEGORY, SDATE, LINK, UNO, PRICE, TITLE, IMG_URL 
+  
+ <!--  <sql id="storageSelect">
+    SELECT CATEGORY, SDATE, LINK, UNO, PRICE, TITLE, IMG_URL, DOCID
     FROM STORAGE
-  </sql>
+  </sql> -->
+  
+  <sql id="storageSelect">
+    SELECT SNO,CATEGORY,SDATE,LINK,UNO,PRICE,TITLE,IMG_URL,DOCID
+    FROM STORAGE
+  </sql> 
   
   <select id="selectList" parameterType="map" 
         resultMap="storageMap">
     SELECT 
-		  SNO, 
-		  CATEGORY, 
-		  SDATE, 
-		  LINK,
-		  UNO,
-		  PRICE,
-		  TITLE,
-		  IMG_URL
-		FROM STORAGE 
+    SNO,CATEGORY,SDATE,LINK,UNO,PRICE,TITLE,IMG_URL,DOCID
+    FROM STORAGE
+    ORDER BY SNO DESC
     <if test="pageSize > 0">
       limit #{startIndex}, #{pageSize}
     </if>
   </select>
   
-  <select id="selectOne" parameterType="int" resultMap="storageMap">
-    <include refid="storageSelect"/> 
-    WHERE SNO=#{value}
-  </select>
-  
   <select id="totalSize" resultType="int">
     SELECT count(SNO) FROM STORAGE
+    <!-- WHERE UNO=#{value} -->
   </select>
+  
+  
+  <select id="selectOne" parameterType="String" resultMap="storageMap">
+    <include refid="storageSelect"/> 
+    WHERE DOCID=#{value}
+  </select> 
+  
+<!--   <select id="selectOne" parameterType="String">
+      SELERT SNO
+      FROM STORAGE
+      WHERE DOCID=#{docid}
+  </select> -->
+
   
   <insert id="insert" parameterType="Storage"
     useGeneratedKeys="true" keyColumn="SNO" keyProperty="sno">
-    INSERT INTO STORAGE(SNO,CATEGORY,SDATE,LINK,UNO,PRICE,TITLE,IMG_URL) 
-    VALUES (#{sno},#{category},#{sDate},#{link},#{uno},#{price},#{title},#{imgUrl})
+    INSERT INTO STORAGE(CATEGORY,SDATE,LINK,UNO,PRICE,TITLE,IMG_URL,DOCID) 
+    VALUES (#{category},#{sdate},#{link},#{uno},#{price},#{title},#{img_url},#{docid})
   </insert>
   
   <update id="update" parameterType="Storage">
     UPDATE STORAGE SET 
       CATEGORY=#{category},
-      SDATE=#{sDate},
+      SDATE=#{sdate},
       LINK=#{link},
       UNO=#{uno},
       PRICE=#{price},
       TITLE=#{title},
-      IMG_URL=#{imgUrl} 
+      IMG_URL=#{img_url}
     WHERE SNO=#{sno}
   </update>
   
-  <delete id="delete" parameterType="int">
-    DELETE FROM STORAGE WHERE SNO=#{value}
+  <delete id="delete" parameterType="String">
+    DELETE FROM STORAGE WHERE DOCID=#{value}
   </delete>
   
   

@@ -14,9 +14,9 @@ import java63.web03.domain.Storage;
  * => 인터페이스 패키지도 SQL 맵퍼 파일의 네임스페이스와 같아야 한다. 
  */
 public interface StorageDao {
-  Storage selectOne(int sno);
+  Storage selectOne(String docid);
   void update(Storage storage);
-  void delete(int sno);
+  void delete(String docid);
   List<?> selectList(Map<String,Object> params);
   void insert(Storage storage);
   int totalSize();

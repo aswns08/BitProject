@@ -24,7 +24,6 @@ public class StorageService {
     HashMap<String,Object> paramMap = new HashMap<>();
     paramMap.put("startIndex", ((pageNo - 1) * pageSize));
     paramMap.put("pageSize", pageSize);
-    
     return storageDao.selectList(paramMap);
   }
   
@@ -32,35 +31,70 @@ public class StorageService {
     
     int totalSize = storageDao.totalSize();
     int maxPageNo = totalSize / pageSize;
+    
     if ((totalSize % pageSize) > 0) maxPageNo++;
+    if(maxPageNo == 0)  maxPageNo++;
     
     return maxPageNo;
   }
   
-  /* @Transactional 선언
-   * =>메서드 안의 입력/변경/삭제(manipluation) 작업을 하나의 작업으로 묶는다.
-   * => 모든 작업이 성공했을 때만 서버에 반영한다. 
-   */
-  @Transactional(rollbackFor=Exception.class, propagation=Propagation.REQUIRED)
-  public void add(Storage storage) {
-    storageDao.insert(storage);
+  public int getTotalSize() {
     
+    int totalSize = storageDao.totalSize();
+    return totalSize;
   }
   
-  @Transactional(rollbackFor=Exception.class, propagation=Propagation.REQUIRED)
+  
+  /* @Transactional 선언
+   * => 메서드 안의 입력/변경/삭제(manipluation) 작업을 하나의 작업을 묶는다.
+   * => 모든 작업이 성공했을 때만 서버에 반영한다. 
+   */
+  @Transactional(
+      rollbackFor=Exception.class, 
+      propagation=Propagation.REQUIRED)
+  public void add(Storage storage) {
+    
+    System.out.println("서비스 시작!!!!!!!!" +storage);
+    
+    storageDao.insert(storage);
+  }
+  
+  @Transactional(
+      rollbackFor=Exception.class, 
+      propagation=Propagation.REQUIRED)
   public void update(Storage storage) {
     storageDao.update(storage);
   }
   
-  @Transactional(rollbackFor=Exception.class, propagation=Propagation.REQUIRED)
-  public void delete(int sno) {
-    storageDao.delete(sno);
+  @Transactional(
+      rollbackFor=Exception.class, 
+      propagation=Propagation.REQUIRED)
+  public void delete(String docid) {
+    /*storageDao.deletePhoto(storageNo);*/
+    storageDao.delete(docid);
   }
   
-  public Storage get(int sno) {
-    Storage storage = storageDao.selectOne(sno);
+  public Storage get(String docid) {
+    System.out.println("get 시작 = "+ docid );
+    Storage storage = storageDao.selectOne(docid);
+    
+    /*storage.setPhotoList( storageDao.selectPhoto(storageNo));*/
     return storage;
   }
-
-  
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

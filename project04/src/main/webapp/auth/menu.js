@@ -33,7 +33,7 @@ $('#mypage').click(function() {
 });
 
 $('#storage').click(function() {
-	location.href = '../reply/storage.html';
+	location.href = '../storage/storage.html';
 });
 
 $('#community').click(function() {

@@ -1,0 +1,23 @@
+  <ul data-role="listview" data-icon="false" data-split-theme="d"
+  id='listView'> 
+ 
+  {{#each storages}}
+  <li>
+  <!-- <input type="checkbox" name="mycheck" class='liCheckbox' id="roundedOne" value="{{sno}}" />  -->
+ 
+  <img id='itemImg' src="{{img_url}}" width="80" height="80">
+      <div class='itemDetail'>
+        <p>
+          <span id='title'>{{title}}</span><br> <span id='price'>{{price}}</span>
+          <span id='nextPrice'> 원</span> <span id='rowPrice'> 최저가 </span><br>
+          <span id='desc'>{{sdate}} | {{shopingmall}}</span>
+        </p> <input type="checkbox" name="mycheck" class='liCheckbox' id="roundedOne" value="{{sno}}" />  
+      </div>   
+  </li> {{/each}}
+</ul>
+<div id='whiteSpace'></div>
+ -
+
+
+
+

@@ -20,23 +20,25 @@ public class StorageControl {
   static Logger log = Logger.getLogger(StorageControl.class);
   static final int PAGE_DEFAULT_SIZE = 5;
   
-  @Autowired StorageService storageService;
+  @Autowired StorageService     storageService;
   @Autowired ServletContext servletContext;
-
+ 
   @RequestMapping(value="/add", method=RequestMethod.POST)
   public Object add(Storage storage) throws Exception {  
-	  
+    
+    System.out.println("add시작!!!!!!!" +storage );
     storageService.add(storage);
-
-	  HashMap<String,Object> resultMap = new HashMap<>();
-	  resultMap.put("status", "success");
-
-	  return resultMap;
+    System.out.println("add끝!!!!!!!" +storage);
+    
+    HashMap<String,Object> resultMap = new HashMap<>();
+    resultMap.put("status", "success");
+    
+    return resultMap;
   }
 
   @RequestMapping("/delete")
-  public Object delete(int sno) throws Exception {
-    storageService.delete(sno);
+  public Object delete(String docid) throws Exception {
+    storageService.delete(docid);
     
     HashMap<String,Object> resultMap = new HashMap<>();
     resultMap.put("status", "success");
@@ -53,6 +55,7 @@ public class StorageControl {
       pageSize = PAGE_DEFAULT_SIZE;
     
     int maxPageNo = storageService.getMaxPageNo(pageSize);
+    int totalSize = storageService.getTotalSize();
     
     if (pageNo <= 0) pageNo = 1;
     if (pageNo > maxPageNo) pageNo = maxPageNo;
@@ -61,7 +64,9 @@ public class StorageControl {
     resultMap.put("status", "success");
     resultMap.put("currPageNo", pageNo);
     resultMap.put("maxPageNo", maxPageNo);
-    resultMap.put("storages", storageService.getList(pageNo, pageSize));
+    resultMap.put("totalSize", totalSize);
+    resultMap.put("storages", 
+        storageService.getList(pageNo, pageSize));
     
     return resultMap;
   }
@@ -72,18 +77,21 @@ public class StorageControl {
     
     HashMap<String,Object> resultMap = new HashMap<>();
     resultMap.put("status", "success");
-    
     return resultMap;
   }
   
   @RequestMapping("/view")
-  public Object view(int sno, Model model) throws Exception {
-    Storage storage = storageService.get(sno);
+  public Object view(String docid, Model model) throws Exception {
+    
+    System.out.println("view시작!!!!!!!" +docid);
+    Storage storage = storageService.get(docid);
+    
+    System.out.println("view끝!!!!!!! storage상태 = " + storage);
     
     HashMap<String,Object> resultMap = new HashMap<>();
     resultMap.put("status", "success");
     resultMap.put("storage", storage);
-    
+
     return resultMap;
   }
 }

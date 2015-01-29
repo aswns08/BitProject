@@ -2,10 +2,13 @@ package java63.web03.control.json;
 
 import java.io.File;
 import java.util.HashMap;
+
 import java63.web03.domain.Board;
+import java63.web03.domain.User;
 import java63.web03.service.BoardService;
 
 import javax.servlet.ServletContext;
+import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -28,8 +31,11 @@ public class BoardControl {
   ServletContext servletContext;
 
   @RequestMapping(value = "/add", method = RequestMethod.POST)
-  public Object add(Board board, MultipartFile photoFile) throws Exception {
-
+  public Object add(Board board, MultipartFile photoFile, HttpSession session) throws Exception {
+    
+    System.out.println("==>>" + photoFile);
+    User user = (User) session.getAttribute("loginUser");
+    board.setUserNo(user.getNo());
     // 이미지 업로드
     System.out.println(">>제목 : " + board.getTitle());
     

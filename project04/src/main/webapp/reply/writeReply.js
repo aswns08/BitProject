@@ -4,6 +4,7 @@ var currentBoard;
 $(function(){
     currentBoard = getURLParameter('no');
     console.log("현재게시글번호---->",currentBoard);
+    console.log("회원정보 받을까?", loginUser.no);
 });  
   
   

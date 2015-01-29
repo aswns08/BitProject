@@ -9,7 +9,8 @@ $(function() {
 	$("#left-panel").load("../auth/menu.html", function() {
 		$("#myPage").page("destroy").page();
 	});
-}
+
+
 $.getJSON('../json/auth/loginUser.do', function(data){
 	if (data.status == 'fail') { 
 		alert("로그인후 이용하세요.");
@@ -41,11 +42,13 @@ $.getJSON('../json/auth/loginUser.do', function(data){
 			});
 		})
 
-		$('#userName').click(function(){
+/*		$('#userName').click(function(){
 			alert('사용자 정보 조회 창으로 보낼 예정');
-		});  
+		});  */
 	}
-}); 
+});
+
+});
 
 
 function checkName() { //닉네임 유효성검사

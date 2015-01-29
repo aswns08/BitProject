@@ -12,12 +12,6 @@
 	src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
 <script type="text/javascript" src='../js/jquery.form.js'></script>
 
-<script type="text/javascript">
-	$(document).bind('mobileinit', function() {
-		$.mobile.selectmenu.prototype.options.nativeMenu = false;
-	});
-</script>
-
 <style>
 .ui-select {
 	margin-top: 0;
@@ -32,6 +26,10 @@
 #textarea-1 {
 	height: 100px;
 }
+
+h1 {
+    letter-spacing: 3px;
+}
 </style>
 
 </head>
@@ -40,6 +38,7 @@
 
 	<!-- Start of first page -->
 	<div data-role="page" id="boardWrite">
+	
 		<form id='myFormId' class='form-horizontal' role='form'
 			action="../json/board/add.do" enctype="multipart/form-data"
 			method="post">
@@ -68,7 +67,7 @@
 				<textarea cols="8" rows="100" id='content' name='content'
 					placeholder="내용"></textarea>
 
-				<label for='userNo' class='col-sm-2 control-label'>사용자</label>
+				<!-- <label for='userNo' class='col-sm-2 control-label'>사용자</label> -->
 				<!-- <div class='col-sm-10'>
 					<input type='text' class='form-control' id='userNo' name='userNo'
 						placeholder='닉네임'>
@@ -118,11 +117,12 @@
 	</div>
 	<!-- /page -->
 
-	<script src='../common/common.js'></script>
+	
 	<script type="text/javascript" src='../js/handlebars-v2.0.0.js'></script>
 	<script type="text/javascript" src='../js/require.js'></script>
 	<!-- 	<script type="text/javascript" src='../js/jquery-te-1.4.0.js'></script>
  -->
+ <script src='../common/common.js'></script>
 	<script src='boardForm.js'></script>
 
 

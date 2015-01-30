@@ -1,0 +1,210 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<meta charset="UTF-8">
+<meta name="viewport"
+	content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, height=device-height">
+
+<title>menu</title>
+<style>
+/* 폰트 적용 */
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+/* div {
+	border: 1px solid black;
+} */
+
+html {
+	height: 100%;
+}
+
+body {
+	margin: 0px;
+	height: 100%;
+	/*   border: 1px solid blue; 
+ */
+}
+
+#customContainer {
+	/* 	margin: -10px; */
+	/*  	border: 1px solid orange; 
+ */
+	height: 100%;
+}
+
+#main {
+  margin-top: -20px;
+	float: left;
+	width: 80%;
+	height: 100%;
+}
+
+#sub {
+	margin-left: 80%;
+	width: 20%;
+	height: 100%;
+	background-color: rgba(0, 0, 0, 0.2);
+}
+
+#loginDiv {
+	height: 8%;
+	background-color: #077187;
+}
+  
+h2 {
+	color: white;
+	padding: 10px 10px;
+}
+
+#underLoginSection {
+  height: 15%;  
+	background-color: #FFFFCC;
+}
+
+.underLogin {
+	margin-top: 10px;
+	float: left;
+	width: 49%;
+	height: 100%;
+	float: left;
+}
+
+.underLogin>img {
+/* 	border: 1px solid black;
+ */	margin-left: 32%;
+	width: 32%;
+}
+
+.underLogin>div {
+/* 	border: 1px solid black;
+ */	text-align: center;
+	font-family: Hanna;
+	font-size: 150%;
+}
+
+#searchBlock {
+	width: 100%;
+	height: 7%;
+	display: inline-block;
+	border-bottom: 1px solid #aaaaaa;
+}
+
+.searchImg {
+	display: inline-block;
+	width: 10%;
+	position: relative;
+	left: 10px;
+	margin: 5px;
+}
+
+#input {
+	float: left;
+	width: 65%;
+	height: 100%;
+	margin-top: 3px;
+	margin-left: 10px;
+	border: 0px solide black;
+}
+
+#input>input {
+	height: 100%;
+	width: 100%;
+}
+
+#menuDiv {
+	height: 71%;
+}
+
+.menuList {
+	height: 8%;
+	padding-left: 10px;
+	padding-top: 3%;
+	font-family: Hanna;
+	font-size: 120%;
+	border-bottom: 1px solid #aaaaaa;
+}
+
+.communityClass {
+	padding-left: 30px;
+}
+</style>
+
+<!------------------------- 웹폰트 --------------------->
+<script src="//ajax.googleapis.com/ajax/libs/webfont/1.4.10/webfont.js"></script>
+<script type="text/javascript">
+  WebFont.load({
+
+    // For google fonts
+    google: {
+      families: ['Droid Sans', 'Droid Serif']
+    }
+    // For early access or custom font 나눔고딕
+    custom: {
+        families: ['Nanum Gothic'],
+        urls: ['http://fonts.googleapis.com/earlyaccess/nanumgothic.css']
+    }
+  
+    //For early access or custom font 한나
+      custom: {
+          families: ['Hanna'],
+          urls: ['http://fonts.googleapis.com/earlyaccess/hanna.css']
+      }
+    //For early access or custom font 제주고딕
+      custom: {
+          families: ['Jejugothic'],
+          urls: ['http://fonts.googleapis.com/earlyaccess/jejugothic.css']
+      }
+
+  });
+</script>
+
+</head>
+<body>
+	<div id='customContainer'>
+		<div id='main'>
+			<div id='loginDiv'>
+				<h2>로그인</h2>
+			</div>
+			<div id='underLoginSection'>
+				<div id='home' class='underLogin'>
+					<img class='menu1' src='image/home.png'>
+						<div id='homeFont'>홈</div>
+				</div>
+
+				<div id='latelyProduct' class='underLogin'>
+					<img class='menu1' src='image/view.png'>
+						<div id='latelyFont'>최근본상품</div>
+				</div>
+				&nbsp;
+			</div>
+			<div id='searchBlock'>
+				<div id='input'>
+					<input type="text" class="form-control">
+				</div>
+				<!-- input -->
+
+				<input class='searchImg' type='image' src='image/search-icon.png'><input
+					class='searchImg' type='image' src='image/barcode.png'>
+			</div>
+			<div id='menuDiv'>
+				<div class='menuList'>마이페이지</div>
+				<div class='menuList'>보관함</div>
+				<div class='menuList'>커뮤니티</div>
+				<div class='menuList communityClass'>좋아요</div>
+				<div class='menuList communityClass'>나빠요</div>
+
+
+			</div>
+		</div>
+		<div id='sub'></div>
+	</div>
+
+	<!-- --------------------- 스크립트   ------------ -->
+	<script src='js/jquery-1.11.1.js'></script>
+	<script src='js/bootstrap.min.js'></script>
+</body>
+</html>

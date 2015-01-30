@@ -41,7 +41,8 @@
     SELECT T2.NAME,
            T1.RDATE,
            T1.RCONTENT,
-           T1.RNO
+           T1.RNO,
+           T2.UNO
     FROM REPLY T1 LEFT OUTER JOIN USERS T2
     USING(UNO)
     WHERE BNO=#{bno}
@@ -69,6 +70,10 @@
   
   <delete id="delete" parameterType="Reply">
     DELETE FROM REPLY WHERE RNO=#{rno}<!-- RNO=#{value} -->
+  </delete>
+ 
+   <delete id="deleteAll" parameterType="int">
+    DELETE FROM REPLY WHERE BNO=#{bno}
   </delete>
   
   

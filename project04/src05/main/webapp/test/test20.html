@@ -1,0 +1,48 @@
+<!doctype html>
+<html>
+<head>
+  <title>Example illustrating use of the "mobileinit" event</title>
+  <meta charset=utf-8 />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet"  href="//code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+  <script src="//code.jquery.com/jquery-1.10.2.min.js"></script>
+  <script src="//code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+  <div data-jqm-role="page">
+    <div data-jqm-role="header">
+      <h2>jQuery Mobile Example</h2>
+    </div>
+    <!-- /header -->
+    
+    <div data-jqm-role="content">
+
+			<a href="#popupLogin" data-rel="popup">Open Popup</a>
+
+			<div data-role="popup" id="popupLogin" data-theme="a" class="ui-corner-all">
+      <form>
+        <div style="padding:10px 20px;">
+          <h3>Please sign in</h3>
+              <label for="un" class="ui-hidden-accessible">Username:</label>
+              <input type="text" name="user" id="un" value="" placeholder="username" data-theme="a" />
+
+              <label for="pw" class="ui-hidden-accessible">Password:</label>
+              <input type="password" name="pass" id="pw" value="" placeholder="password" data-theme="a" />
+
+            <button type="submit" data-theme="b">Sign in</button>
+        </div>
+      </form>
+      
+    </div>
+ 
+    <br>
+    <a href="#popupLogin" data-rel="dialog">Open dialog</a><br>
+     
+    </div>
+    <!-- /content -->
+    
+    
+    
+  </div>
+</body>
+</html>

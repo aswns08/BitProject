@@ -2,8 +2,8 @@ package java63.web03.service;
 
 import java.util.HashMap;
 import java.util.List;
-
 import java63.web03.dao.BoardDao;
+import java63.web03.dao.ReplyDao;
 import java63.web03.domain.Board;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,8 +18,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 @Service
 public class BoardService {
-  @Autowired
-  BoardDao boardDao;
+  @Autowired BoardDao boardDao;
+  @Autowired ReplyDao replyDao;
 
   public List<?> getList(int pageNo, int pageSize, Boolean title,
       Boolean content, Boolean writer, String search, Boolean ifLike,
@@ -98,6 +98,9 @@ public class BoardService {
 
   @Transactional(rollbackFor = Exception.class, propagation = Propagation.REQUIRED)
   public void delete(int boardNo) {
+    
+    replyDao.deleteAll(boardNo);
+    
     boardDao.deletePhoto(boardNo);
     boardDao.delete(boardNo);
   }

@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>댓 글</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<link rel="stylesheet" href="../css/red.css" />
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+<style>
+h1 {
+    letter-spacing: 3px;
+}
+</style>
+
+</head>
+<body>
+
+  <!-- Start of first page -->
+  <div data-role="page" id="writeReply">
+    <div data-role="header" data-position="fixed">
+    
+    <a href="#" data-rel="back"
+        class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-corner-all ui-nodisc-icon transparentButton">before</a>
+    <button class="ui-btn-inline" id="btnSave">저장</button>
+    
+      <h1>댓 글 쓰 기</h1>
+      
+    </div>
+    <!-- /header -->
+
+    <div data-role="content">
+    
+      <form>
+          <div>
+          <textarea name="rContent" id="rContent" placeholder="덧글쓰기"></textarea>
+          </div>
+      </form>
+
+    </div>
+    <!-- /content -->
+
+    <div data-role="footer" data-position="fixed">
+      
+      </div>
+    <!--  /footer -->
+
+  </div>
+  <!-- /page -->
+<script src='../common/common.js'></script>
+<script type="text/javascript" src="writeReply.js"></script>
+</body>
+</html>
+
+

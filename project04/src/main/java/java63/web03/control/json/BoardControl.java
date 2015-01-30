@@ -25,10 +25,8 @@ public class BoardControl {
   static Logger log = Logger.getLogger(BoardControl.class);
   static final int PAGE_DEFAULT_SIZE = 5;
 
-  @Autowired
-  BoardService boardService;
-  @Autowired
-  ServletContext servletContext;
+  @Autowired BoardService boardService;
+  @Autowired ServletContext servletContext;
 
   @RequestMapping(value = "/add", method = RequestMethod.POST)
   public Object add(Board board, MultipartFile photoFile, HttpSession session) throws Exception {
@@ -63,6 +61,7 @@ public class BoardControl {
 
   @RequestMapping("/delete")
   public Object delete(int no) throws Exception {
+    
     boardService.delete(no);
 
     HashMap<String, Object> resultMap = new HashMap<>();

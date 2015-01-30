@@ -12,14 +12,6 @@ $(function(){
   loadBoardView(currentBoard);
   loadReplyList(1, currentBoard);
 	
-  /*
-	$(document).on('click', '.ui-popUp', function(){
-	  console.log($(this).attr('data-rno'));
-	  deleteReply($(this).attr('data-rno'));
-    //loadProduct(0);
-    
-  });
-	*/
 	
 	// 패널 정의!
 $("#left-panel").load("../auth/menu.html", function() {
@@ -28,9 +20,22 @@ $("#left-panel").load("../auth/menu.html", function() {
 
 // 팝업창 정의
 $(document).on('click', '.ui-popUp', function(){
-  console.log($(this).attr('data-rno'));
+  //console.log("댓글 넘버", $(this).attr('data-rno'));
+  console.log("사용자 넘버", $(this).attr('data-uno'));
+  console.log("회원정보 받을까?", loginUser.no);
+  
   data_rno = $(this).attr('data-rno');
-  $("#popupMenu").popup("open");
+  data_uno = $(this).attr('data-uno');
+  if(data_uno == loginUser.no) {
+    $(".deleteBtn").css('display', '');
+    $("#popupMenu").popup("open");
+  
+  } else {
+    $(".deleteBtn").css('display', 'none');
+    $("#popupMenu").popup("open");
+    
+  }
+  
 });
 
 
@@ -45,12 +50,13 @@ $('#addMoreBtn').click(function(event){
 });
 
 $('.deleteBtn').click(function(evnet){
-  console.log("삭제버튼", data_rno);
+  //console.log("삭제버튼", data_rno);
   deleteReply(data_rno);
   $("#popupMenu").popup("close");
 });
 
 $('.cancelBtn').click(function(event){
+  $(".deleteBtn").css('display', 'none');
   $("#popupMenu").popup("close");
 });
 
@@ -91,11 +97,12 @@ function loadReplyList(pageNo, bno) {
   
 	$.getJSON('../json/reply/list.do?pageNo=' + pageNo + '&bno=' + bno, 
     function(data){
-	    console.log(">>>>>",data);
+	    console.log("서버에서 받은 data >>>>>",data);
       setPageNo(data.currPageNo, data.maxPageNo);
       
       var replies = data.replies;
-      console.log(replies);
+      console.log("replies !!!!!!!!!", replies);
+      
       yyyyMMddList(replies);
       
      require(['text!templates/reply-table.html'], function(html){

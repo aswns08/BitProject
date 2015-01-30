@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- <sql> 태그 사용하기 => 자주 사용되는 SQL문은 별도로 정의해두고 포함한다. -->
+
+<mapper namespace="java63.web03.dao.BoardDao">
+
+	<!-- 객체의 컬럼과 프로퍼티를 연결한다. -->
+	<resultMap type="Board" id="boardMap">
+		<!-- PK 컬럼은 id 태그를 사용하여 지정한다. -->
+		<id column="BNO" property="no" />
+		<result column="UNO" property="userNo" />
+		<result column="UNAME" property="userName" />
+		<result column="PNO" property="productNo" />
+		<result column="IFLIKE" property="ifLike" />
+		<result column="TITLE" property="title" />
+		<result column="CONTENT" property="content" />
+		<result column="BDATE" property="date" />
+		<result column="RECO" property="recommend" />
+		<result column="RCOUNT" property="rcount" />
+		<result column="URL" property="url" />
+
+	</resultMap>
+
+	<resultMap type="map" id="boardListItem2Map">
+		<id column="BNO" property="no" />
+		<result column="UNO" property="userNo" />
+		<result column="UNAME" property="userName" />
+		<result column="PNO" property="productNo" />
+		<result column="IFLIKE" property="ifLike" />
+		<result column="TITLE" property="title" />
+		<result column="CONTENT" property="content" />
+		<result column="BDATE" property="date" />
+		<result column="COUNT" property="count" />
+		<result column="RECO" property="recommend" />
+		<result column="RCOUNT" property="rcount" />
+		<result column="URL" property="url" />
+
+	</resultMap>
+
+	<resultMap type="BoardPhoto" id="boardPhotoMap">
+		<id column="BBNO" property="no" />
+		<result column="BNO" property="boardNo" />
+		<result column="URL" property="url" />
+	</resultMap>
+
+	<sql id="boardSelect">
+		SELECT B.BNO AS BNO, B.UNO AS UNO, U.NAME AS UNAME, B.PNO
+		AS PNO,
+		B.IFLIKE AS IFLIKE, B.TITLE AS TITLE,
+		B.CONTENT AS CONTENT,
+		B.BDATE AS BDATE,
+		B.COUNT AS COUNT, B.RECO AS RECO, BP.URL AS URL,
+		IFNULL(R.RCOUNT, 0) AS
+		RCOUNT
+		FROM BOARD B
+		LEFT JOIN
+		BOARD_PHOTS BP
+		USING
+		(BNO)
+		LEFT JOIN
+		(SELECT BNO, COUNT(*)
+		AS RCOUNT
+		FROM REPLY
+		GROUP BY BNO) R
+		USING(BNO)
+		LEFT JOIN USERS U USING
+		(UNO)
+	</sql>
+
+
+	<!--select문 dynamic sql로 변경 -->
+	<select id="selectList" parameterType="map" resultMap="boardListItem2Map">
+		<include refid="boardSelect" />
+		<choose>
+			<when test="content == true">
+				<where>
+					<choose>
+						<when test="ifLike == true">
+							B.IFLIKE = true
+						</when>
+						<when test="ifLike == false">
+							B.IFLIKE = false
+						</when>
+						<otherwise>
+						</otherwise>
+					</choose>
+					AND BNO IN (SELECT BO.BNO FROM BOARD BO WHERE
+					BO.TITLE LIKE
+					'%${search}%' OR
+					BO.CONTENT LIKE '%${search}%')
+				</where>
+			</when>
+			<otherwise>
+				<where>
+					<if test="title == true">
+						TITLE LIKE '%${search}%'
+					</if>
+					<if test="writer == true">
+						AND NAME LIKE '%${search}%'
+					</if>
+					<choose>
+						<when test="ifLike == true">
+							AND IFLIKE = true
+						</when>
+						<when test="ifLike == false">
+							AND IFLIKE = false
+						</when>
+						<otherwise>
+						</otherwise>
+					</choose>
+				</where>
+			</otherwise>
+		</choose>
+
+		ORDER BY
+		<choose>
+			<when test="orderBy == 'new'">
+				BDATE
+			</when>
+			<when test="orderBy == 'count'">
+				COUNT
+			</when>
+			<when test="orderBy == 'reco'">
+				RECO
+			</when>
+			<otherwise>
+				BDATE
+			</otherwise>
+		</choose>
+		DESC
+		<if test="pageSize > 0">
+			limit #{startIndex}, #{pageSize}
+		</if>
+	</select>
+	<!--/select문 dynamic sql로 변경 -->
+
+	<select id="selectOne" parameterType="int" resultMap="boardMap">
+		<include refid="boardSelect" />
+		WHERE BNO=#{value}
+	</select>
+
+	<!-- 전체 count(BNO) -->
+	<select id="totalSize" resultType="int">
+		SELECT count(BNO) FROM BOARD
+	</select>
+
+	<!-- 좋아요 count(BNO) -->
+	<select id="goodSize" resultType="int">
+		SELECT count(BNO) FROM BOARD
+		WHERE IFLIKE LIKE true;
+	</select>
+
+	<!-- 나빠요 count(BNO) -->
+	<select id="badSize" resultType="int">
+		SELECT count(BNO) FROM BOARD
+		WHERE IFLIKE LIKE false
+	</select>
+
+	<!-- 이전 글 -->
+	<select id="prevBoard" parameterType="Board" resultType="Integer">
+		SELECT
+		BNO FROM BOARD WHERE BNO IN (
+		SELECT MAX(BNO) FROM BOARD WHERE BNO &lt;
+		#{no} AND IFLIKE = #{ifLike}
+		)
+	</select>
+
+	<!-- 다음 글 -->
+	<select id="nextBoard" parameterType="Board" resultType="Integer">
+		SELECT
+		BNO FROM BOARD WHERE BNO IN (
+		SELECT MIN(BNO) FROM BOARD WHERE BNO >
+		#{no} AND IFLIKE = #{ifLike}
+		)
+	</select>
+
+	<insert id="insert" parameterType="Board" useGeneratedKeys="true"
+		keyColumn="BNO" keyProperty="no">
+		INSERT INTO BOARD(UNO, PNO, IFLIKE, TITLE,
+		COUNT, RECO, CONTENT, BDATE)
+		VALUES (#{userNo}, #{productNo},
+		#{ifLike}, #{title},
+		0, 0, #{content}, SYSDATE())
+	</insert>
+
+	<update id="update" parameterType="Board">
+		UPDATE BOARD SET
+		PNO=#{productNo},
+		TITLE=#{title},
+		CONTENT=#{content},
+		IMG=#{img}
+		WHERE
+		BNO=#{no}
+	</update>
+
+	<update id="plusCount" parameterType="Board">
+		UPDATE BOARD SET
+		COUNT=#{count}
+		WHERE
+		BNO=#{no}
+	</update>
+
+	<update id="plusReco" parameterType="Board">
+		UPDATE BOARD SET
+		RECO=#{recommend}
+		WHERE
+		BNO=#{no}
+	</update>
+
+	<delete id="delete" parameterType="int">
+		DELETE FROM BOARD WHERE
+		BNO=#{no}
+	</delete>
+
+
+	<!-- 사진 넣기 -->
+	<!-- <insert id="insertImg" parameterType="Board"> INSERT INTO BOARD_PHOTS(BNO, 
+		IMG) VALUES (#{no}, #{img}) </insert> -->
+
+	<insert id="insertPhoto" parameterType="Board">
+		INSERT INTO
+		BOARD_PHOTS(BNO,URL)
+		VALUES (#{no}, #{photo})
+	</insert>
+
+	<select id="selectPhoto" parameterType="int" resultMap="boardPhotoMap">
+		SELECT BBNO, BNO, URL
+		FROM BOARD_PHOTS
+		<if test="value > 0">
+			WHERE BNO = #{value}
+		</if>
+	</select>
+
+	<delete id="deletePhoto" parameterType="int">
+		DELETE FROM BOARD_PHOTS
+		WHERE BNO=#{value}
+	</delete>
+</mapper>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

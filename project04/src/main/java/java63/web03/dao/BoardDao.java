@@ -9,7 +9,6 @@ public interface BoardDao {
   void update(Board board);
   void plusCount(Board board);
   void plusReco(Board board);
-
   void delete(int no);
   
   List<?> selectList(Map<String,Object> params);  

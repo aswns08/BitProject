@@ -1,4 +1,4 @@
-var saveList = null;
+var saveList = {};
 var community = false;
 var searchKey = null;
 
@@ -14,7 +14,6 @@ $(function() {
 	});
 
 	searchKey = decodeURI(url('?searchKey'));
-	console.log(searchKey);
 
 	/* 최초 검색 결과 */
 	daumShoppingSearch.init();
@@ -54,97 +53,106 @@ $(document).on('click', '.data-row a', function() {
 
 $(document).on("click", "#select-choice", function() {
 	// alert($("#select-choice").val());
+	daumShoppingSearch.init();
 	daumShopping.sort = $("#select-choice").val();
 	daumShoppingSearch.search();
 });
 
-$(document).on("click", ".heart", function(){
-  console.log('하트클릭' + $('.heart').index(this));
-  var index = $('.heart').index(this);
-  var style = {
-      'opacity' : '1',
-      'filter' : 'none',
-      '-webkit-filter' : 'grayscale(0%)'
-  };
-  var color = $('.heart:eq(' + index + ')').css("-webkit-filter"); //버튼 위치의 대한 색
-  var red = "grayscale(0)"; //red
-  var gray = "grayscale(1)"; //gray
+$(document).on(
+		"click",
+		".heart",
+		function() {
+			console.log('하트클릭' + $('.heart').index(this));
+			var index = $('.heart').index(this);
+			var style = {
+				'opacity' : '1',
+				'filter' : 'none',
+				'-webkit-filter' : 'grayscale(0%)'
+			};
+			var color = $('.heart:eq(' + index + ')').css("-webkit-filter"); // 버튼
+			// 위치의
+			// 대한 색
+			var red = "grayscale(0)"; // red
+			var gray = "grayscale(1)"; // gray
 
-  $.post('../json/storage/view.do'  
-      , { 
-        docid: saveList[index].docid //세션안에 있는 uno
-      }
-      , function(result){  
-        if (result.status == "success") {
-          console.log("성공?????");
-          if(result.storage == null & color == gray){
-            console.log("성공22222?????");
-            $('.heart:eq(' + index + ')').css(style); //하트색 변경(빨간색)
+			$.post(
+					'../json/storage/view.do',
+					{
+						docid : saveList[index].docid
+					// 세션안에 있는 uno
+					},
+					function(result) {
+						if (result.status == "success") {
+							console.log("성공?????");
+							if (result.storage == null & color == gray) {
+								console.log("성공22222?????"
+										+ saveList[index].price_min);
+								$('.heart:eq(' + index + ')').css(style); // 하트색
+								// 변경(빨간색)
 
-            $.post('../json/storage/add.do'   
-                , {   
-                  uno :  1,//세션안에 있는 uno
-                  title : saveList[index].title,
-                  price : saveList[index].price_min,
-                  category : saveList[index].category_name,
-                  sdate: saveList[index].publish_date,
-                  link: saveList[index].link,
-                  img_url: saveList[index].image_url,
-                  docid: saveList[index].docid
+								$.post('../json/storage/add.do', {
+									uno : 1,// 세션안에 있는 uno
+									title : saveList[index].title,
+									price : saveList[index].price_min,
+									category : saveList[index].category_name,
+									sdate : saveList[index].publish_date,
+									link : saveList[index].link,
+									img_url : saveList[index].image_url,
+									docid : saveList[index].docid
 
-                }
+								}
 
-                , function(result){  
-                  if (result.status == "success") {
-                    alert("상품등록 성공!!");
-                  } else {
-                    alert("등록 실패!");
-                  }
-                } 
-                , 'json'  )
+								, function(result) {
+									if (result.status == "success") {
+										alert("상품등록 성공!!");
+									} else {
+										alert("등록 실패!");
+									}
+								}, 'json')
 
-                .fail(function(jqXHR, textStatus, errorThrown){ 
-                  alert(textStatus + ":" + errorThrown);
-                });
+								.fail(function(jqXHR, textStatus, errorThrown) {
+									alert(textStatus + ":" + errorThrown);
+								});
 
-          }else if(result.storage == null & color == red){
-            console.log("이상한 조건..");
-          }else{
-            if(color == gray){
-              $('.heart:eq(' + index + ')').css(style);
-              alert("이미 등록된 상품입니다.");
-            }else{
-              $('.heart:eq(' + index + ')').css("opacity", "0.2").css("-webkit-filter","grayscale(100%)"); //하트색 변경(그레이)
-              $.post('../json/storage/delete.do'  
-                  , { 
-                    docid: saveList[index].docid //세션안에 있는 uno
-                  }
-                  , function(result){  
-                    if (result.status == "success") {
-                      console.log("제거성공!");
-                      alert("보관함 목록에서 제거되었습니다.");
+							} else if (result.storage == null & color == red) {
+								console.log("이상한 조건..");
+							} else {
+								if (color == gray) {
+									$('.heart:eq(' + index + ')').css(style);
+									alert("이미 등록된 상품입니다.");
+								} else {
+									$('.heart:eq(' + index + ')').css(
+											"opacity", "0.2")
+											.css("-webkit-filter",
+													"grayscale(100%)"); // 하트색
+									// 변경(그레이)
+									$.post('../json/storage/delete.do', {
+										docid : saveList[index].docid
+									// 세션안에 있는 uno
+									}, function(result) {
+										if (result.status == "success") {
+											console.log("제거성공!");
+											alert("보관함 목록에서 제거되었습니다.");
 
-                    } else {
-                      alert("등록 실패!");
-                    }
-                  } 
-                  , 'json'     )
-                  .fail(function(jqXHR, textStatus, errorThrown){ 
-                    alert(textStatus + ":" + errorThrown);
-                  });
-            }
-          }
+										} else {
+											alert("등록 실패!");
+										}
+									}, 'json').fail(
+											function(jqXHR, textStatus,
+													errorThrown) {
+												alert(textStatus + ":"
+														+ errorThrown);
+											});
+								}
+							}
 
-        } else {
-          alert("등록 실패!");
-        }
-      } 
-      , 'json'     )
-      .fail(function(jqXHR, textStatus, errorThrown){ 
-        alert(textStatus + ":" + errorThrown);
-      });
-});
-
+						} else {
+							alert("등록 실패!");
+						}
+					}, 'json').fail(function(jqXHR, textStatus, errorThrown) {
+				alert(textStatus + ":" + errorThrown);
+			});
+		});
 
 $(document).on(
 		"click",
@@ -169,15 +177,16 @@ var daumShoppingSearch = {
 		this.q = "'" + searchKey + "'";
 		console.log("검색 키워드 : " + this.q);
 
+		// saveList 초기화
+		saveList = {};
+		console.log("saveList 길이 확인 : " + Object.keys(saveList).length);
+
 		// 검색 객체들 초기화.
 		daumShopping.init(6);
 	},
 	/** 검색 * */
 	search : function() {
-		console.log('daumShoppingSearch search()');
-
-		this.query = '?apikey=' + this.apikey + '&output=json&q='
-				+ this.q;
+		this.query = '?apikey=' + this.apikey + '&output=json&q=' + this.q;
 		console.log(this.query);
 
 		// 검색어에 맞게 각각 첫페이지를 띄움.
@@ -193,18 +202,19 @@ var daumShoppingSearch = {
 			crossDomain : true,
 			contentType : "text/json;charset=UTF-8",
 			success : function(responseData, textStatus, errorThrown) {
-				if (saveList == null) {
-					saveList = responseData.channel.item;
-					/*
-					 * resultNav(responseData);
-					 */} else {
-					$.merge(saveList, responseData.channel.item);
+				if (Object.keys(saveList).length == 0) {
+					// Object deep copy 사용
+					$.extend(true, saveList, responseData.channel.item);
+				} else {
+					var temp = $.extend(true, {}, responseData.channel.item);
+
+					saveList = $.merge($.merge([], saveList), temp);
 				}
 
-				var transfromData = yyyyMMddpriceResultFormat(responseData);
-				transfromData = priceFormat(transfromData);
-
-				daumShoppingSearch.pongSearch(transfromData);
+				var transformData = $.extend(true, {}, responseData);
+				yyyyMMddpriceResultFormat(transformData)
+				transformData = priceFormat(transformData);
+				daumShoppingSearch.pongSearch(transformData);				
 			},
 			error : function(responseData, textStatus, errorThrown) {
 				alert('POST failed.');
@@ -214,7 +224,7 @@ var daumShoppingSearch = {
 	},
 	/** 결과를 뿌려줌. * */
 	pongSearch : function(data) {
-	  console.log("결과 데이터------------>",data);
+		// console.log("결과 데이터------------>",data);
 		if (daumShopping.pgno == 1) {
 			require([ 'text!templates/api-top.html' ], function(html) {
 				var template = Handlebars.compile(html);
@@ -254,29 +264,29 @@ var daumShopping = {
 	}
 };
 
-function yyyyMMddpriceResultFormat(data) {
+function yyyyMMddpriceResultFormat(transformData) {
 	var str;
 	var date;
 
-	for ( var i in data.channel.item) {
-		date = data.channel.item[i].publish_date;
+	for ( var i in transformData.channel.item) {
+		date = transformData.channel.item[i].publish_date;
 		str = date.substr(0, 4) + "." + date.substr(4, 2) + "."
 				+ date.substr(6, 2);
-		data.channel.item[i].publish_date = str;
+		transformData.channel.item[i].publish_date = str;
 	}
 
-	return data;
+	return transformData;
 }
 
-function priceFormat(data) {
+function priceFormat(transformData) {
 	var price;
-	for ( var i in data.channel.item) {
-		price = data.channel.item[i].price_min;
-		data.channel.item[i].price_min = price.split(/(?=(?:\d{3})+(?:\.|$))/g)
-				.join(',');
+	for ( var i in transformData.channel.item) {
+		price = transformData.channel.item[i].price_min;
+		transformData.channel.item[i].price_min = price.split(
+				/(?=(?:\d{3})+(?:\.|$))/g).join(',');
 	}
 
-	return data
+	return transformData
 }
 
 /** ********** 검색 결과 ***************** */

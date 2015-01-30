@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<script type="text/javascript" src='../js/jquery-1.11.1.js'></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+</head>
+<body>
+<div data-role="page" id="test">
+<input id='btn1' type="button" value="Button">
+<h1>test...</h1>
+
+<form id='form1'>
+<!--   
+     <label for="text-1">Text input:</label>
+     <input type="text" name="text-1" id="text-1" value="">
+     <label for="text-3">Text input: data-clear-btn="true"</label>
+     <input type="text" data-clear-btn="true" name="text-3" id="text-3" value="">
+-->
+</form>
+</div>
+<script>
+$('#btn1').click(function(){
+	$('#form1').html('<label for="text-1">Text input:</label>' 
+			     + '<input type="text" name="text-1" id="text-1" value="">'
+			     + '<label for="text-3">Text input: data-clear-btn="true"</label>'
+			     + '<input type="text" data-clear-btn="true" name="text-3" id="text-3" value="">');
+	//jQuery mobile에게 동적으로 추가된 태그에 대해서 스타일 및 자바스크립트를 적용할 것을 요청
+	$('#test').page('destroy').page(); 
+	
+});
+</script>
+</body>
+</html>

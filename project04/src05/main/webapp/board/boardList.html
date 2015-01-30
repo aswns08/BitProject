@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>게 시 판</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"
+	charset="UTF-8">
+<link rel="stylesheet"
+	href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<link rel="stylesheet" href="../css/red.css" />
+
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script
+	src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<script type="text/javascript" src='../js/handlebars-v2.0.0.js'></script>
+<script type="text/javascript" src='../js/require.js'></script>
+<script type="text/javascript" src='../js/url.js'></script>
+<script src='boardList.js'></script>
+
+<style>
+.ui-select {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+#customContent {
+	margin-top: 0;
+	padding: 0;
+}
+
+#listView {
+	margin-top: 0;
+}
+
+#lisrView li a {
+	display: block;
+	overflow: hidden;
+	padding: .55em .7em;
+}
+
+.blist {
+	float: left;
+	width: 50px;
+	height: 50px;
+	position: relative;
+	margin-top: .2em;
+	margin-right: 10px;
+	vertical-align: middle;
+}
+
+.btitle {
+	font-size: 16px;
+	line-height: 1.4em;
+	color: #090909;
+	font-weight: normal;
+}
+
+.info {
+	padding-top: 2px;
+	display: inline-block;
+	position: relative;
+	font-size: .8em;
+	line-height: 1.4em;
+	color: #888;
+}
+
+.ty {
+	display: inline-block;
+}
+
+.tcr {
+	display: inline-block;
+}
+
+.renum {
+	display: inline-block;
+	overflow: hidden;
+	position: absolute;
+	top: 11px;
+	right: .8em;
+	background-position: 0 -496px;
+	width: 37px;
+	height: 26px;
+	padding: 8px 0 0 0 !important;
+	font-size: .8em;
+	line-height: 1em;
+	color: #0ba000;
+	text-align: center;
+}
+
+.countRect {
+	right: 25px;
+	z-index: 2;
+}
+
+/* footer Nav */
+#footerNav {
+	height: 45px;
+	background-color: #f4f4f4;
+	border-bottom: 1px solid #bbbbbb;
+	border-top: 1px solid #bbbbbb;
+	background-color: #f4f4f4;
+	margin-top: 16px;
+}
+
+#addMoreBtn {
+	text-align: center;
+	maring-right: 62px;
+	height: 45px;
+	line-height: 45px;
+}
+
+#gotoTopBtn {
+	border-left: 1px solid #bbbbbb;
+	float: right;
+	width: 61px;
+	color: #444;
+	width: 60px;
+	height: 45px;
+	font-size: 11px;
+	text-align: center;
+	line-height: 13px;
+}
+
+#triangleUp {
+	margin-top: 10px;
+	opacity: 0.6;
+	filter:
+		url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="grayscale"><feColorMatrix type="matrix" values="0.3333" 0.3333="" 0="" 10=""></feColorMatrix></filter></svg>#grayscale');
+	/* Firefox 3.5+, IE10 */
+	filter: gray; /* IE6-9 */
+	-webkit-filter: grayscale(100%); /* Chrome 19+ & Safari 6+ */
+	-webkit-transition: all .6s ease;
+	width: 10px;
+}
+
+#addFont {
+	font-size: 13px;
+	font-weight: bold;
+	color: #444;
+}
+
+#arrowDown {
+	opacity: 0.7;
+	filter:
+		url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="grayscale"><feColorMatrix type="matrix" values="0.3333" 0.3333="" 0="" 10=""></feColorMatrix></filter></svg>#grayscale');
+	/* Firefox 3.5+, IE10 */
+	filter: gray; /* IE6-9 */
+	-webkit-filter: grayscale(100%); /* Chrome 19+ & Safari 6+ */
+	-webkit-transition: all .6s ease;
+	width: 13px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+	<!-- Start of first page -->
+	<div data-role="page" id="board">
+		<div data-role="panel" id="left-panel" data-display="overlay"></div>
+
+		<div data-role="header">
+      <a href="#left-panel"
+        class="ui-btn ui-icon-bars ui-btn-icon-notext ui-corner-all ui-nodisc-icon transparentButton"></a>
+    		<h1>게 시 판</h1>
+		</div>
+	
+		<div data-role="content" id='customContent'>
+			<select name="select-native-1" id="select-native-1">
+				<option value="" selected="selected">전체</option>
+				<option value="true">좋아요</option>
+				<option value="false">나빠요</option>
+			</select>
+			<!-- /selects -->
+
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#" id='newOrder' class="ui-btn-active">최신순</a></li>
+					<li><a href="#" id='viewOrder'>조회순</a></li>
+					<li><a href="#" id='recomOrder'>추천순</a></li>
+				</ul>
+			</div>
+			<!--  /navbar -->
+
+			<div id='listDiv'></div>
+
+			<div id='footerNav'>
+				<a href='#' onclick="location.href='#top'">
+					<div id='gotoTopBtn' class='footerNavClass'>
+						<img class='<go></go>Toploc' id='triangleUp'
+							src='../images/triangle-up-16.png'><br> 맨위로
+					</div>
+				</a> <a href='#' id="addMoreA" style="text-decoration: none">
+					<div id='addMoreBtn' class='footerNavClass'>
+						<span id='addFont'>더보기</span> <img class='goToploc' id='arrowDown'
+							src='../images/arrow-down-32.png'>
+					</div>
+				</a>
+			</div>
+			
+		</div>
+
+
+		<!-- /content -->
+
+		<div data-role="footer" data-position="fixed">
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#" onclick='location.href="boardSearch.html"'
+						class="ui-btn ui-shadow ui-corner-all ui-icon-search ui-btn-icon-top"
+						data-role="button">검색</a></li>
+					<li><a href='#' onclick='location.href="boardForm.html"'
+						class="ui-btn ui-shadow ui-corner-all ui-icon-edit ui-btn-icon-top"
+						data-role="button">글쓰기</a></li>
+				</ul>
+			</div>
+		</div>
+
+		<!--  /footer -->
+
+	</div>
+	<!-- /page -->
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

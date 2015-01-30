@@ -19,6 +19,7 @@ public interface ReplyDao {
   List<?> selectList(Map<String,Object> params);
   void insert(Reply reply);
   int totalSize();
+  void deleteAll(int bno);
 }
 
 

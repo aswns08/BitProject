@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>메인화면</title>
+<meta name="viewport" content="width=device-width, initial-scale=1"
+	charset="UTF-8">
+<link rel="stylesheet"
+	href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<link rel="stylesheet" href="../css/red.css" />
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script
+	src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+<style>
+.block {
+	width: 100%;
+	border: 0px solid blue;
+}
+
+#barBlock {
+	border: 0px solid blue;
+	width: 100%;
+	margin-top: 80px;
+}
+
+#barcode {
+	border: 0px solid red;
+	width: 80%;
+	height: 100px;
+}
+
+#bText {
+	margin-bottom: 0;
+	text-align: center;
+}
+
+#pText {
+	margin-top: 10;
+	margin-bottom: 0;
+}
+</style>
+
+</head>
+
+<body>
+
+	<!-- Start of first page -->
+	<div data-role="page" id="home">
+		<div data-role="panel" id="left-panel" data-display="overlay"></div>
+
+		<div data-role="header">
+			<a href="#left-panel"
+				class="ui-btn ui-icon-bars ui-btn-icon-notext ui-corner-all ui-nodisc-icon transparentButton"></a>
+
+			<h1>홈</h1>
+		</div>
+		<!-- /header -->
+
+		<div data-role="content">
+
+			<div id='barBlock'>
+				<p id='bText'>
+					바코드로 찾기<br><img id='barcode' src='../images/barcode.png'>
+				</p>
+			</div>
+			
+			<div data-role="fieldcontaion"
+      style="height: 50px; padding: 0px 15px; margin: -5px 0px 0px 0px">
+      <input type="search" id="queryH" name="query" value=""
+        placeholder="Search">
+    </div>
+
+		</div>
+		<!-- /content -->
+
+		<div data-role="footer" data-position="fixed"></div>
+		<!--  /footer -->
+
+	</div>
+	<!-- /page -->
+
+<script src="home.js"></script>
+
+</body>
+</html>

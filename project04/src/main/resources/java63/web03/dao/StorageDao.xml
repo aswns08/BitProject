@@ -81,8 +81,8 @@
     WHERE SNO=#{sno}
   </update>
   
-  <delete id="delete" parameterType="String">
-    DELETE FROM STORAGE WHERE DOCID=#{value}
+  <delete id="delete" parameterType="int">
+    DELETE FROM STORAGE WHERE SNO=#{value}
   </delete>
   
   

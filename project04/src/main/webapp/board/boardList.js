@@ -8,7 +8,7 @@ var ifLike = "";
 
 // $(document).ready(function(){});
 $(function() {
-	$("#left-panel").load("../auth/menu.html", function() {
+  $("#left-panel").load("../auth/menu.html", function() {
 		$("#board").page("destroy").page();
 	});
 

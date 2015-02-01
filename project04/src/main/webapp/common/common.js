@@ -1,3 +1,5 @@
+var ikkosaUrl = "http://127.0.0.1:8080/project04/";
+
 var loginUser;
 
 $(function() {

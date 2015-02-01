@@ -32,6 +32,8 @@ public class BoardControl {
   public Object add(Board board, MultipartFile photoFile, HttpSession session) throws Exception {
     
     System.out.println("==>>" + photoFile);
+    
+    // 회원정보 세션 받아 오는 부분.
     User user = (User) session.getAttribute("loginUser");
     board.setUserNo(user.getNo());
     // 이미지 업로드
@@ -60,9 +62,21 @@ public class BoardControl {
   }
 
   @RequestMapping("/delete")
-  public Object delete(int no) throws Exception {
+  public Object delete(int no, int userNo, HttpSession session) throws Exception {
     
-    boardService.delete(no);
+ // 회원정보 세션 받아 오는 부분.
+//    User user = (User) session.getAttribute("loginUser");
+//    board.setUserNo(user.getNo());
+    
+    User user = (User) session.getAttribute("loginUser");
+    
+    System.out.println("세션에서 받아온 회원번호" +user.getNo());
+    System.out.println("파라미터에서 받아온 회원번호" +userNo);
+    
+    if(user.getNo() != userNo) {
+      System.out.println("삭제할 수 없습니다.");
+    } else 
+      boardService.delete(no);
 
     HashMap<String, Object> resultMap = new HashMap<>();
     resultMap.put("status", "success");

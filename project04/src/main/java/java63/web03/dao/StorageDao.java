@@ -16,7 +16,7 @@ import java63.web03.domain.Storage;
 public interface StorageDao {
   Storage selectOne(String docid);
   void update(Storage storage);
-  void delete(String docid);
+  void delete(int sno);
   List<?> selectList(Map<String,Object> params);
   void insert(Storage storage);
   int totalSize();

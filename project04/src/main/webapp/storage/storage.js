@@ -55,7 +55,7 @@ $("#editBtn").click(function() {
 $("#deleteBtn").click(function() {
 	$("input[name=mycheck]:checked").each(function() {
 		var temp = $(this).val();
-		// console.log("test==>",temp);
+		 console.log("test==>",temp);
 		deleteStorage(temp);
 	});
 	$("#totalCount").show();

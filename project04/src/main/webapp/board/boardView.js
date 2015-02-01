@@ -6,6 +6,7 @@ var currentBoard;
 var prevBoard;
 var nextBoard;
 var reco = false;
+var userNo;
 
 // $(document).ready(function(){});
 $(function() {
@@ -18,7 +19,7 @@ $(function() {
 
 	$('#btnDelete').click(function() {
 		if (window.confirm('삭제하시겠습니까?')) {
-			deleteBoard(currentBoard);
+			deleteBoard(currentBoard, userNo);
 		}
 	});
 
@@ -46,13 +47,14 @@ $(function() {
 			reco = true;
 		}
 	});
+	
 });
 
 function loadBoardView(no) {
 	$.getJSON('../json/board/view.do?no=' + no, function(data) {
 		var board = data.board;
 
-		console.log(data);
+		console.log("데이터====>>", data);
 		// console.log('loadBoardView :' + no);
 		// console.log(board);
 
@@ -62,20 +64,27 @@ function loadBoardView(no) {
 			var template = Handlebars.compile(html);
 			// handlebars 이용시!
 			// template(출력할 변수)
+			
+			userNo = data.board.userNo;
+			console.log("회원번호-----",userNo);
+			
 			$('#listDiv').html(template(data));
 			yyyyMMddView(board.date);
 		});		
 		
-		$('#boardWrite').page('destroy').page();		
+		$('#boardView').page('destroy').page();
 	});
 }
 
-function deleteBoard(no) {
-	$.getJSON('../json/board/delete.do?no=' + no, function(data) {
-		if (data.status == 'success') {
-			location.href = '../board/boardList.html';
-		}
-	});
+function deleteBoard(no, userNo) {
+  $.getJSON('../json/board/delete.do?no=' + no + '&userNo=' + userNo, 
+      function(data) {
+
+    if (data.status == 'success') {
+      location.href = '../board/boardList.html';
+    } else
+      alert("삭제할 수 없습니다.");
+  });
 }
 
 // 상단바의 제목 선택

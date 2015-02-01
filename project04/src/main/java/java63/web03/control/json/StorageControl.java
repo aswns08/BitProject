@@ -21,14 +21,11 @@ public class StorageControl {
   static final int PAGE_DEFAULT_SIZE = 5;
   
   @Autowired StorageService     storageService;
-  @Autowired ServletContext servletContext;
+  @Autowired ServletContext     servletContext;
  
   @RequestMapping(value="/add", method=RequestMethod.POST)
   public Object add(Storage storage) throws Exception {  
-    
-    System.out.println("add시작!!!!!!!" +storage );
     storageService.add(storage);
-    System.out.println("add끝!!!!!!!" +storage);
     
     HashMap<String,Object> resultMap = new HashMap<>();
     resultMap.put("status", "success");
@@ -37,9 +34,12 @@ public class StorageControl {
   }
 
   @RequestMapping("/delete")
-  public Object delete(String docid) throws Exception {
-    storageService.delete(docid);
+  public Object delete(int sno) throws Exception {
     
+    System.out.println("delete 시작 => " + sno);
+    storageService.delete(sno);
+    
+    System.out.println("delete 끝 => " + sno);
     HashMap<String,Object> resultMap = new HashMap<>();
     resultMap.put("status", "success");
     

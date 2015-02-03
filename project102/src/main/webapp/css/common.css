@@ -1,0 +1,29 @@
+@CHARSET "UTF-8";
+
+/* div {
+  border: 1px solid black;
+} */
+
+
+/******************** 상단바 *********************************/
+#topBar {
+  /* height: 40px; */
+  background-color: #red;
+  font: 20px;
+  color: white;
+  letter-spacing: 8px;
+  font-family: Jejugothic;  
+  padding: 1px;
+}
+
+/******************** jQuery Mobile *********************************/
+
+/**************** icon 회색 테두리 없앰 *******************************/
+.transparentButton {
+    background-color: transparent !important;
+    border: 0 !important;
+    -webkit-box-shadow: none;
+    box-shadow: none;
+}
+
+

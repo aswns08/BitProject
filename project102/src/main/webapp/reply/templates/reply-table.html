@@ -1,0 +1,18 @@
+<!-- 개별 리스트 -->
+{{#each replies}}
+<li class="ui-body-inherit ui-popUp"
+	data-rno='{{rno}}' data-uno="{{uno}}" data-rel="popup">
+	<div class="innerLiClass">
+		<div class="font-set"> <a href="#">{{name}}</a> 		
+			<span class="bar">&nbsp;|&nbsp;</span> <span>{{rDate}}</span>
+		</div>
+
+		<div class="clst_cont">
+			<span> {{rContent}} </span>
+		</div>
+	</div>
+</li>
+{{/each}}
+
+
+

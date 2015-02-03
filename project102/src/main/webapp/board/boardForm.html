@@ -1,0 +1,150 @@
+<html>
+<head>
+<title>게시글 작성</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+<link rel="stylesheet" href="../css/jquery.mobile-1.4.5.min.css" />
+<link rel="stylesheet" href="../css/red.css" />
+<link rel="stylesheet" href="../css/jquery-te-1.4.0.css" />
+<script src="../js/jquery-1.11.1.js"></script>
+<script src="../js/jquery.mobile-1.4.5.min.js"></script>
+<script type="text/javascript" src='../js/jquery.form.js'></script>
+
+<style>
+.ui-select {
+	margin-top: 0;
+	margin-bottom: 0;
+}
+
+.ui-content {
+	margin-top: 0;
+	padding: 0;
+}
+
+#textarea-1 {
+	height: 100px;
+}
+
+h1 {
+    letter-spacing: 3px;
+}
+</style>
+
+</head>
+
+<body>
+
+	<!-- Start of first page -->
+	<div data-role="page" id="boardWrite">
+	
+		<form id='myFormId' class='form-horizontal' role='form'
+			action= "http://192.168.0.154:8080/project102/json/board/add.do" enctype="multipart/form-data"
+			method="post">
+
+			<div data-role="header">
+				<a href="#" data-rel="back"
+					class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-corner-all ui-nodisc-icon transparentButton">before</a>
+				<h1>게시글 작성</h1>
+				<button
+					class="ui-btn-right ui-btn ui-btn-b ui-btn-inline ui-mini ui-corner-all ui-btn-icon-right ui-icon-check"
+					type='submit' id='btnAdd'>저장</button>
+			</div>
+			<!-- /header -->
+
+			<div data-role="content">
+
+				<select id='ifLike' name='ifLike'>
+					<option value="true">좋아요</option>
+					<option value="false">나빠요</option>
+				</select>
+				<!-- /select -->
+
+				<input type="text" data-clear-btn="true" id='title' name='title'
+					value="" placeholder="제목">
+
+				<textarea cols="8" rows="100" id='content' name='content'
+					placeholder="내용"></textarea>
+
+				<!-- <label for='userNo' class='col-sm-2 control-label'>사용자</label> -->
+				<!-- <div class='col-sm-10'>
+					<input type='text' class='form-control' id='userNo' name='userNo'
+						placeholder='닉네임'>
+				</div> -->
+
+				<label for='productNo' class='col-sm-2 control-label'>제품번호</label>
+				<div class='col-sm-10'>
+					<input type='text' class='form-control' id='productNo'
+						name='productNo' placeholder='제품번호'>
+				</div>
+
+				<label for='productNo' class='col-sm-2 control-label'>사진</label>
+				<div class='col-sm-10'>
+					<input type='file' class='form-control' id='photoFile'
+						name='photoFile'>
+				</div>
+			</div>
+
+
+
+		</form>
+
+		<!-- /content -->
+
+		<div data-role="footer" data-position="fixed">
+
+			<div data-role="navbar">
+				<ul>
+					<li><a href="#"
+						class="ui-btn ui-shadow ui-corner-all ui-icon-shop ui-btn-icon-top"
+						data-role="button">보관함</a></li>
+					<li><a href="#"
+						class="ui-btn ui-shadow ui-corner-all ui-icon-cloud ui-btn-icon-top"
+						data-role="button">사진</a></li>
+					<li><a href="#"
+						class="ui-btn ui-shadow ui-corner-all ui-icon-camera ui-btn-icon-top"
+						data-role="button">카메라</a></li>
+					<li><a href="#"
+						class="ui-btn ui-shadow ui-corner-all ui-icon-action ui-btn-icon-top"
+						data-role="button">공유하기</a></li>
+				</ul>
+			</div>
+
+		</div>
+		<!--  /footer -->
+
+	</div>
+	<!-- /page -->
+
+	<script src="../common/ikkosaUrl.js"></script>
+	<script type="text/javascript" src='../js/handlebars-v2.0.0.js'></script>
+	<script type="text/javascript" src='../js/require.js'></script>
+	<!-- 	<script type="text/javascript" src='../js/jquery-te-1.4.0.js'></script>
+ -->
+ 
+	<script src='boardForm.js'></script>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

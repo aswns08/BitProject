@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>댓 글</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+<link rel="stylesheet" href="../css/jquery.mobile-1.4.5.min.css" />
+<link rel="stylesheet" href="../css/red.css" />
+<script src="../js/jquery-1.11.1.js"></script>
+<script src="../js/jquery.mobile-1.4.5.min.js"></script>
+
+
+<style>
+.ui-content {
+	margin-top: 0;
+	padding: 0;
+}
+
+/* 2.1 수정 */
+.font-set {
+	font-size: 13px;
+	color: #888;
+	font-family: Helvetica, sans-sarif;
+	padding: 0;
+}
+
+/* 2.1 수정 */
+.clst_cont {
+	font-weight: normal;
+	font-size: 15px;
+	line-height: 18px;
+	padding: 5px 0;
+}
+
+/* footer Nav */
+#footerNav {
+	height: 45px;
+	background-color: #f4f4f4;
+	border-bottom: 1px solid #bbbbbb;
+	border-top: 1px solid #bbbbbb;
+	background-color: #f4f4f4;
+	margin-top: 16px;
+}
+
+#addMoreBtn {
+	text-align: center;
+	maring-right: 62px;
+	height: 45px;
+	line-height: 45px;
+}
+
+#gotoTopBtn {
+	border-left: 1px solid #bbbbbb;
+	float: right;
+	width: 61px;
+	color: #444;
+	width: 60px;
+	height: 45px;
+	font-size: 11px;
+	text-align: center;
+	line-height: 13px;
+}
+
+#triangleUp {
+	margin-top: 10px;
+	opacity: 0.6;
+	filter:
+		url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="grayscale"><feColorMatrix type="matrix" values="0.3333" 0.3333="" 0="" 10=""></feColorMatrix></filter></svg>#grayscale');
+	/* Firefox 3.5+, IE10 */
+	filter: gray; /* IE6-9 */
+	-webkit-filter: grayscale(100%); /* Chrome 19+ & Safari 6+ */
+	-webkit-transition: all .6s ease;
+	width: 10px;
+}
+
+#addFont {
+	font-size: 13px;
+	font-weight: bold;
+	color: #444;
+}
+
+#arrowDown {
+	opacity: 0.7;
+	filter:
+		url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="grayscale"><feColorMatrix type="matrix" values="0.3333" 0.3333="" 0="" 10=""></feColorMatrix></filter></svg>#grayscale');
+	/* Firefox 3.5+, IE10 */
+	filter: gray; /* IE6-9 */
+	-webkit-filter: grayscale(100%); /* Chrome 19+ & Safari 6+ */
+	-webkit-transition: all .6s ease;
+	width: 13px;
+}
+
+#cbp-spmenu-s4 {
+	width: 100%;
+}
+
+.mmenuBox {
+	border-bottom: solid 1px white;
+}
+
+/* 1.31 추가 */
+#titleSection {
+	margin-top: 0px;
+	background-color: #f3f3f3;
+	padding: 15px 15px 20px;
+	border-bottom: 1px solid #d9d9d9;
+}
+
+#title {
+	font-size: 21px;
+	color: #222;
+	line-height: 100%;
+	letter-spacing: 0.5px;
+	-webkit-margin-before: 0px;
+	-webkit-margin-after: 0px;
+}
+
+#detailSection p {
+	display: block;
+	font-size: 13px;
+	color: #6f7279;
+	font-family: sans-serif;
+	vertical-align: top;
+}
+
+.listBtn {
+	width: 59px;
+	height: 31px;
+	margin-right: 5px;
+	padding: 7px 15px;
+	border-radius: 20px;
+	border: 1px solid #bfbfbf;
+	font-size: 14px;
+	line-height: 29px;
+	color: #222;
+	background-color: #fff;
+	text-align: center;
+	vertical-align: top;
+	letter-spacing: -1px;
+	font-weight: normal;
+	text-decoration: none;
+}
+
+.listBtn>span {
+	color: #333;
+}
+
+span#rcountStyle {
+	color: #f44343;
+}
+
+/* 2.1 추가 */
+.ui-listview>li {
+	padding: 15px;
+	border-bottom: 1px solid #bbbbbb;
+}
+/* 
+.innerLiClass {
+	border: 1px solid black;
+} */
+.font-set>a {
+	color: #888;
+	text-decoration: none;
+	font-weight: 300;
+}
+
+.bar {
+	color: #ebebeb;
+}
+
+.ui-content .ui-listview {
+	margin: 0px;
+}
+
+#footerDiv {
+	padding: 0 10px;
+}
+
+html body .ui-group-theme-b .ui-body-inherit {
+	border-color: #A0A0A0;	
+}
+</style>
+
+</head>
+
+<body>
+
+	<!-- Start of first page -->
+	<div data-role="page" id="reply">
+		<div data-role="panel" id="left-panel" data-display="overlay"></div>
+
+		<div data-role="header" data-position="fixed">
+		<a id="backBtn" href="#" class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-corner-all ui-nodisc-icon transparentButton">before</a>
+			
+			<h1>댓 글</h1>
+		</div>
+		<!-- /header -->
+
+		<div data-role="content">
+
+			<!-- 게시글 -->
+			<div class="post_tit" id="viewDiv"></div>
+
+			<!-- 댓글 리스트  -->
+			<ul data-role="listview" data-icon="false" data-split-theme="d"
+				id='listDiv'></ul>
+
+			<!-- 팝업 창 -->
+			<div data-role="popup" id="popupMenu" data-theme="a"
+				data-shadow="false">
+				<ul data-role="listview" data-inset="true" style="min-width: 210px;"
+					data-theme="b">
+					<li class="writeReply">댓 글</li>
+					<li class="deleteBtn" style="display:none">삭 제</li>
+					<li class="cancelBtn">취 소</li>
+				</ul>
+			</div>
+
+			<!-- 맨위로 버튼 / 더보기 버튼 -->
+			<div id='footerNav'>
+				<a href='#' onclick="location.href='#top'">
+					<div id='gotoTopBtn' class='footerNavClass'>
+						<img class='<go></go>Toploc' id='triangleUp'
+							src='../images/triangle-up-16.png'><br> 맨위로
+					</div>
+				</a> <a href='#' id="addMoreA" style="text-decoration: none">
+					<div id='addMoreBtn' class='footerNavClass'>
+						<span id='addFont'>더보기</span> <img class='goToploc' id='arrowDown'
+							src='../images/arrow-down-32.png'>
+					</div>
+				</a>
+			</div>
+
+		</div>
+		<!-- /content -->
+
+		<!-- 댓글 쓰기 부분 -->
+		<div data-role="footer" data-position="fixed">
+			<form method="post" action="demoform.asp">
+				<div id="footerDiv">
+					<input type="text" name="Reply" class="writeReply"
+						id="writeReplyInput" placeholder="덧글쓰기">
+				</div>
+			</form>
+		</div>
+		<!--  /footer -->
+
+	</div>
+	<!-- /page -->
+
+
+  <script src="../common/ikkosaUrl.js"></script>
+	<script type="text/javascript" src='../js/handlebars-v2.0.0.js'></script>
+	<script type="text/javascript" src='../js/require.js'></script>
+	<script type="text/javascript" src='../js/url.js'></script>
+	<script src='reply.js'></script>
+
+</body>
+</html>
+
+

@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Page</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width, height=device-height">
+<link rel="stylesheet" href="../css/jquery.mobile-1.4.5.min.css" />
+<link rel="stylesheet" href="../css/red.css" />
+<script src="../js/jquery-1.11.1.js"></script>
+<script src="../js/jquery.mobile-1.4.5.min.js"></script>
+<script type="text/javascript" src='../js/handlebars-v2.0.0.js'></script>
+<script type="text/javascript" src='../js/require.js'></script>
+
+<style>
+.ui-content {
+	padding: 0px;
+}
+
+li {
+	list-style: none;
+}
+
+.storage_img {
+	width: 80px;
+	height: 80px;
+}
+
+.navbarClass {
+	/* position: absolute;
+	top: 50px;
+	right: 10px; */
+	width: 50px;
+	padding: 5px;
+	width: 50px;
+	margin: 0px;
+}
+
+.editingClass {
+	display: inline-block;
+}
+
+.ui-content .ui-listview {
+	margin: 0px;
+}
+
+/* #moveEdit {
+	display: inline-block;
+	left: 100px;
+} */
+.moveDiv {
+	position: relative;
+	left: 0px;
+	position: relative;
+	display: inline-block;
+}
+
+.ui-checkbox {
+	float: left;
+	position: relative;
+	left: 10px;
+}
+
+#searchCount {
+	color: #6f7279;
+	font-size: 14px;
+	line-height: 1.5;
+	font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
+}
+
+#result {
+	background-color: #F0F0F0;
+	border-bottom: 1px solid #d5d5d7;
+	padding: 7px 10px 7px 0px;
+	height: 33px;
+}
+
+#topSideDiv {
+	float: right;
+	witdh: 300px;
+}
+
+p#totalCount {
+	margin: 5px 5px 5px 10px;
+}
+
+#title {
+	font-size: 15px;
+	line-height: 16px;
+	color: #1f1f1f;
+	letter-spacing: 0;
+}
+
+#price {
+	padding-top: 1px;
+	font-size: 19px;
+	font-family: Helvetica;
+	color: #31a0ff;
+	font-weight: bold;
+	line-height: 1.5;
+}
+
+#nextPrice {
+	font-size: 18px;
+	color: #31a0ff;
+	margin-left: -3px;
+	margin-top: -7px;
+}
+
+#rowPrice {
+	font-size: 12px;
+	color: #888;
+	font-family: helvetica, sans-serif;
+}
+
+#desc {
+	font-size: 12px;
+	color: #888;
+	font-family: helvetica, sans-serif;
+	line-heigh: 1.8;
+}
+
+#whiteSpace {
+	margin-top: 15px;
+}
+
+.topNavchar {
+	color: #6f7279;
+	font-size: 14px;
+	line-height: 1.5;
+	font-family: 'Malgun Gothic', '맑은 고딕', sans-serif;
+}
+
+#totalResult {
+	font-size: 15px;
+	font-family: Helvetica;
+	color: #f44343;
+	font-weight: bold;
+}
+
+.ui-select {
+	width: 120px;
+	position: absolute;
+	right: -35px;
+	top: 92px;
+}
+
+.ui-select>.ui-btn {
+	font-size: 10px;
+	line-height: 1.5;
+	color: #333;
+	width: 70px;
+	text-align: left;
+	padding: 7px;
+	background-color: #FAFAFA
+}
+
+.ui-select .ui-btn select {
+	font-size: 15px;
+	line-height: 1.5;
+}
+
+#footerNav {
+	height: 45px;
+	background-color: #f4f4f4;
+	border-bottom: 1px solid #bbbbbb;
+	border-top: 1px solid #bbbbbb;
+	margin: 16px -20px 0px -15px;
+	background-color: #f4f4f4;
+}
+
+#listDiv {
+	margin: auto;
+}
+
+.ui-btn-icon-left:after {
+	position: absolute;
+	left: 90%;
+}
+
+#container1:after {
+	content: "";
+	display: block;
+	clear: both
+}
+
+/* 1.28이후 추가 */
+html, body {
+	width: 100%;
+}
+
+#my-checkbox {
+	margin-top: -4px;
+}
+
+#mycheck {
+	margin: -2px 0px 0px 0px;
+}
+
+#totalcheckBox {
+	position: relative;
+	top: 5px;
+	left: 50px;
+}
+
+.ui-listview>.ui-li-static.ui-li-has-thumb {
+	padding-left: 15px;
+	height: 80px;
+}
+
+/* #roundedOne -> liCheckbox */
+input.liCheckbox {
+	position: relative;
+	top: 25px;
+	left: -10px;
+}
+
+.itemImg.notEditingClass {
+	/* position: relative;
+	left: 20px;
+ */
+	
+}
+
+.itemImg.editingClass {
+	position: relative;
+	left: 20px;
+}
+
+.itemDetail.notEditingClass {
+	position: relative;
+	top: -85px;
+	left: 95px;
+	padding: 0px;
+	width: 100%;
+	width: -webkit-calc(100% - 100px);
+	width: -moz-calc(100% - 100px);
+}
+
+.itemDetail.editingClass {
+	position: relative;
+	top: -10px;
+	left: 30px;
+	padding: 0px;
+	width: 100%;
+	width: -webkit-calc(100% - 130px);
+	width: -moz-calc(100% - 130px);
+}
+
+/* footer Nav */
+#footerNav {
+	height: 45px;
+	background-color: #f4f4f4;
+	border-bottom: 1px solid #bbbbbb;
+	border-top: 1px solid #bbbbbb;
+	margin: 16px -20px 0px -15px;
+	background-color: #f4f4f4;
+}
+
+#addMoreBtn {
+	text-align: center;
+	maring-right: 62px;
+	height: 45px;
+	line-height: 45px;
+}
+
+#gotoTopBtn {
+	border-left: 1px solid #bbbbbb;
+	float: right;
+	width: 61px;
+	color: #444;
+	width: 60px;
+	height: 45px;
+	font-size: 11px;
+	text-align: center;
+	line-height: 13px;
+	margin-right: 20px;
+}
+
+#triangleUp {
+	margin-top: 10px;
+	opacity: 0.6;
+	filter:
+		url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="grayscale"><feColorMatrix type="matrix" values="0.3333" 0.3333="" 0="" 10=""></feColorMatrix></filter></svg>#grayscale');
+	/* Firefox 3.5+, IE10 */
+	filter: gray; /* IE6-9 */
+	-webkit-filter: grayscale(100%); /* Chrome 19+ & Safari 6+ */
+	-webkit-transition: all .6s ease;
+	width: 10px;
+}
+
+#addFont {
+	font-size: 13px;
+	font-weight: bold;
+	color: #444;
+}
+
+#arrowDown {
+	opacity: 0.7;
+	filter:
+		url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg"><filter id="grayscale"><feColorMatrix type="matrix" values="0.3333" 0.3333="" 0="" 10=""></feColorMatrix></filter></svg>#grayscale');
+	/* Firefox 3.5+, IE10 */
+	filter: gray; /* IE6-9 */
+	-webkit-filter: grayscale(100%); /* Chrome 19+ & Safari 6+ */
+	-webkit-transition: all .6s ease;
+	width: 13px;
+}
+</style>
+</head>
+
+<body>
+	<!-- Start of first page -->
+	<div data-role="page" id="storagePage" data-position="fixed">
+		<div data-role="panel" id="left-panel" data-display="overlay"></div>
+
+		<div data-role="header" data-position="fixed">
+			<a href="#left-panel"
+				class="ui-btn ui-icon-bars ui-btn-icon-notext ui-corner-all ui-nodisc-icon transparentButton"></a>
+			<h1>보 관 함</h1>
+		</div>
+		<!-- /header -->
+
+		<div data-role="content">
+
+
+			<div id='result'>
+				<div id="topSideDiv">
+					<a href="#" data-role='button' id='editBtn'
+						class='beforeEdit navbarClass'>편집</a> <a href="#"
+						data-role='button' id='deleteBtn'
+						class='editing navbarClass editingClass'>삭제</a> <a href="#"
+						data-role='button' id='completeBtn'
+						class='editing navbarClass editingClass'>완료</a>
+				</div>
+				<!--resultChar -> totalCount -->
+				<p id='totalCount'>
+					<span class="topNavchar">총&nbsp; <span id='totalResult'>{{channel.totalCount}}</span>&nbsp;개
+					</span>
+				</p>
+				<div id="editingTopNavDiv">
+					<input type="checkbox" id="my-checkbox" name="mycheck"></input>
+					<!-- searchResult -> topNavchar -->
+					<span id="totalcheckBox" class="topNavchar">전체선택</span>
+				</div>
+			</div>
+
+			<div id='listDiv'></div>
+
+			<!-- <ul data-role="listview" data-icon="false" data-split-theme="d" id='listDiv'></ul>  -->
+
+			<div id='footerNav'>
+				<a href='#' onclick="location.href='#top'">
+					<div id='gotoTopBtn' class='footerNavClass'>
+						<img class='<go></go>Toploc' id='triangleUp'
+							src='../images/triangle-up-16.png'><br> 맨위로
+					</div>
+				</a> <a href='#' id="addMoreA" style="text-decoration: none">
+					<div id='addMoreBtn' class='footerNavClass'>
+						<span id='addFont'>더보기</span> <img class='goToploc' id='arrowDown'
+							src='../images/arrow-down-32.png'>
+					</div>
+				</a>
+			</div>
+		</div>
+
+
+	</div>
+	<!-- /page -->
+  <script src="../common/ikkosaUrl.js"></script>
+	<script src='storage.js'></script>
+
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

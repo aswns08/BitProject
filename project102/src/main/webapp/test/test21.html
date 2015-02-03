@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>jQuery Mobile Application</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.css" />
+    <script src="http://code.jquery.com/jquery-1.6.4.min.js"></script>
+    <script src="http://code.jquery.com/mobile/1.0/jquery.mobile-1.0.min.js"></script>
+</head>
+<body>
+    <section id="page1" data-role="page">
+        <header data-role="header"><h1>jQuery Mobile</h1></header>
+        <div class="content" data-role="content">
+        <h3>Nested List Example</h3>
+            <ul data-role="listview">
+                <li>Restaurants
+                    <ul>
+                        <li>
+                            <a href="#">
+                                <img src="images/icons/icon-french.png" alt="French flag icon" class="ui-li-icon">
+                                French
+                            </a>
+                            <ul>
+                                <li>
+                                    <a href="lecentral.html">
+                                        <img src="images/logo-generic.png" alt="Le Central logo">
+                                        Le Central
+                                    </a>
+                                    <a href="reservations.php?restaurant=403">Make Reservations</a>
+                                </li>
+                                <li>
+                                    <a href="bistrovandome.html">
+                                        <img src="images/logo-generic.png" alt="Bistro Vandome logo">
+                                        Bistro Vandome
+                                    </a>
+                                    <a href="reservations.php?restaurant=404">Make Reservations</a>
+                                </li>
+                                <li>
+                                    <a href="antoines.html">
+                                        <img src="images/logo-generic.png" alt="Antoine's logo">
+                                        Antoine's
+                                    </a>
+                                    <a href="reservations.php?restaurant=405">Make Reservations</a>
+                                </li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="images/icons/icon-cajun.png" alt="Cajun flag icon" class="ui-li-icon">
+                                Cajun
+                            </a>
+                            <ul>
+                                <li>Bayou Bob's</li>
+                                <li>Pappadeaux</li>
+                                <li>Lucile's</li>
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">
+                                <img src="images/icons/icon-american.png" alt="American flag icon" class="ui-li-icon">
+                                American
+                            </a>
+                            <ul>
+                                <li>Dixon's</li>
+                                <li>Vesta Dipping Grill</li>
+                                <li>Steuben's</li>
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+        <footer data-role="footer"><h1>O'Reilly</h1></footer>
+    </section>
+</body>
+</html>

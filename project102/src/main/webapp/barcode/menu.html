@@ -1,0 +1,100 @@
+<!--  
+		<div data-role="header" data-position="fixed">
+			
+		</div>
+		
+-->		
+		<div data-role="content" style="padding-top: 0px; padding-left: 0px; padding-right: 0px;">
+		
+		<div class="sc_psn" style="background-color: red;">
+        <div class="sc_psn_stt">
+          <a href="/"> <img
+            src="http://static.naver.net/www/m/2013/noimage.png" width="40"
+            height="40"> <strong>로그인하세요</strong>
+          </a>
+
+          <button
+            class="ui-btn-right ui-btn ui-btn-inline ui-corner-all"
+                    style="margin:0px; padding: 6px;">닫기</button>
+        </div>
+      </div>
+		
+			<div class="ui-grid-b">
+				<div class="ui-block-a">
+					<a href="/" data-role="button" style="font-size: 10px"> <img
+						src="../images/menu/home-black.png" alt="home" class="ui-li-icon2">Home
+					</a>
+				</div>
+				<div class="ui-block-b">
+					<a href="/" data-role="button" style="font-size: 10px"> <img
+						src="../images/menu/eye-black.png" alt="view" class="ui-li-icon2">View
+					</a>
+				</div>
+				<div class="ui-block-c" id="barcodeBtn">
+					<a href="/" data-role="button" style="font-size: 10px"> <img
+						src="../images/menu/heart-black.png" alt="barcode"
+						class="ui-li-icon2">Barcode
+					</a>
+				</div>
+			</div>
+
+			<!-- <div data-role="controlgroup" data-type="horizontal" id="mainBar">
+		   <a href="#" data-role="button" data-icon="home" data-iconpos="top">home</a>
+		   <a href="#" data-role="button" data-icon="star" data-iconpos="top">최근본상품</a>
+		   </div> -->
+
+
+			<div data-role="fieldcontaion">
+				<label for="name">Text Search</label> <input type="search"
+					id="query" name="query" value="" placeholder="Search">
+
+			</div>
+			&nbsp;
+
+
+			<ul data-role="listview" data-icon="false" style="padding-left: 10px;">
+				<li><a href="/"> <img
+						src="../images/customIcons/ic_action_document.png" alt="Mypage"
+						class="ui-li-icon"> 마이페이지
+				</a></li>
+				<li><a href="/"> <img
+						src="../images/customIcons/ic_action_business.png" alt="storage"
+						class="ui-li-icon"> 보관함
+				</a></li>
+				<li><a href="/"> <img
+						src="../images/customIcons/ic_action_users.png" alt="community"
+						class="ui-li-icon"> 커뮤니티
+				</a></li>
+				<li><a href="/"> <img
+						src="../images/customIcons/ic_action_emo_basic.png" alt="good"
+						class="ui-li-icon"> 좋아요
+				</a></li>
+				<li><a href="/"> <img
+						src="../images/customIcons/ic_action_emo_cry.png" alt="bad"
+						class="ui-li-icon"> 나빠요
+				</a></li>
+			</ul>
+
+		</div>
+		<!-- content -->
+
+
+	<script>
+		   
+		   $(function () {
+		        $("#query").keydown(function (key) {
+		           if (key.keyCode == 13) { 
+		        	var keyWord = $('#query').val();
+		          var url ="list.jsp?searchKey=" + keyWord;
+		          $(location).attr('href',url);   
+		           }  
+		       });
+		   });
+		  
+		
+		  $( "#barcodeBtn" ).click(function() {
+		        alert( "웹 페이지에서는 실행되지 않습니다." );
+		  });
+		  
+		  </script>
+

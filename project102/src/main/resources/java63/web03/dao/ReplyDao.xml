@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- <sql> 태그 사용하기
+=> 자주 사용되는 SQL문은 별도로 정의해두고 포함한다.
+-->
+
+<mapper namespace="java63.web03.dao.ReplyDao">
+
+  <!-- 객체의 컬럼과 프로퍼티를 연결한다. -->
+  <resultMap type="Reply" id="replyMap">
+    <!-- PK 컬럼은 id 태그를 사용하여 지정한다. -->
+    <id column="RNO" property="rno"/>
+    <result column="BNO" property="bno"/>
+    <result column="UNO" property="uno"/>
+    <result column="RCONTENT" property="rContent"/>
+    <result column="RDATE" property="rDate"/>
+  </resultMap>
+  
+  <resultMap type="map" id="replyListItemMap">
+    <!-- PK 컬럼은 id 태그를 사용하여 지정한다. -->
+    <id column="RNO" property="rno"/>
+    <result column="BNO" property="bno"/>
+    <result column="UNO" property="uno"/>
+    <result column="RCONTENT" property="rContent"/>
+    <result column="RDATE" property="rDate"/>
+    <result column="NAME" property="name"/>
+  </resultMap>
+  
+  
+<!--   자주 사용하는 SQL문을 정의할때  -->
+  <sql id="replySelect">
+    SELECT RNO, BNO, UNO, RCONTENT, RDATE
+    FROM REPLY
+  </sql>
+  
+  <select id="selectList" parameterType="map" 
+        resultMap="replyListItemMap">
+    SELECT T2.NAME,
+           T1.RDATE,
+           T1.RCONTENT,
+           T1.RNO,
+           T1.UNO
+    FROM REPLY T1 LEFT OUTER JOIN USERS T2
+    USING(UNO)
+    WHERE BNO=#{bno}
+    <!-- WHERE BNO=#{value}  나중에 변경.-->
+    ORDER BY T1.RNO
+    <if test="pageSize > 0">
+      limit #{startIndex}, #{pageSize}
+    </if>
+  </select>
+  
+  <select id="selectOne" parameterType="int" resultMap="replyMap">
+    <include refid="replySelect"/> 
+    WHERE RNO=#{value}
+  </select>
+  
+  <select id="totalSize" resultType="int">
+    SELECT count(RNO) FROM REPLY
+  </select>
+  
+  <insert id="insert" parameterType="Reply"
+    useGeneratedKeys="true" keyColumn="RNO" keyProperty="rno">
+    INSERT INTO REPLY(BNO, UNO, RCONTENT, RDATE) 
+    VALUES (#{bno}, #{uno}, #{rContent}, SYSDATE())
+  </insert>
+  
+  <delete id="delete" parameterType="Reply">
+    DELETE FROM REPLY WHERE RNO=#{rno}<!-- RNO=#{value} -->
+  </delete>
+  
+    <delete id="deleteAll" parameterType="int">
+    DELETE FROM REPLY WHERE BNO=#{bno}
+  </delete>
+  
+  
+</mapper>
+
+
+

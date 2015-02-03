@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>로그인</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+<script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+
+<!-- -------------------- CSS --------------------- -->
+<link href="css/common.css" rel="stylesheet">
+
+<!-------------------- Bootstrap --------------------->
+<link href="css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+/* 폰트 적용 */
+@import url(http://fonts.googleapis.com/earlyaccess/nanumgothic.css);
+
+@import url(http://fonts.googleapis.com/earlyaccess/hanna.css);
+
+@import url(http://fonts.googleapis.com/earlyaccess/jejugothic.css);
+
+/* div {
+	border: 1px solid black;
+} */
+
+#content {
+	border: 0px solid black;
+}
+
+#menu {
+	width: 40px;
+	height: 40px;
+	/*  margin: 10px 10px 10px 10px; */
+	float: left;
+}
+
+#search {
+	margin: 10px;
+}
+
+#signUpForm {
+	margin: 10px auto;
+	width: 90%;
+}
+
+#loginBtn {
+  width: 100%;
+  background-color: #EEE5E5;    
+}
+
+#findPwdBtn {
+  width: 48%;
+  background-color: #EEE5E5;    
+}
+
+#signUpBtn {
+  width: 48%;
+  background-color: #EEE5E5; 
+  position: relative;
+  left: 3.4%;
+}
+</style>
+
+</head>
+
+<body>
+	<div id='topBar' data-role="header">
+    <a href="#" class="ui-btn ui-icon-bars ui-btn-icon-notext ui-corner-all ui-nodisc-icon transparentButton">menu</a>  
+    <h1>로 그 인</h1>
+  </div>
+
+		<!-- --------------------------------------------------- -->
+		<form role="form" id='signUpForm'>
+			<div class="form-group">
+				<label for="exampleInputEmail1">이메일</label> <input type="email"
+					class="form-control" id="email" placeholder="Enter email">
+			</div>
+			<div class="form-group">
+				<label for="exampleInputPassword1">비밀번호</label> <input
+					type="password" class="form-control" id="pwd"
+					placeholder="Password">
+			</div>
+			<button type="submit" id='loginBtn' class="btn btn-default">로그인</button>
+
+			<div class="checkbox">
+				<label> <input type="checkbox"> 자동 로그인
+				</label>
+			</div>
+			
+			<div id=''>
+      <button type="button" id='findPwdBtn' class="btn btn-default">비밀번호찾기</button>
+      <button type="button" id='signUpBtn' class="btn btn-default">회원가입</button>
+    </div>
+		</form>		
+	
+	<!------------------------div container 끝 ----------------------->
+
+
+
+
+</body>
+</html>
+

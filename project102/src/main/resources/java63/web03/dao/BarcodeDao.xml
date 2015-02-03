@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<!-- <sql> 태그 사용하기
+=> 자주 사용되는 SQL문은 별도로 정의해두고 포함한다.
+-->
+
+<mapper namespace="java63.web03.dao.BarcodeDao">
+
+  <!-- 객체의 컬럼과 프로퍼티를 연결한다. -->
+  <resultMap type="Barcode" id="barcodeMap">
+    <!-- PK 컬럼은 id 태그를 사용하여 지정한다. -->
+    <id column="BARCODENO" property="barcodeNo"/>
+    <result column="PNO" property="pno"/>
+    <result column="PNAME" property="pname"/>
+  </resultMap>
+  
+  <select id="selectList" parameterType="map" 
+        resultMap="barcodeMap">
+    SELECT BARCODENO,
+           PNO,
+           PNAME
+    FROM BARCODE
+    <if test="pageSize > 0">
+      limit #{startIndex}, #{pageSize}
+    </if>
+  </select>
+  
+  <select id="selectOne" parameterType="String" resultMap="barcodeMap">
+    SELECT BARCODENO,
+           PNO,
+           PNAME
+    FROM BARCODE
+    WHERE BARCODENO=#{value}
+  </select>
+  
+  <select id="totalSize" resultType="int">
+    SELECT count(BARCODENO) FROM BARCODE
+  </select>
+  
+
+  
+</mapper>
+
+
+

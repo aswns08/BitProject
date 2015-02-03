@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>로그인</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+<link rel="stylesheet" href="../css/jquery.mobile-1.4.5.min.css" />
+<link rel="stylesheet" href="../css/red.css" />
+<script src="../js/jquery-1.11.1.js"></script>
+<script src="../js/jquery.mobile-1.4.5.min.js"></script>
+
+<style>
+li {
+	list-style: none; /* li 점 없애기 */
+}
+
+.ui-li-icon2 {
+	display: block;
+	margin: auto;
+}
+
+.ui-page-theme-a .ui-btn, html .ui-bar-a .ui-btn, html .ui-body-a .ui-btn,
+	html body .ui-group-theme-a .ui-btn, html head+body .ui-btn.ui-btn-a,
+	.ui-page-theme-a .ui-btn:visited, html .ui-bar-a .ui-btn:visited, html .ui-body-a .ui-btn:visited,
+	html body .ui-group-theme-a .ui-btn:visited, html head+body .ui-btn.ui-btn-a:visited
+	{
+	border-color: #bcc2c7;
+}
+
+#btnLogin {
+	background-color: #12aec3;
+	border-color: #fff;
+	border-radius: 3px;
+	text-align: center;
+	color: #f8f8f8;
+	font-weight: 100;
+	font-size: 16px;
+	letter-spacing: -1px;
+	height: 50px;
+}
+
+	/* 2.1 추가 */  
+.ui-content {
+	padding: 30px 20px 5px;
+}
+
+.ui-input-text {
+	margin: 5px 0;
+}
+
+.loginInput {
+	height: 50px;
+	border: 1px solid #e8e8e8;
+	border-radius: 3px;
+	box-sizing: border-box;
+	font-size: 14px;
+	color: #333;
+	letter-spacing: -1px;
+	margin: 0px;
+}
+
+.loginInput:focus {
+	border: 1px solid #12aec3;	
+}
+
+#email, #pwd {
+	padding: 0 16px;
+	margin: 0;
+}
+
+.action {
+	padding-top: 17px;
+}
+
+.check {
+	padding: 0px 0 28px;
+	border-bottom: 1px solid #e8e8e8;
+}
+
+label.ui-btn {
+	padding: 3px;
+	border: none;
+}
+
+#save {
+	margin-left: -7px;
+}
+
+label#box {
+	padding-left: 27px;
+	font-weight: 500;
+}
+
+.ui-btn.ui-checkbox-off:after, .ui-btn.ui-checkbox-on:after {
+	-webkit-border-radius: 30px;
+	border-radius: 30px;
+	margin-left: -8px;
+	padding: 1px;
+}
+
+.ui-btn.ui-checkbox-on:after {
+	color: #12aec3;
+}
+
+.bottomDiv {
+	padding-top: 30px;
+	border-top: 1px solid #d7dadd;
+}
+
+.bottomDiv>button {
+	height: 50px;
+	border: 1px solid #e8e8e8;
+	border-radius: 3px;
+	box-sizing: border-box;
+	font-size: 15px;
+	letter-spacing: -1px;
+	margin-top: 5px;
+}
+
+.bottomDiv>.ui-btn, .bottomDiv>.ui-btn:hover {
+	color: #12aec3;
+	font-weight: bold;
+}
+</style>
+
+</head>
+<body>
+
+	<!-- Start of first page -->
+	<div data-role="page" id="login">
+		<div data-role="panel" id="left-panel" data-display="overlay"></div>
+
+		<div data-role="header">
+			<a href="#left-panel"
+				class="ui-btn ui-icon-bars ui-btn-icon-notext ui-corner-all ui-nodisc-icon transparentButton"></a>
+			<h1>로 그 인</h1>
+		</div>
+		<!-- /header -->
+
+		<div data-role="content">
+
+			<form method="post" action="login.do" role='form'>
+				<div>
+					<input type="text" name="email" id="email" placeholder="이메일 입력"
+						class="loginInput"> <input type="password" name="pwd"
+						id="pwd" placeholder="비밀번호 입력" class="loginInput">
+				</div>
+				<div class="action">
+					<button id='btnLogin' type="button" class='ui-btn'>로그인</button>
+					<div class="check">
+						<label for="save" id="box"><input type="checkbox"
+							name="save" id="save" value="이메일저장">이메일저장</label>
+					</div>
+				</div>
+			</form>
+
+			<div class="bottomDiv">
+				<button id='signUp' class='ui-btn'>회원가입</button>
+				<button id='pwdSearch' class='ui-btn'>비밀번호찾기</button>
+			</div>
+
+
+		</div>
+		<!-- /content -->
+
+	</div>
+	<!-- /page -->
+  <script src="../common/ikkosaUrl.js"></script>
+	<script src='login.js'></script>
+
+
+</body>
+</html>

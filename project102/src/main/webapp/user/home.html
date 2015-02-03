@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>메인화면</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+<link rel="stylesheet" href="../css/jquery.mobile-1.4.5.min.css" />
+<link rel="stylesheet" href="../css/red.css" />
+<script src="../js/jquery-1.11.1.js"></script>
+<script src="../js/jquery.mobile-1.4.5.min.js"></script>
+
+<style>
+/* .block {
+	width: 100%;
+	border: 0px solid blue;
+}
+
+#barBlock {
+	border: 0px solid blue;
+	width: 100%;
+	margin-top: 80px;
+}
+
+#barcode {
+	border: 0px solid red;
+	width: 80%;
+	height: 100px;
+}
+
+#bText {
+	margin-bottom: 0;
+	text-align: center;
+}
+
+#pText {
+	margin-top: 10;
+	margin-bottom: 0;
+} */
+
+.block {
+  width: 100%;
+}
+
+.ui-content {
+  padding: 5em;
+}
+
+#logo {
+  margin-top: 10%;
+  padding: 0px 10px;
+  width:200px;
+  height:150px;
+}
+
+#logoImg {
+width: 200px;
+height:150px;
+}
+
+#barcodeSearch {
+  float: left;
+  width: 70%;
+  height: 100%;
+  margin-left: 10px;
+  border: 0px solide black;
+}
+
+#searchBlock {
+  width: 100%;
+  display: inline-block;
+}
+.searchImg {
+  display: inline-block;
+  width: 20%;
+  position: relative;
+  left: 10px;
+  margin-left: 5px;
+  margin-top: 6px;
+}
+#searchTag{
+margin-top:20%;
+}
+</style>
+
+</head>
+
+<body>
+
+	<!-- Start of first page -->
+	<div data-role="page" id="home">
+    <div data-role="panel" id="left-panel" data-display="overlay"></div>
+
+    <div data-role="header">
+      <a href="#left-panel"
+        class="ui-btn ui-icon-bars ui-btn-icon-notext ui-corner-all ui-nodisc-icon transparentButton"></a>
+
+      <h1>홈</h1>
+    </div>
+    <!-- /header -->
+
+    <div data-role="content">
+
+      <div id='logo'>
+        <img id='logoImg' src='../images/logo.jpg'>
+      </div>
+      
+      <div id='searchTag'>
+      <div id='searchBlock'>
+        <div id='barcodeSearch'>
+          <input type="text" class="form-control" placeholder="바코드로 찾기" readonly>
+        </div>
+        <!-- input -->
+        <input class='searchImg' id='barcode' type='image' src='../images/barcode.png'>
+      </div>
+
+      <div data-role="fieldcontaion"
+        style="height: 50px; padding: 0px 10px; margin: -10px -30px 0px 0px">
+        <input type="search" id="queryH" name="query" value=""
+          placeholder="품명으로 찾기">
+      </div>
+      </div>
+
+    </div>
+    <!-- /content -->
+
+    <!--  /footer -->
+
+  </div>
+	<!-- /page -->
+<script src="../common/ikkosaUrl.js"></script>
+<script src="home.js"></script>
+
+</body>
+</html>

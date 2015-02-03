@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>My Page</title>
+<meta name="viewport" content="width=device-width, initial-scale=1" charset="UTF-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<link rel="stylesheet" href="../css/jquery.mobile-1.4.5.min.css" />
+<link rel="stylesheet" href="../css/red.css" />
+<script src="../js/jquery-1.11.1.js"></script>
+<script src="../js/jquery.mobile-1.4.5.min.js"></script>
+<script type="text/javascript" src='../js/handlebars-v2.0.0.js'></script>
+<script type="text/javascript" src='../js/require.js'></script>
+
+<script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+
+<style>
+#titleSection {
+	margin-top: 0px;
+	background-color: #f3f3f3;
+	padding: 15px 15px 20px;
+	border-bottom: 1px solid #d9d9d9;
+}
+
+#title {
+	font-size: 21px;
+	color: #222;
+	line-height: 100%;
+	letter-spacing: 0.5px;
+	-webkit-margin-before: 0px;
+	-webkit-margin-after: 0px;
+}
+
+#detailSection p {
+	display: block;
+	font-size: 13px;
+	color: #6f7279;
+	font-family: sans-serif;
+	vertical-align: top;
+}
+
+.listBtn {
+	width: 59px;
+	height: 31px;
+	margin-right: 5px;
+	padding: 7px 15px;
+	border-radius: 20px;
+	border: 1px solid #bfbfbf;
+	font-size: 14px;
+	line-height: 29px;
+	color: #222;
+	background-color: #fff;
+	text-align: center;
+	vertical-align: top;
+	letter-spacing: -1px;
+	font-weight: normal;
+	text-decoration: none;
+}
+
+.listBtn>span {
+	color: #333;
+}
+
+span#rcountStyle {
+	color: #f44343;
+}
+
+#article {
+	min-height: 100px;
+	padding: 15px 14px 0;
+}
+
+#article p {
+	margin: 0px;
+}
+
+.iconLeft a {
+	padding-left: 2.5em !important;
+	padding-right: 1em !important;
+}
+
+.iconLeft a:after {
+	right: auto;
+	left: 9px;
+}
+
+a#prevBoardBtn {
+	font-size: 14px;
+	font-weight: normal;
+}
+
+a#nextBoardBtn {
+	font-size: 14px;
+	font-weight: normal;
+}
+
+.ui-alt-icon.ui-icon-carat-d:after, .ui-alt-icon .ui-icon-carat-d:after
+	{
+	background-image:
+		url("data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22iso-8859-1%22%3F%3E%3C!DOCTYPE%20svg%20PUBLIC%20%22-%2F%2FW3C%2F%2FDTD%20SVG%201.1%2F%2FEN%22%20%22http%3A%2F%2Fwww.w3.org%2FGraphics%2FSVG%2F1.1%2FDTD%2Fsvg11.dtd%22%3E%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%20%20width%3D%2214px%22%20height%3D%2214px%22%20viewBox%3D%220%200%2014%2014%22%20style%3D%22enable-background%3Anew%200%200%2014%2014%3B%22%20xml%3Aspace%3D%22preserve%22%3E%3Cpolygon%20points%3D%2211.949%2C3.404%207%2C8.354%202.05%2C3.404%20-0.071%2C5.525%207%2C12.596%2014.07%2C5.525%20%22%2F%3E%3C%2Fsvg%3E");
+	opacity: 0.3;
+}
+
+.ui-alt-icon.ui-icon-carat-u:after, .ui-alt-icon .ui-icon-carat-u:after
+	{
+	background-image:
+		url("data:image/svg+xml;charset=US-ASCII,%3C%3Fxml%20version%3D%221.0%22%20encoding%3D%22iso-8859-1%22%3F%3E%3C!DOCTYPE%20svg%20PUBLIC%20%22-%2F%2FW3C%2F%2FDTD%20SVG%201.1%2F%2FEN%22%20%22http%3A%2F%2Fwww.w3.org%2FGraphics%2FSVG%2F1.1%2FDTD%2Fsvg11.dtd%22%3E%3Csvg%20version%3D%221.1%22%20id%3D%22Layer_1%22%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20xmlns%3Axlink%3D%22http%3A%2F%2Fwww.w3.org%2F1999%2Fxlink%22%20x%3D%220px%22%20y%3D%220px%22%20%20width%3D%2214px%22%20height%3D%2214px%22%20viewBox%3D%220%200%2014%2014%22%20style%3D%22enable-background%3Anew%200%200%2014%2014%3B%22%20xml%3Aspace%3D%22preserve%22%3E%3Cpolygon%20points%3D%222.051%2C10.596%207%2C5.646%2011.95%2C10.596%2014.07%2C8.475%207%2C1.404%20-0.071%2C8.475%20%22%2F%3E%3C%2Fsvg%3E");
+	opacity: 0.3;
+}
+
+.replyCount {
+	color: #f44343;
+}
+
+#facebookFont {
+margin : 0px;
+}
+
+#twitterFont {
+margin : 0px;
+}
+
+#kakaoFont {
+margin : 0px;
+}
+
+#bandFont {
+margin : 0px;
+}
+
+#goodFont{
+margin : 0px;
+}
+
+#navBtn {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  background: url('../images/Plus-48.png') no-repeat;
+  width: 40px;
+  height: 40px;
+  background-size: 37px 37px;
+  border: none;
+  box-shadow: none;
+  z-index: 2;
+}
+
+#navList {
+  position: absolute;
+  bottom: 80px;
+  right: 15px;
+  border: 2px solid #444;
+  width: 270px;
+  height: 84px;
+  border-radius: 5px;
+  padding: 0px;
+  margin: 0px;  
+}
+
+#navList>li {
+  list-style: none;
+  display: inline-block;
+  width: 135.25px;
+}
+
+#navList>li:nth-child(2n) {
+  list-style: none;
+  display: inline-block;
+  margin-left: -8px;
+}
+
+#navList>li:nth-child(3n) {
+  list-style: none;
+  display: inline-block;
+  margin-top: -5px;
+}
+
+#navList>li:nth-child(4n) {
+  list-style: none;
+  display: inline-block;
+  margin-top: -5px;
+  margin-left: -8px;
+}
+
+#navList>li>a {
+  box-shadow: none;
+  margin: 0;
+  padding: 10.3px 0;
+  border-radius: 0px;
+  color: #444;
+  font-family: sans-serif;
+  font-weight: 100;
+  font-size: 14px;
+  line-height: 20px;  
+} 
+</style>
+
+</head>
+<body>
+
+	<!-- Start of first page -->
+	<div data-role="page" id="boardWrite">
+		<div data-role="header" data-position="fixed">
+		
+			<h1 id='ifLikeHeader'></h1>
+			
+			<a id="backBtn" href="#" class="ui-btn ui-icon-carat-l ui-btn-icon-notext ui-corner-all ui-nodisc-icon transparentButton">before</a>
+			
+		</div>
+		<!-- /header -->
+
+		<div data-role="contetnt" data-position="fixed">
+			<div id='listDiv'></div>
+			<!-- contents -->
+
+			<div data-role="navbar" class="nav-glyphish-example" data-grid="d">	
+				<ul>
+
+          <li><a class="ui-btn ui-shadow ui-corner-all" id="twitter">
+          <img src="../images/twitter.png" width="20" height="20"><p id="twitterFont">Twitter</p></a></li>
+            
+          <li><a class="ui-btn ui-shadow ui-corner-all" id="facebook">
+          <img src="../images/facebook.jpg" width="20" height="20"><p id="facebookFont">FaceBook</p></a></li>
+            
+           <li><a id="kakao-link-btn" href="javascript:;" class="ui-btn ui-shadow ui-corner-all"
+            id="kakaotalk"><img src="http://dn.api1.kage.kakao.co.kr/14/dn/btqa9B90G1b/GESkkYjKCwJdYOkLvIBKZ0/o.jpg" width="20" height="20"/>
+            <p id="kakaoFont">Kakao</p></a></li>
+
+          
+          <li><a  class="ui-btn ui-shadow ui-corner-all"
+            id="band">
+            <span>
+              <script type="text/javascript" src="//developers.band.us/js/share/band-button.js?v=20150126" width="20" height="20"></script>
+              <script type="text/javascript">
+                new ShareBand.makeButton({"lang":"ko","type":"b"}  );
+                </script>
+              </span><p id="bandFont">Band</p></a></li>
+            
+          <li><a href="#" class="ui-btn ui-shadow ui-corner-all" id="likeBtn" >
+          <img src="../images/good.png" width="20" height="20"><p id="goodFont">좋아요</p></a></li>
+        </ul>
+			</div>
+			<!-- navbar -->
+
+			<ul data-role="listview">
+				<li data-icon="carat-u" class="iconLeft ui-nodisc-icon ui-alt-icon">
+					<a href="#" id='prevBoardBtn' class='listFont'>이전글&nbsp;&nbsp;<span
+						id='prevTitle'></span>&nbsp;<span id='prevRcount'
+						class='replyCount'></span></a>
+				</li>
+				<li data-icon="carat-d" class="iconLeft ui-nodisc-icon ui-alt-icon">
+					<a href="#" id='nextBoardBtn' class='listFont'>다음글&nbsp;&nbsp;<span
+						id='nextTitle'></span>&nbsp;<span id='nextRcount'
+						class='replyCount'></span></a>
+				</li>
+			</ul>
+
+		</div>
+		<!-- /contetnt -->
+
+	   <div class="navBtnWrap">
+      <button type="button" class="navBtn open" id="navBtn"></button>
+
+      <ul id="navList" style="display: none;">
+        <li><a href="#" id='btnReply' class="liNavList"
+          data-role="button">댓글 보기</a></li>
+        <li><a href="#" id='btnDelete' class="liNavList"
+          data-role="button">글 삭제</a></li>
+        <li><a href="#" id='btnUpdate' class="liNavList"
+          data-role="button">글 수정</a></li>
+        <li><a href="#" id='gotoTop' class="liNavList"
+          data-role="button">맨위로</a></li>
+      </ul>
+    </div>
+		<!--  /footer -->
+	</div>
+	<!-- /page -->
+
+<script src="../common/ikkosaUrl.js"></script>
+<script src='boardView.js'></script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+

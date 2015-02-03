@@ -1,0 +1,27 @@
+<ul data-role="listview" data-icon="false" data-split-theme="d"
+  id='listView'>
+  <!--------------개별 리스트------------------------>
+  {{#each boards}}
+  <li class='data-row'><a href='#' data-no="{{no}}"
+    data-transition="flow">
+      <div class="blist">
+       {{#if url}}
+        <img src="../fileupload/{{url}}" width="50" height="50"> <span
+          class='mask'></span>
+       {{/if}}
+      </div>
+      <p>
+        <strong class="btitle"> {{title}}</strong> <br> <span
+          class="info"> <span class="ty">{{userName}} |</span> <span
+          class="tcr">{{date}} |</span> <span class="tcr">조회 {{count}}
+            |</span> <span class="tcr">추천수 {{recommend}} </span>
+        </span>
+      </p>
+  </a>
+  <!-- 댓글 때문에 클릭 안될 수도 있음 -->
+  <span class="ui-li-count countRect" data-theme="d" 
+  style="color: #cd1d1d;">{{rcount}}</span> 
+
+    </li> {{/each}}
+</ul>
+

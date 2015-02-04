@@ -1,0 +1,31 @@
+-- 학생정보
+DROP TABLE IF EXISTS HR RESTRICT;
+
+-- 학생정보
+CREATE TABLE HR (
+  PNO     INTEGER      NOT NULL COMMENT '회원번호', -- 회원번호
+  PHONE   VARCHAR(30)  NOT NULL COMMENT '핸드폰', -- 핸드폰
+  NAME    VARCHAR(50)  NOT NULL COMMENT '이름', -- 이름
+  EMAIL   VARCHAR(255) NULL     COMMENT '이메일', -- 이메일
+  SEX     VARCHAR(255) NOT NULL COMMENT '성별', -- 성별
+  SUBJECT VARCHAR(50)  NOT NULL COMMENT '과목', -- 과목
+  AGE     INTEGER      NOT NULL COMMENT '나이' -- 나이
+)
+COMMENT '학생정보';
+
+-- 학생정보
+ALTER TABLE HR
+  ADD CONSTRAINT PK_HR -- 학생정보 기본키
+    PRIMARY KEY (
+      PNO -- 회원번호
+    );
+
+-- 학생정보 유니크 인덱스
+CREATE UNIQUE INDEX UIX_HR
+  ON HR ( -- 학생정보
+    PHONE ASC, -- 핸드폰
+    EMAIL ASC  -- 이메일
+  );
+
+ALTER TABLE HR
+  MODIFY COLUMN PNO INTEGER NOT NULL AUTO_INCREMENT COMMENT '회원번호';

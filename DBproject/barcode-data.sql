@@ -64,10 +64,13 @@ insert into BARCODE(BARCODENO, PNAME)
 values(3605970008857,'kiehls lip balm');
 
 insert into BARCODE(BARCODENO, PNAME)
-values();
+values(8801117334604, 'AH938E-14C'); --JELLY
+
+insert into BARCODE(BARCODENO, PNAME)
+values(8809243691110, 'AH938E-14C');
 
 
 COUNT   INTEGER      default '0' NOT NULL COMMENT '조회수', -- 조회수
-  RECO    INTEGER      default '0' NOT NULL COMMENT '추천수', -- 추천수
+RECO    INTEGER      default '0' NOT NULL COMMENT '추천수', -- 추천수
 
 
